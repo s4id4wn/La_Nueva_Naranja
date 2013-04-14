@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>La Nueva Naranja</title>
+	<meta charset="utf-8"/> 
+	<link rel="stylesheet" type="text/css" href="css/estilo.css"/>
+	<link rel="shortcut icon" href="images/favicon.ico"/>
+	
+    <script type="text/javascript" src="scripts/jquery-1.9.0.min.js"></script> 
+    <script type="text/javascript" src="plugins/jquery.nivo.slider.js"></script>
+    <script src="../SpryAssets/SpryValidationPassword.js" type="text/javascript"></script>
+<link rel="stylesheet" href="plugins/light/light.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="plugins/nivo-slider.css" type="text/css" media="screen" />
+	
+<link href="../SpryAssets/SpryValidationPassword.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+	<div id="page_wrapper">
+		<header>
+			<aside>
+				<ul class="logo">
+					<li><a href="index.html"></a></li> 
+				</ul>
+			</aside>
+			<div class="container">
+				<nav>
+					<ul>
+						<li><a href="#">Login</a></li>
+						<li><a href="#">Registro</a></li>
+						<li><a href="#">Contacto</a></li>
+						<li><a href="#">Carrito {0}</a></li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+		
+		<div id="second_menu" class="container">
+			<ul>
+				<li><a href="index.html">Inicio</a></li>
+				<li><a href="#">Categoria2</a></li>
+				<li><a href="#">Categoria3</a></li>
+				<li><a href="#">Categoria4</a></li>
+				<li><a href="#">Categoria5</a></li>
+				<li><a href="#">Categoria6</a></li>
+			</ul>
+		</div>
+ 
+		<section class="container">
+		
+			<!-------------------------
+				Comeinzo lado derecho, Menu 
+			-------------------------->
+			<div id="side_left">
+				<div class="widget">
+				<div class="head_menu">Catálogo de productos</div>
+				<div class="body">
+					<ul>
+						<li><a href="#" class="selected">Linea Blanca</a></li>
+						<li><a href="#">Electrodomesticos</a></li>
+						<li><a href="#">Tu texto 3</a></li>
+						<li><a href="#">Tu texto 4</a></li>
+						<li><a href="#">Tu texto 5</a></li>
+						<li><a href="#">Tu texto 6</a></li>
+					</ul>
+				</div>
+				</div>
+				<div class="widget">
+				<div class="head_menu">Catálogo de productos</div>
+				<div class="body">
+					<ul>
+						<li><a href="#" class="selected">Tu texto 1</a></li>
+						<li><a href="#">Tu texto 2</a></li>
+						<li><a href="#">Tu texto 3</a></li>
+						<li><a href="#">Tu texto 4</a></li>
+						<li><a href="#">Tu texto 5</a></li>
+						<li><a href="#">Tu texto 6</a></li>
+					</ul>
+				</div>
+				</div>
+			</div>
+			
+			<!---------------------------------
+				Comienzo contenedor principal
+			---------------------------------->
+			<div id="main_container">
+			
+				<!-------------------------
+					Comienzo del slider 
+				-------------------------->
+				<FORM method=post action="cgi-bin/script.pl">
+				  <em><strong>Registro de  usuario</strong></em>
+<TABLE BORDER=0>
+  <TR>
+	<TD width="78">Nombre:</TD>
+	<TD width="206">
+	<INPUT class="border" type=text name="nombre">
+	</TD>
+</TR>
+
+<TR>
+	<TD>Apellido:</TD>
+	<TD>
+	<INPUT type=text name="apellido">
+	</TD>
+</TR>
+
+<TR>
+  <TD>Correo:</TD>
+  <TD><input type="text" name="textfield" id="textfield"></TD>
+</TR>
+<TR>
+	<TD>Contraseña:</TD>
+	<TD><span id="sprypassword1"><span class="passwordRequiredMsg">A value is required.</span></span>
+	  <label for="textfield2"></label>
+	  <input type="password" name="textfield2" id="textfield2"></TD>
+</TR>
+
+<TR>
+	<TD>Género</TD>
+	<TD><select name="Genero" id="Genero">
+	  <option>Hombre</option>
+	  <option>Mujer</option>
+	  </select></TD>
+</TR>
+<TR>
+	<TD>Comentarios</TD>
+	<TD><textarea name="comentarios">Escriba aquí sus comentarios</textarea></TD>
+</TR>
+
+<TR>
+  <TD COLSPAN=2><input type="checkbox" name="checkbox" id="checkbox">
+    Recibiar ofertas de La Nueva Naranja</TD>
+</TR>
+<TR>
+	<TD COLSPAN=2><INPUT type="submit" value="Registrar">
+	  <input type="reset" name="Cancelar" id="Cancelar" value="Cancelar"></TD>
+</TR>
+</TABLE> 
+</FORM>
+			</div>
+		</section>
+		<div class="limpiar"></div>
+		<footer class="container">
+			<p>La Nueva Naranja &copy; 2013. Algunos derechos reservados.</p>
+		</footer>
+ 
+	</div>
+<script type="text/javascript">
+var sprypassword1 = new Spry.Widget.ValidationPassword("sprypassword1");
+    </script>
+</body>
+</html>

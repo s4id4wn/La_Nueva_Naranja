@@ -1,0 +1,134 @@
+<html lang="es">
+<head>
+	<title>La Nueva Naranja</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	
+	<link rel="stylesheet" type="text/css" href="css/estilo.css"/>
+	
+	<link rel="stylesheet" href="plugins/light/light.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="plugins/nivo-slider.css" type="text/css" media="screen" />
+	
+    <script type="text/javascript" src="scripts/jquery-1.9.0.min.js"></script> 
+    <script type="text/javascript" src="plugins/jquery.nivo.slider.js"></script>
+	
+</head>
+
+<body>
+	<div id="page_wrapper">
+		<header>
+			<aside>
+				<ul class="logo">
+					<li><a href="index.html"></a></li> 
+				</ul>
+			</aside>
+			<div class="container">
+				<nav>
+					<ul>
+						<li><a href="#">Login</a></li>
+						<li><a href="new_user.html">Registro</a></li>
+						<li><a href="#">Contacto</a></li>
+						<li><a href="#">Carrito {0}</a></li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+		
+		<div id="second_menu" class="container">
+			<ul>
+				<li><a class="selected" href="#">Inicio</a></li>
+				<li><a href="#">Categoria2</a></li>
+				<li><a href="#">Categoria3</a></li>
+				<li><a href="#">Categoria4</a></li>
+				<li><a href="#">Categoria5</a></li>
+				<li><a href="#">Categoria6</a></li>
+			</ul>
+		</div>
+ 
+		<section class="container">
+		
+			<!-------------------------
+				Comeinzo lado derecho, Menu 
+			-------------------------->
+			<div id="side_left">
+				<div class="widget">
+				<div class="head_menu">Catálogo de productos</div>
+				<div class="body">
+					<ul>
+						<li><a href="#" class="selected">Linea Blanca</a></li>
+						<li><a href="#">Electrodomesticos</a></li>
+						<li><a href="#">Tu texto 3</a></li>
+						<li><a href="#">Tu texto 4</a></li>
+						<li><a href="#">Tu texto 5</a></li>
+						<li><a href="#">Tu texto 6</a></li>
+					</ul>
+				</div>
+				</div>
+				<div class="widget">
+				<div class="head_menu">Catálogo de productos</div>
+				<div class="body">
+					<ul>
+						<li><a href="#" class="selected">Tu texto 1</a></li>
+						<li><a href="#">Tu texto 2</a></li>
+						<li><a href="#">Tu texto 3</a></li>
+						<li><a href="#">Tu texto 4</a></li>
+						<li><a href="#">Tu texto 5</a></li>
+						<li><a href="#">Tu texto 6</a></li>
+					</ul>
+				</div>
+				</div>
+			</div>
+			
+			<!---------------------------------
+				Comienzo contenedor principal
+			---------------------------------->
+			<div id="main_container">
+			
+				<!-------------------------
+					Comienzo del slider 
+				-------------------------->
+				<img src="imagenes/promo.png"></img>
+				<div class="limpiar"></div>
+				<div class="slider-wrapper theme-light">
+					<div id="slider" class="nivoSlider">
+						<img src="plugins/images/toystory.jpg" data-thumb="plugins/images/toystory.jpg" alt="" />
+					</div>
+					<div id="htmlcaption" class="nivo-html-caption">
+						<strong>This</strong> is an example of a <em>HTML</em> caption with <a href="#">a link</a>. 
+					</div>
+				</div>
+				<script type="text/javascript">
+					$(window).load(function() {
+					$('#slider').nivoSlider();
+					});
+				</script>
+				<!-------------------------
+					Fin del slider 
+				-------------------------->
+				
+				<div class="limpiar"></div>
+				<img src="imagenes/last_items.png"/>
+				<div class="limpiar"></div>
+				<div id="last_items">
+					<div id="item_left">
+						<div class="item_head">Nombre producto #1</div>
+						<div class="item_body"><img src="microondas.jpg" width="364" height="276"/></div>
+						<div class="item_foot"><div class="price">Precio: $200.00</div><div class="details"><a href="#">Detalles</a></div><div class="car"><a href="#"><img src="imagenes/add.png"/></a></div></div>
+					</div>
+					
+					<div id="item_right">
+						<div class="item_head">Nombre producto #2</div>
+						<div class="item_body"><img src="descarga.jpg" width="364" height="276"/></div>
+						<div class="item_foot"><div class="price">Precio: $200.00</div><div class="details"><a href="#">Detalles</a></div><div class="car"><a href="#"><img src="imagenes/add.png"/></a></div></div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<div class="limpiar"></div>
+		<footer class="container">
+			<p>La Nueva Naranja &copy; 2013. Algunos derechos reservados.</p>
+		</footer>
+ 
+	</div>
+ 
+</body>
+</html>
