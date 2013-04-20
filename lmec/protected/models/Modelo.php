@@ -47,7 +47,7 @@ class Modelo extends CActiveRecord
 			array('active', 'numerical', 'integerOnly'=>true),
 			array('brand_id, equipment_type_id', 'length', 'max'=>10),
 			array('name','unique','message'=>'El {attribute} ya existe.'),
-			array('name', 'length', 'max'=>200,'message'=>'El {attribute} es muy largo'),
+			array('name', 'length', 'max'=>200),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, brand_id, equipment_type_id, name, active', 'safe', 'on'=>'search'),
@@ -77,7 +77,7 @@ class Modelo extends CActiveRecord
 			'id' => 'ID',
 			'brand_id' => 'Marca',
 			'equipment_type_id' => 'Tipo de Equipo',
-			'name' => 'Nombre',
+			'name' => 'Modelo',
 			'active' => 'Activo',
 		);
 	}
@@ -95,7 +95,7 @@ class Modelo extends CActiveRecord
 
 		$criteria->compare('id',$this->id,true);
 		$criteria->with =array('Brand','EquipmentType');
-		$criteria->addSearchCondition('LOWER(Brand.name)', strtolower($this->brand_id));
+		$criteria->addSearchCondition('LOWER(Brand.brand)', strtolower($this->brand_id));
 		$criteria->addSearchCondition('LOWER(EquipmentType.type)', strtolower($this->equipment_type_id));
 		$criteria->compare('t.name',$this->name,true);
 		$criteria->compare('t.active',$this->active);
@@ -120,5 +120,6 @@ class Modelo extends CActiveRecord
 					return "No";
 				}
 		}
+		return "Invalid";
 	}
 }

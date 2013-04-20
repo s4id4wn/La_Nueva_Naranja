@@ -7,7 +7,7 @@
 // CWebApplication properties can be configured here.
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
-	'name'=>'Sistema de Control de Mantenimiento de Equipos De Cómputo',
+	'name'=>'LABORATORIO DE MANTENIMIENTO DE EQUIPOS DE CÓMPUTO',
 
 	'language' => 'es',
 	//'defaultController'=>'site/index',

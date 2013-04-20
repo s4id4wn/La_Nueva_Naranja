@@ -28,25 +28,22 @@
 	<div id="mainmenu">
 		<?php $this->widget('zii.widgets.CMenu',array(
 			'items'=>array(
+				//array('label'=>'Inicio', 'url'=>array('/site/index')),
+				//array('label'=>'Contact', 'url'=>array('/site/contact')),
 				array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
 				//array('label'=>'Entrada Equipo', 'url'=>array('/order/create'), 'visible'=>Yii::app()->user->checkAccess('administrador')),
 				array('label'=>'Roles', 'url'=>array('/role/index'), 'visible'=>Yii::app()->user->checkAccess('administrador')),
 				array('label'=>'Usuarios', 'url'=>array('/user/index'), 'visible'=>Yii::app()->user->checkAccess('administrador')),
 				array('label'=>'Servicios', 'url'=>array('/service/index'), 'visible'=>Yii::app()->user->checkAccess('*')),
 				array('label'=>'Tipo de Servicio', 'url'=>array('/serviceType/index'), 'visible'=>Yii::app()->user->checkAccess('*')),
+				//array('label'=>'Marcas', 'url'=>array('/brand/index'), 'visible'=>Yii::app()->user->checkAccess('administrador')),
 				array('label'=>'Modelos', 'url'=>array('/modelo/index'), 'visible'=>Yii::app()->user->checkAccess('administrador')),
 				array('label'=>'Tipo de Equipo', 'url'=>array('/equipmentType/index'), 'visible'=>Yii::app()->user->checkAccess('administrador')),
                 array('label'=>'Accesorios', 'url'=>array('/accesory/index'), 'visible'=>Yii::app()->user->checkAccess('administrador')),
+				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest),
 				array('label' => 'Marcas', 'url' => array('/brand/index'), 'visible'=>Yii::app()->user->checkAccess('administrador')),
 				array('label' => 'Trabajos', 'url' => array ('/work/index'), 'visible'=>Yii::app()->user->checkAccess('administrador')),
-				array('label' => 'Refacciones', 'url' => array('/spareParts/index'), 'visible'=>Yii::app()->user->checkAccess('administrador')),
-				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest),
-				array('label' => 'Dependencias', 'url' => array('/dependence/index'), 'visible'=>Yii::app()->user->checkAccess('administrador')),
-				array('label' => 'Clientes', 'url' => array('/customer/index'), 'visible'=>Yii::app()->user->checkAccess('administrador')),
-				array('label' => 'Tipo de cliente', 'url' => array('/customerType/index'), 'visible'=>Yii::app()->user->checkAccess('administrador')),
-				array('label' => 'Contactos', 'url' => array('/contact/index'), 'visible'=>Yii::app()->user->checkAccess('administrador')),
-				array('label' => 'Proveedor', 'url' => array('/provider/index'), 'visible'=>Yii::app()->user->checkAccess('administrador'))
-				
+				array('label' => 'Refacciones', 'url' => array('/spareParts/index'), 'visible'=>Yii::app()->user->checkAccess('administrador'))
 			),
 		)); ?>
 	</div><!-- mainmenu -->

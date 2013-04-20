@@ -1,9 +1,9 @@
 <?php
 
 /**
- * This is the model class for table "{{service}}".
+ * This is the model class for table "tbl_service".
  *
- * The followings are the available columns in table '{{service}}':
+ * The followings are the available columns in table 'tbl_service':
  * @property string $id
  * @property string $service_type_id
  * @property string $name
@@ -11,10 +11,10 @@
  * @property integer $active
  *
  * The followings are the available model relations:
- * @property QuotationService[] $quotationServices
- * @property ServiceType $serviceType
- * @property ServiceOrder[] $serviceOrders
- * @property ServicePerformedOrder[] $servicePerformedOrders
+ * @property TblQuotationService[] $tblQuotationServices
+ * @property TblServiceType $serviceType
+ * @property TblServiceOrder[] $tblServiceOrders
+ * @property TblServicePerformedOrder[] $tblServicePerformedOrders
  */
 class Service extends CActiveRecord
 {
@@ -33,7 +33,7 @@ class Service extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return '{{service}}';
+		return 'tbl_service';
 	}
 
 	/**
@@ -65,10 +65,10 @@ class Service extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'quotationServices' => array(self::HAS_MANY, 'QuotationService', 'service_id'),
-			'serviceType' => array(self::BELONGS_TO, 'ServiceType', 'service_type_id'),
-			'serviceOrders' => array(self::HAS_MANY, 'ServiceOrder', 'service_id'),
-			'servicePerformedOrders' => array(self::HAS_MANY, 'ServicePerformedOrder', 'service_id'),
+			'tblQuotationServices' => array(self::HAS_MANY, 'TblQuotationService', 'service_id'),
+			'serviceType' => array(self::BELONGS_TO, 'TblServiceType', 'service_type_id'),
+			'tblServiceOrders' => array(self::HAS_MANY, 'TblServiceOrder', 'service_id'),
+			'tblServicePerformedOrders' => array(self::HAS_MANY, 'TblServicePerformedOrder', 'service_id'),
 		);
 	}
 
@@ -96,14 +96,12 @@ class Service extends CActiveRecord
 		// should not be searched.
 
 		$criteria=new CDbCriteria;
-		
-		$criteria->with=array('serviceType');
 
-		$criteria->compare('t.id',$this->id,true);
-		$criteria->compare('serviceType.name',$this->serviceType->name,true);
-		$criteria->compare('t.name',$this->name,true);
+		$criteria->compare('id',$this->id,true);
+		$criteria->compare('service_type_id',$this->service_type_id,true);
+		$criteria->compare('name',$this->name,true);
 		$criteria->compare('price',$this->price,true);
-		$criteria->compare('t.active',$this->active);
+		$criteria->compare('active',$this->active);
 		
 		return new CActiveDataProvider(get_class($this),array(
 			'pagination'=>array(
@@ -136,6 +134,11 @@ class Service extends CActiveRecord
 	public function getAllServices()
 	{
 		return Service::model()->count();
+	}
+	
+	public function getTiposServicios()
+	{
+		return $ModelTipoServicio = ServiceType::model()->findAll('active = 1');
 	}
 	
 	public function logical_deletion()

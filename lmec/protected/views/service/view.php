@@ -29,7 +29,7 @@ $this->menu=array(
 		),
 		array(
 			'name'=>'service_type_id',
-			'value'=>$model->serviceType->name,
+			'value'=>Service::getServiceType($model->service_type_id),
 			 ),
 	),
 )); ?>

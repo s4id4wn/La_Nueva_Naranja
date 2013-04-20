@@ -4,7 +4,7 @@
 
 $this->breadcrumbs=array(
 	'Refacciones'=>array('index'),
-	$model->name,
+	$model->id,
 );
 
 $this->menu=array(
@@ -17,7 +17,7 @@ $this->menu=array(
 );
 ?>
 
-<h1>Ver Refacción: <?php echo $model->name; ?></h1>
+<h1>Ver Refacción #<?php echo $model->id; ?></h1>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
@@ -47,9 +47,8 @@ $this->menu=array(
 		'description',
 		//'active',
 		array(
-			'name' => 'Activo',
-			'type' =>'raw',
-			'value' => $model->getActiveText(),
+			'name' => 'active',
+			'value' => (($model->active=="1")?"Si":"No"),
 		),
 	),
 )); ?>

@@ -82,7 +82,7 @@ class ServiceController extends Controller
 		));
 		}else
 		{
-			throw new CHttpException('','Primero debe ' . CHtml::link('crear un Tipo de Servicio',array('servicetype/create')) . '.');
+			throw new CHttpException('','Primero debe ' . CHtml::link('crear',array('servicetype/create')) .' ó '. CHtml::link('activar',array('servicetype/admin')). ' un Tipo de Servicio.');
 		}
 	}
 
@@ -130,10 +130,10 @@ class ServiceController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Service', 
-			array(
-				'criteria' => array ('condition' => 'active = 1'),
-				'pagination' => array('pageSize' => 20),
+		$dataProvider=new CActiveDataProvider('Service', array(
+			'criteria'=>array(
+			'condition'=>'active=1',
+			),
 		));
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
@@ -152,13 +152,7 @@ class ServiceController extends Controller
 		}
 		
 		$model=new Service('search');
-		$model->unsetAttributes();  // clear any default values	
-		
-		$model->serviceType = new ServiceType('search');
-		$model->serviceType->unsetAttributes();
-		
-		if(isset($_GET['ServiceType']))
-		$model->serviceType->attributes=$_GET['ServiceType'];	
+		$model->unsetAttributes();  // clear any default values
 		
 		if(isset($_GET['Service']))
 			$model->attributes=$_GET['Service'];

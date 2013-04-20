@@ -31,8 +31,7 @@ o <b>=</b>) al principio de cada uno de los valores de busqueda, para especifica
 		'id',
 		array(
 			'name'=>'service_type_id',
-			'value'=>'$data->serviceType->name',
-			'filter' => CHtml::activeTextField($model->serviceType,'name'),
+			'value'=>'Service::getServiceType($data->service_type_id)'
 			 ),
 		'name',
 		array(
@@ -46,14 +45,14 @@ o <b>=</b>) al principio de cada uno de los valores de busqueda, para especifica
 			 ),
 		array(
 			'class'=>'CButtonColumn',
-			'header'=>CHtml::dropDownList('pageSize',$pageSize,array(10=>10,20=>20,30=>30,40=>40,50=>50),array(
+			'header'=>CHtml::dropDownList('pageSize',$pageSize,array(10=>10,20=>20,30=>30,40=>40,50=>50,Service::getAllServices()=>'Todos'),array(
 			'onchange'=>"$.fn.yiiGridView.update('service-grid',{ data:{pageSize: $(this).val() }})",)),
 			'template'=>'{update}{view}{delete}{activate}',
 			'buttons' => array(
 				'activate'=>array(
 					'label'=>'Activar',
-                    'url'=>'Yii::app()->createUrl("service/activate", array("id"=>$data->id))',
-                    'imageUrl'=> Yii::app()->request->baseUrl . '/images/active.png',
+                    'url'=>'Yii::app()->createUrl("Service/activate", array("id"=>$data->id))',
+                    'imageUrl'=>'../images/active.png',
 					'visible'=>'$data->active == 0',
 					'click'=> "function(){
 								if(!confirm('¿Seguro que desea activar este elemento?')) return false;
@@ -68,9 +67,7 @@ o <b>=</b>) al principio de cada uno de los valores de busqueda, para especifica
 							}",
 				),
 				'delete'=>array(
-					'label'=>'Desactivar',
 					'visible'=>'$data->active == 1',
-					'imageUrl'=> Yii::app()->request->baseUrl . '/images/deactive.png',
 				),
 			),
 		),

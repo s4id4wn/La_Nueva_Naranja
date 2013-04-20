@@ -1,23 +1,20 @@
 <?php
+/* @var $this DependenceController */
+/* @var $dataProvider CActiveDataProvider */
+
 $this->breadcrumbs=array(
-	'Dependencias',
+	'Dependences',
 );
 
 $this->menu=array(
-	array('label'=>'Crear Dependencia', 'url'=>array('create')),
-	array('label'=>'Administrar Dependencia', 'url'=>array('admin')),
+	array('label'=>'Create Dependence', 'url'=>array('create')),
+	array('label'=>'Manage Dependence', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Dependencias</h1>
+<h1>Dependences</h1>
 
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,
 	'itemView'=>'_view',
-        'sortableAttributes'=>array(
-            'id',
-            'name',
-            'telephone_number',
-            'extension',
-        ),
 )); ?>

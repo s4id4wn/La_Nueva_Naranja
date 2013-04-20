@@ -16,6 +16,6 @@ $this->menu=array(
 	'itemView'=>'_view',
 	'enableSorting'=>true,
 	'sortableAttributes'=>array(
-		'name',
+	'name',
 	)
 )); ?>

@@ -5,18 +5,20 @@
 	'enableAjaxValidation'=>false,
     'focus'=>array($model,'user'),
 )); 
+
 ?>
+
 
 <?php
 if ( ! $model->isNewRecord ) {
-?>
+	?>
 	<script>
 		$( document ).ready( function(){
 			$('#password2').hide();
-			$('#confirm_password').hide();
+			$('#password3').hide();
 		});
 	</script>
-<?php
+	<?php
 	}
 ?>
 
@@ -34,10 +36,10 @@ if ( ! $model->isNewRecord ) {
 		<?php echo $form->error($model,'_password2'); ?>
 	</div>
 
-	<div class="row" id="confirm_password" >
-		<?php echo $form->labelEx($model,'_confirm_password'); ?>
-		<?php echo $form->passwordField($model,'_confirm_password',array('size'=>35,'maxlength'=>35)); ?>
-		<?php echo $form->error($model,'_confirm_password'); ?>
+	<div class="row" id="password3" >
+		<?php echo $form->labelEx($model,'_password3'); ?>
+		<?php echo $form->passwordField($model,'_password3',array('size'=>35,'maxlength'=>35)); ?>
+		<?php echo $form->error($model,'_password3'); ?>
 	</div>
 	
 	<div class="row">
@@ -59,11 +61,12 @@ if ( ! $model->isNewRecord ) {
 	</div>
 
         <div class="row">
-		<?php echo $form->labelEx($model,'_selected_roles'); ?>
+		<?php 
+		echo $form->labelEx($model,'_selected_roles'); ?>
 		<?php echo $form->checkBoxList(
 			$model,
-			'_selected_roles',
-			CHtml::listData( $model->getActiveRoles(),
+			'_selected_roles',			
+			CHtml::listData( Role::model()->findAll('active = 1'),
 								'id',
                                 'name'
                            )
@@ -71,7 +74,7 @@ if ( ! $model->isNewRecord ) {
 		<?php echo $form->error($model,'_selected_roles')?>
 	</div>
 
-	<div class="row" > 
+	<div class="row" id="active" > 
 	<?php //echo $form->checkbox($model,'active',array('value'=>1,'uncheckValue'=>0,'checked'=>'checked'));?>
 		<?php $htmlParams = array('value'=> 1, 'uncheckValue'=>0); ?>
 		<?php if($model->isNewRecord) $htmlParams += array('checked'=>'checked'); ?>

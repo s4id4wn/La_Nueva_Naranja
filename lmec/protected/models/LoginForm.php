@@ -54,13 +54,17 @@ class LoginForm extends CFormModel
 				switch($this->_identity->errorCode)
 				{					
 					case UserIdentity::ERROR_NO_ACTIVE_USER:
-					$this->addError('password', 'Usuario desactivado.');
-					break;
+						$this->addError('password', 'Usuario desactivado.');
+						break;
+					
+					case UserIdentity::ERROR_NO_ROLES_USER:
+						$this->addError('password','No roles.');
+						break;
 					
 					case UserIdentity::ERROR_PASSWORD_INVALID:
-					case UserIdentity::ERROR_USERNAME_INVALID:
-					$this->addError('password','Usuario o contrasena incorrectos.');
-					break;
+						case UserIdentity::ERROR_USERNAME_INVALID:
+						$this->addError('password','Usuario o contrasena incorrectos.');
+						break;
 				}
 			}
 		}

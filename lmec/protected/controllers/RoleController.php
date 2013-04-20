@@ -28,11 +28,11 @@ class RoleController extends Controller
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
 				'actions'=>array('index','view'),
-				'roles'=>array('*'),
+				'roles'=>array('administrador'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
 				'actions'=>array('create','update'),
-				'roles'=>array('*'),
+				'roles'=>array('administrador'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions'=>array('admin','delete','activate'),
@@ -69,11 +69,6 @@ class RoleController extends Controller
 		if(isset($_POST['Role']))
 		{
 			$model->attributes=$_POST['Role'];
-			//**************************************************
-			//creo que hasta que este en el directorio activo
-			//igual descomentar en las reglas
-			//	$model->url_initial = Yii::app()->createAbsoluteUrl($model->url_initial);
-			//**************************************************
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
@@ -119,12 +114,11 @@ class RoleController extends Controller
 			// we only allow deletion via POST request
 			$model = $this->loadModel($id);
 			$model->active = 0;
-			$model->save();
 			
-			//if($model->save())
-			//{
-			//$model->deleteRelationUserRole($model->id);
-			//}
+			if($model->save()){
+			
+			$model->deleteRelationUserRole($model->id);
+			}
 
 			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 			if(!isset($_GET['ajax']))
@@ -177,9 +171,8 @@ class RoleController extends Controller
 		$model=new Role('search');
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET['Role']))
-		{
 			$model->attributes=$_GET['Role'];
-		}
+
 			
 		if (isset($_GET['pageSize'])) 
 		{

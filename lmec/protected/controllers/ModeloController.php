@@ -69,35 +69,13 @@ class ModeloController extends Controller
 		if(isset($_POST['Modelo']))
 		{
 			$model->attributes=$_POST['Modelo'];
-			
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
-		
-		if(EquipmentType::model()->count('active = 1') == 0 && Brand::model()->count('active = 1') == 0)
-		{
-			throw new CHttpException('','Primero debe ' . CHtml::link('crear un Tipo de Equipo',array('equipmentType/create')) . ' y '. CHtml::link('crear una Marca',array('brand/create')).'.');
-		}
-		else
-		{
-			if(EquipmentType::model()->count('active = 1') == 0)
-			{
-				throw new CHttpException('','Primero debe ' . CHtml::link('crear un Tipo de Equipo',array('equipmentType/create')) . '.');
-			}
-			else
-			{
-				if(Brand::model()->count('active = 1') == 0)
-				{
-					throw new CHttpException('', 'Primero debe ' . CHtml::link('crear una Marca',array('brand/create')) . '.');				
-				}
-				else
-				{
-					$this->render('create',array(
-					'model'=>$model,
-					));
-				}
-			}
-		}
+
+		$this->render('create',array(
+			'model'=>$model,
+		));
 	}
 
 	/**
@@ -118,6 +96,7 @@ class ModeloController extends Controller
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
+
 		$this->render('update',array(
 			'model'=>$model,
 		));
@@ -159,10 +138,10 @@ class ModeloController extends Controller
 			$model->save();
 	 		
 			// if AJAX request (triggered by activation via admin grid view), we should not redirect the browser
-			if(!isset($_GET['ajax']))
-				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
-		}
-		else
+		if(!isset($_GET['ajax']))
+			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+			}
+			else
 			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
 	}
 	
@@ -187,7 +166,6 @@ class ModeloController extends Controller
 	{
 		$model=new Modelo('search');
 		$model->unsetAttributes();  // clear any default values
-		
 		if(isset($_GET['Modelo']))
 			$model->attributes=$_GET['Modelo'];
 

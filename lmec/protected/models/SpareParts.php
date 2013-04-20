@@ -41,7 +41,7 @@ class SpareParts extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return '{{spare_parts}}';
+		return 'tbl_spare_parts';
 	}
 
 	/**
@@ -52,7 +52,7 @@ class SpareParts extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('brand_id, spare_parts_status_id, provider_id, name, price, date_hour, guarantee_period', 'required'),
+			array('brand_id, spare_parts_status_id, provider_id, name, price, date_hour', 'required'),
 			array('invoice', 'length', 'max'=>20),
 			array('brand_id, spare_parts_status_id, provider_id', 'length', 'max'=>10),
 			array('name', 'length', 'max'=>100),
@@ -63,7 +63,6 @@ class SpareParts extends CActiveRecord
 			array('guarantee_period', 'date', 'format' => 'yyyy-MM-dd'),
 			array('guarantee_period', 'compare', 'compareAttribute'=>'date_hour', 'operator'=>'>='),
 			array('guarantee_period', 'safe'),
-			array('active', 'boolean'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, brand_id, spare_parts_status_id, provider_id, name, serial_number, price, date_hour, guarantee_period, invoice, description, active', 'safe', 'on'=>'search'),
@@ -94,7 +93,7 @@ class SpareParts extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'brand_id' => 'Marca',
-			'spare_parts_status_id' => 'Estado de Refacción',
+			'spare_parts_status_id' => 'Estado',
 			'provider_id' => 'Proveedor',
 			'name' => 'Nombre Refacción',
 			'serial_number' => 'Número de Serie',
@@ -141,11 +140,6 @@ class SpareParts extends CActiveRecord
 			'pageSize'=> Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageSize']),
 			),
 		));
-	}
-	
-	
-	public function getActiveText(){
-		return ($this->active)?'Si':'No';
 	}
 	
 	

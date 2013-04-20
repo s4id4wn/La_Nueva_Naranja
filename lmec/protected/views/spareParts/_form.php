@@ -13,7 +13,8 @@
 
 	<p class="note">Los campos con <span class="required">*</span> son requeridos.</p>
 
-	
+	<?php echo $form->errorSummary($model); ?>
+
 	<div class="row">
 		<?php echo $form->labelEx($model,'brand_id'); ?>
 		<?php echo $form->dropDownList($model,'brand_id',CHtml::listData(Brand::model()->findAll('active = 1'),'id','name'), array('empty'=>'Seleccionar Marca')); ?>
@@ -65,7 +66,6 @@
                                         'dateFormat' => 'yy-mm-dd', 
                                         'defaultDate' => $model->date_hour,
                                         //'defaultDate' => '1990-01-01',
-										//'maxDate' => '+10y',
                                         'changeYear' => true,
                                         'changeMonth' => true,
                                         'yearRange' => '1900',
@@ -90,11 +90,9 @@
                                         'defaultDate' => $model->guarantee_period,
                                         //'defaultDate' => '1990-01-01',
                                         //'minDate' => $model->date_hour,
-										'maxDate' => '+10y',
 										'changeYear' => true,
                                         'changeMonth' => true,
-                                        //'yearRange' => '2000',
-										
+                                        'yearRange' => '1900',
                                 ),
                 ));
         ?>
@@ -117,8 +115,7 @@
 		<?php $htmlParams = array('value'=> 1, 'uncheckValue'=>0); ?>
 		<!--Si es un nuevo registro mantener el activo seleccionado-->
 		<?php if($model->isNewRecord) $htmlParams += array('checked'=>'checked'); ?>
-		<?php echo $form->labelEx($model,'active'); ?>
-		<?php echo $form->checkbox($model,'active', $htmlParams); ?>
+		<?php echo $form->checkbox($model,'active', $htmlParams). '   Activo'; ?>
 		<?php echo $form->error($model,'active'); ?>
 	</div>
 

@@ -14,22 +14,19 @@
 		<?php echo $form->error($model,'name'); ?>
 	</div>
 	
-	<div class="row">
-		<?php echo $form->labelEx($model,'url_initial'); ?>
-		<?php echo $form->textField($model,'url_initial',array('size'=>100,'maxlength'=>100)) .
-		' Cat&aacute;logo/acci&oacute;n, '.
-		'ambas en ingl&eacute;s. Ejemplo: role/create '; ?>
-		<?php echo $form->error($model,'url_initial'); ?>
-	</div>
 	
-	<div class="row">
-		<?php echo $form->labelEx($model,'priority') ; ?>
-		<?php echo $form->textField($model,'priority') . ' (n&uacute;mero mayor, prioridad mayor)'?>
-		<?php echo $form->error($model,'priority')?>
-	</div>
-	
-	<div class="row">
-	</div>
+	<?php
+if ( ! $model->isNewRecord ) {
+	?>
+	<script>
+		$( document ).ready( function(){
+			$('#password2').hide();
+			$('#password3').hide();
+		});
+	</script>
+	<?php
+	}
+?>
 
 	<div class="row" id="active" > 
 	<?php //echo $form->checkbox($model,'active',array('value'=>1,'uncheckValue'=>0,'checked'=>'checked'));?>
@@ -37,7 +34,9 @@
 		<?php if($model->isNewRecord) $htmlParams += array('checked'=>'checked'); ?>
 		<?php echo $form->checkbox($model,'active', $htmlParams). '   Activo'; ?>
 		<?php echo $form->error($model,'active'); ?>
+	
 	</div>
+	
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Aceptar' : 'Guardar'); ?>

@@ -8,8 +8,8 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Listar Estados de Refacción', 'url'=>array('index')),
-	array('label'=>'Crear Estado de Refacción', 'url'=>array('create')),
+	array('label'=>'Listar Estados', 'url'=>array('index')),
+	array('label'=>'Crear Estado', 'url'=>array('create')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -54,7 +54,7 @@ $pageSize=Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageS
 		//'active',
 		array(
 			'name' => 'active',
-			'value' =>  '$data->getActiveText()',
+			'value' =>  '($data->active=="1")?"Si":"No"',
 			'filter' => array('1'=>'Si','0'=>'No'),
 			
 		),
@@ -63,7 +63,7 @@ $pageSize=Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageS
 			'header'=>CHtml::dropDownList(
 				'pageSize',
                 $pageSize,
-                array(10=>10,20=>20, 30 =>30, 40 => 40, 50=>50),
+                array(10=>10,20=>20,50=>50,SparePartsStatus::model()->count()=>'Todos'),
                 array('prompt'=>'Paginacion','onchange'=>"$.fn.yiiGridView.update('spare-parts-status-grid',{ data:{ pageSize: $(this).val() }})",)
 						),
 			'template' => '{update}{view}{delete}{activate}',
@@ -74,8 +74,6 @@ $pageSize=Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageS
 					),
 					'delete' =>array(
 						'options' =>array('title'=> 'Desactivar'), 
-						'url'=>'Yii::app()->createUrl("brand/deactive", array("id"=>$data->id))',
-						'imageUrl'=> Yii::app()->request->baseUrl.'/images/deactive.png',
 						'visible'=>'$data->active == 1',
 						
 						

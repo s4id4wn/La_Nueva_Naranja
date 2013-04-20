@@ -29,7 +29,7 @@ class Accesory extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return '{{accesory}}';
+		return 'tbl_accesory';
 	}
 
 	/**

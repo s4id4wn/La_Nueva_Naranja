@@ -9,10 +9,10 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Listar Estados de Refacción', 'url'=>array('index')),
-	array('label'=>'Crear Estados de Refacción', 'url'=>array('create')),
-	array('label'=>'Ver Estado de Refacción', 'url'=>array('view', 'id'=>$model->id)),
-	array('label'=>'Administrar Estados de Refacción', 'url'=>array('admin')),
+	array('label'=>'Listar Estados', 'url'=>array('index')),
+	array('label'=>'Crear Estados', 'url'=>array('create')),
+	array('label'=>'Ver Estado', 'url'=>array('view', 'id'=>$model->id)),
+	array('label'=>'Administrar Estados', 'url'=>array('admin')),
 );
 ?>
 

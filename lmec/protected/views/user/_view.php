@@ -1,7 +1,7 @@
 <div class="view">
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('user')); ?>:</b>
-	<?php echo CHtml::link(CHtml::encode($data->user), array('view','id'=>$data->id)); ?>
+	<?php echo CHtml::encode($data->user); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('name')); ?>:</b>
@@ -17,7 +17,11 @@
 	<br />
 
     <b><?php echo CHtml::encode($data->getAttributeLabel('rol')); ?>:</b>
-	<?php echo User::getRolesOfUser($data->id); ?>
+	<?php 
+        foreach ($data->roles as $role) {
+            echo '<br>' . $role->name ;
+        }
+        ?>
 	<br />
         
 </div>

@@ -43,14 +43,13 @@ o <b>=</b>) al principio de cada uno de los valores de busqueda, para especifica
 			'header'=>CHtml::dropDownList(
                 'pageSize',
                 $pageSize,
-				array(10=>10,20=>20,30=>30,40=>40,50=>50),
+                array(1=>1,2=>2,5=>5,10=>10,Accesory::model()->count()=>'Todos'),
                 array(
 						'prompt'=>'Paginación',
 						'onchange'=>"$.fn.yiiGridView.update('accesory-grid',{ data:{ pageSize: $(this).val() }})",
 					)
 				),
 			'template'=>'{update}{view}{delete}{activate}',
-			'deleteConfirmation'=>'¿Desactivar accesorio?',
 			'buttons' => array(
 
 				'activate'=>array(
@@ -58,7 +57,7 @@ o <b>=</b>) al principio de cada uno de los valores de busqueda, para especifica
                     'url'=>'Yii::app()->createUrl("accesory/activate", array("id"=>$data->id))',
                     'imageUrl'=>Yii::app()->request->baseUrl.'/images/active.png',
 					'click'=>"function(){
-								if(!confirm('¿Activar accesorio?')){
+								if(!confirm('¿Seguro que desea activar este elemento?')){
 									return false;
 								}
 								$.fn.yiiGridView.update('accesory-grid',{
@@ -72,11 +71,9 @@ o <b>=</b>) al principio de cada uno de los valores de busqueda, para especifica
 							}",
 					'visible'=>'$data->active == 0',
 				),
-				 'delete' => array(
-                    'visible' => '$data->active == 1',
-                    'label' => 'Desactivar',
-                    'imageUrl' => Yii::app()->request->baseUrl . '/images/deactive.png',
-                ),
+				'delete'=>array(
+					'visible'=>'$data->active == 1',
+				),
 			),
 		),
 	),

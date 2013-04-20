@@ -119,7 +119,7 @@ class SiteController extends Controller
 			$this->render('login',array('model'=>$model));
 		}else
 		{
-			$this->redirect(array('site/index'));
+			$this->redirect("site/index");
 		}
 	}
 
@@ -129,9 +129,13 @@ class SiteController extends Controller
 	public function actionLogout()
 	{
 		Yii::app()->user->logout();
-		$this->redirect(array('site/login'));
+		$this->redirect("http://localhost/test/site/login");
 	}	
 	
+	/*
+	 * De todos los roles que tiene un usuario devuelve la prioridad del rol que es
+	 * la mas alta.
+	 */
 	private function getUserHigherPriority($user)
 	{
 		$priority = 0;

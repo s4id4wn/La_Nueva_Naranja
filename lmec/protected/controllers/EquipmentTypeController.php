@@ -138,10 +138,10 @@ class EquipmentTypeController extends Controller
 			$model->save();
 	 		
 			// if AJAX request (triggered by activation via admin grid view), we should not redirect the browser
-			if(!isset($_GET['ajax']))
-				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
-		}
-		else
+		if(!isset($_GET['ajax']))
+			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+			}
+			else
 			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
 	}
 
@@ -166,7 +166,6 @@ class EquipmentTypeController extends Controller
 	{
 		$model=new EquipmentType('search');
 		$model->unsetAttributes();  // clear any default values
-		
 		if(isset($_GET['EquipmentType']))
 			$model->attributes=$_GET['EquipmentType'];
 

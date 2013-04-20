@@ -1,7 +1,7 @@
 <?php
 $this->breadcrumbs=array(
 	'Tipos de Equipo'=>array('index'),
-	'Administrar',
+	'Administracion',
 );
 
 $this->menu=array(
@@ -23,7 +23,7 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Administrar Tipo de Equipo</h1>
+<h1>Administraci&oacute;n de Tipo de Equipo</h1>
 
 <p>
 Si lo desea, puede escribir un operador de comparaci&oacute;n (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
@@ -52,15 +52,13 @@ o <b>=</b>) al principio de cada uno de los valores de busqueda, para especifica
 			'header'=>CHtml::dropDownList(
                 'pageSize',
                 $pageSize,
-                array(10=>10,20=>20,30=>30,40=>40,50=>50),
+                array(1=>1,2=>2,5=>5,10=>10,EquipmentType::Model()->count()=>'Todos'),
                 array(
 					'prompt'=>'Paginacion',
 					'onchange'=>"$.fn.yiiGridView.update('equipment-type-grid',{ data:{ pageSize: $(this).val() }})",
-				)
+					)
             ),
 			'template'=>'{update}{view}{delete}{activate}',
-			'deleteConfirmation'=> '¿Está seguro que desea desactivar el tipo de equipo?',
-
 			'buttons' => array(
 
 				'activate'=>array(
@@ -84,8 +82,6 @@ o <b>=</b>) al principio de cada uno de los valores de busqueda, para especifica
 				),
 				
 				'delete'=>array(
-					'label'=>'Desactivar',
-					'imageUrl'=>Yii::app()->request->baseUrl.'/images/deactive.png',
 					'visible'=>'$data->active == 1',
 				),
 			),

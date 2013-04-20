@@ -29,15 +29,15 @@ class SparePartsController extends Controller
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
 				'actions'=>array('index','view'),
-				'users'=>array('*'),
+				'roles'=>array('administrador'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
 				'actions'=>array('create','update'),
-				'users'=>array('@'),
+				'roles'=>array('administrador'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions'=>array('admin','delete', 'activate'),
-				'users'=>array('admin'),
+				'roles'=>array('administrador'),
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -63,7 +63,6 @@ class SparePartsController extends Controller
 	public function actionCreate()
 	{
 		$model=new SpareParts;
-		$model->active = true;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
@@ -71,33 +70,15 @@ class SparePartsController extends Controller
 		if(isset($_POST['SpareParts']))
 		{
 			$model->attributes=$_POST['SpareParts'];
+				$model -> active = 1;
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
 
-		if(Brand::model()->count('active = 1') == 0){
-			throw new CHttpException('','Primero debe '. CHtml::link('Crear una Marca', array('brand/create')). '.');
-		}
-		else{
-		if(SparePartsStatus::model()->count('active = 1') == 0){
-			throw new CHttpException('','Primero debe '. CHtml::link('Crear un Estado de refacción', array('sparePartsStatus/create')). '.');
-		}
-		else{
-			if(Provider::model()->count('active = 1') == 0){
-				throw new CHttpException('','Primero debe '. CHtml::link('Crear un Proveedor', array('provider/create')). '.');
-			}
-		
-
-		else{
-		
-			$this->render('create',array(
-					'model'=>$model,
+		$this->render('create',array(
+			'model'=>$model,
 		));
-		}
-		}	
-		}
 	}
-
 
 	/**
 	 * Updates a particular model.
@@ -234,4 +215,3 @@ class SparePartsController extends Controller
 		}
 	}
 }
-?>

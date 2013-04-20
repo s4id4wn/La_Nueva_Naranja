@@ -16,9 +16,8 @@
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
-	
 		<?php echo $form->labelEx($model,'service_type_id'); ?>
-		<?php echo $form->dropDownList($model,'service_type_id',CHtml::listData(ServiceType::model()->findAll('active = 1'),'id','name'), array('empty'=>'Seleccionar Tipo de Servicio')); ?>
+		<?php echo $form->dropDownList($model,'service_type_id', CHtml::listData($model->getTiposServicios(), 'id','name'), array('prompt' => '--seleccionar tipo de servicio--')); ?>
 		<?php echo $form->error($model,'service_type_id'); ?>
 	</div>
 
@@ -35,9 +34,8 @@
 	</div>
 
 	<div class="row">
-		<?php $htmlParams = array('value'=> 1, 'uncheckValue'=>0); ?>
-		<?php if($model->isNewRecord) $htmlParams += array('checked'=>'checked'); ?>
-		<?php echo $form->checkbox($model,'active', $htmlParams). ' Activo'; ?>
+		<?php echo CHtml::encode($model->getAttributeLabel('active')); ?>
+		<?php echo $form->checkBox($model,'active', array('value'=>1, 'uncheckValue'=>0, 'checked' => true)); ?>
 		<?php echo $form->error($model,'active'); ?>
 	</div>
 

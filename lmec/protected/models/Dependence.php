@@ -1,17 +1,18 @@
 <?php
 
 /**
- * This is the model class for table "{{dependence}}".
+ * This is the model class for table "tbl_dependence".
  *
- * The followings are the available columns in table '{{dependence}}':
+ * The followings are the available columns in table 'tbl_dependence':
  * @property string $id
+ * @property string $customer_id
  * @property string $name
  * @property string $address
  * @property string $telephone_number
  * @property integer $active
  *
  * The followings are the available model relations:
- * @property Customer[] $customers
+ * @property TblCustomer $customer
  */
 class Dependence extends CActiveRecord
 {
@@ -30,7 +31,7 @@ class Dependence extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return '{{dependence}}';
+		return 'tbl_dependence';
 	}
 
 	/**
@@ -41,14 +42,14 @@ class Dependence extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('name, address, telephone_number, active', 'required'),
+			array('customer_id, name, address, telephone_number, active', 'required'),
 			array('active', 'numerical', 'integerOnly'=>true),
+			array('customer_id', 'length', 'max'=>10),
 			array('name, address', 'length', 'max'=>45),
 			array('telephone_number', 'length', 'max'=>15),
-                        array('extension', 'length', 'max'=>5),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, name, address, telephone_number, active', 'safe', 'on'=>'search'),
+			array('id, customer_id, name, address, telephone_number, active', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -60,7 +61,7 @@ class Dependence extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'customers' => array(self::HAS_MANY, 'Customer', 'dependence_id'),
+			'customer' => array(self::BELONGS_TO, 'TblCustomer', 'customer_id'),
 		);
 	}
 
@@ -71,11 +72,11 @@ class Dependence extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'name' => 'Nombre dependencia',
-			'address' => 'Dirección',
-			'telephone_number' => 'Número Telefónico',
-                        'extension' => 'Extension',
-			'active' => 'Activo',
+			'customer_id' => 'Customer',
+			'name' => 'Name',
+			'address' => 'Address',
+			'telephone_number' => 'Telephone Number',
+			'active' => 'Active',
 		);
 	}
 
@@ -91,18 +92,14 @@ class Dependence extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id,true);
+		$criteria->compare('customer_id',$this->customer_id,true);
 		$criteria->compare('name',$this->name,true);
 		$criteria->compare('address',$this->address,true);
 		$criteria->compare('telephone_number',$this->telephone_number,true);
-                $criteria->compare('extension',$this->extension,true);
 		$criteria->compare('active',$this->active);
-                
-                //Yii::app()->end();
+
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
-			'pagination'=>array(
-			'pageSize'=>Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageSize']),
-			),
 		));
 	}
 }

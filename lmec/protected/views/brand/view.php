@@ -4,7 +4,7 @@
 
 $this->breadcrumbs=array(
 	'Marcas'=>array('index'),
-	$model->name,
+	$model->id,
 );
 
 $this->menu=array(
@@ -16,16 +16,17 @@ $this->menu=array(
 );
 ?>
 
-<h1>Marca: <?php echo $model->name; ?></h1>
+<h1>Ver Marca #<?php echo $model->id; ?></h1>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
 		'id',
-		'name',
+		'name', //nombre de la marca
+		//'active',
 		array(
-			'name' => 'Activo',
-			'value' => Brand::getActive($model->active),
+			'name' => 'active',
+			'value' => (($model->active=="1")?"Si":"No"),
 		),
 	),
 )); ?>

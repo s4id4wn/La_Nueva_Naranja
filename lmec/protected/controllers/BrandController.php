@@ -63,13 +63,14 @@ class BrandController extends Controller
 	public function actionCreate()
 	{
 		$model = new Brand;
+		
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
 		if(isset($_POST['Brand']))
 		{
 			$model->attributes=$_POST['Brand'];
-			
+						$model -> active = 1;
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
@@ -94,7 +95,7 @@ class BrandController extends Controller
 		if(isset($_POST['Brand']))
 		{
 			$model->attributes=$_POST['Brand'];
-			
+						//$model -> active;
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
@@ -113,6 +114,7 @@ class BrandController extends Controller
 	{
 		if(Yii::app()-> request ->isPostRequest)
 		{
+			//$this->loadModel($id)->delete();
 			$model = $this -> loadModel($id);
 			$model -> active = 0;
 			$model -> save();
@@ -160,14 +162,11 @@ class BrandController extends Controller
 	{
 		$model= new Brand('search');
 		$model->unsetAttributes();  // clear any default values
-		
-		if(isset($_GET['Brand']))
-		{
+		if(isset($_GET['Brand'])){
 			$model->attributes = $_GET['Brand'];
 		}
 		
-		if (isset($_GET['pageSize']))
-		{
+		if (isset($_GET['pageSize'])) {
 			Yii::app()->user->setState('pageSize',(int)$_GET['pageSize']);
 			unset($_GET['pageSize']);  // would interfere with pager and repetitive page size change
 		}
@@ -189,10 +188,8 @@ class BrandController extends Controller
 	public function loadModel($id)
 	{
 		$model=Brand::model()->findByPk($id);
-		
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
-			
 		return $model;
 	}
 

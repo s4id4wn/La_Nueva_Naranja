@@ -22,9 +22,8 @@
 	</div>
 
 	<div class="row">
-		<?php $htmlParams = array('value'=> 1, 'uncheckValue'=>0); ?>
-		<?php if($model->isNewRecord) $htmlParams += array('checked'=>'checked'); ?>
-		<?php echo $form->checkbox($model,'active', $htmlParams). ' Activo'; ?>
+		<?php echo CHtml::encode($model->getAttributeLabel('active')); ?>
+		<?php echo $form->checkBox($model,'active', array('value'=>1, 'uncheckValue'=>0, 'checked' => true)); ?>
 		<?php echo $form->error($model,'active'); ?>
 	</div>
 

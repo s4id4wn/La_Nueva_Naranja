@@ -1,18 +1,21 @@
 <?php
+/* @var $this DependenceController */
+/* @var $model Dependence */
+
 $this->breadcrumbs=array(
-	'Dependencias'=>array('index'),
+	'Dependences'=>array('index'),
 	$model->name=>array('view','id'=>$model->id),
-	'Actualizar Dependencia',
+	'Update',
 );
 
 $this->menu=array(
-	array('label'=>'Listar Dependencia', 'url'=>array('index')),
-	array('label'=>'Crear Dependencia', 'url'=>array('create')),
-	array('label'=>'Ver Dependencia', 'url'=>array('view', 'id'=>$model->id)),
-	array('label'=>'Administrar Dependencia', 'url'=>array('admin')),
+	array('label'=>'List Dependence', 'url'=>array('index')),
+	array('label'=>'Create Dependence', 'url'=>array('create')),
+	array('label'=>'View Dependence', 'url'=>array('view', 'id'=>$model->id)),
+	array('label'=>'Manage Dependence', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Actualizar Dependencia <?php echo $model->id; ?></h1>
+<h1>Update Dependence <?php echo $model->id; ?></h1>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>

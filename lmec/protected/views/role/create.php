@@ -5,7 +5,7 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Listar roles', 'url'=>array('index')),
+	array('label'=>'Roles', 'url'=>array('index')),
 	array('label'=>'Administrar roles', 'url'=>array('admin')),
 );
 ?>

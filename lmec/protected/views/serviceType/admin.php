@@ -29,8 +29,7 @@ o <b>=</b>) al principio de cada uno de los valores de busqueda, para especifica
 		'name',
 		array(
 			'name'=>'active',
-			'value'=>'Service::getActive($data->active)',
-			'filter'=>array('1'=>'Si', '0'=>'No'),
+			'value'=>'ServiceType::getActive($data->active)',
 			 ),
 		array(
 			'class'=>'CButtonColumn',
@@ -38,8 +37,8 @@ o <b>=</b>) al principio de cada uno de los valores de busqueda, para especifica
 			'buttons' => array(
 				'activate'=>array(
 					'label'=>'Activar',
-                    'url'=>'Yii::app()->createUrl("servicetype/activate", array("id"=>$data->id))',
-                    'imageUrl'=> Yii::app()->request->baseUrl . '/images/active.png',
+                    'url'=>'Yii::app()->createUrl("serviceType/activate", array("id"=>$data->id))',
+                    'imageUrl'=>'../images/active.png',
 					'visible'=>'$data->active == 0',
 					'click'=> "function(){
 								if(!confirm('¿Seguro que desea activar este elemento?')) return false;
@@ -54,9 +53,7 @@ o <b>=</b>) al principio de cada uno de los valores de busqueda, para especifica
 							}",
 				),
 				'delete'=>array(
-					'label'=>'Desactivar',
 					'visible'=>'$data->active == 1',
-					'imageUrl'=> Yii::app()->request->baseUrl . '/images/deactive.png',
 				),
 			),
 		),

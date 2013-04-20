@@ -1,24 +1,17 @@
 <?php
 $this->breadcrumbs=array(
-	'Proveedores',
+	'Providers',
 );
 
 $this->menu=array(
-	array('label'=>'Crear Proveedor', 'url'=>array('create')),
-	array('label'=>'Administrar Proveedor', 'url'=>array('admin')),
+	array('label'=>'Create Provider', 'url'=>array('create')),
+	array('label'=>'Manage Provider', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Proveedores</h1>
+<h1>Providers</h1>
 
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,
 	'itemView'=>'_view',
-        'sortableAttributes'=>array(
-            'id',
-            'name',
-            'contact_name',
-            'contact_telephone_number',
-        ),
-    
 )); ?>

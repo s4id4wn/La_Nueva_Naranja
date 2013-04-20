@@ -51,7 +51,8 @@ class UserIdentity extends CUserIdentity
 				if(count($this->getUserRoles($ModelUser)) == 0)
 				{
 					$this->errorCode=self::ERROR_NO_ROLES_USER;
-				}else
+				}
+				else
 				{
 					$this->setState('roles', $this->getUserRoles($ModelUser));
 					$this->_id = $ModelUser->id;

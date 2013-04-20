@@ -33,29 +33,26 @@ o <b>=</b>) al principio de cada uno de los valores de busqueda, para especifica
 		'email',
 		array(
 			'name'=>'_Roles',
-			'type'=>'raw',
-			'value'=>'User::getRolesOfUser($data->id)',
+			'type'=>'raw',//para que ejecute la siguiente linea
+			'value'=>'User::getUserRoles($data->user)',
 		),
 		array(
 			'name'=>'active',
 			'value'=>'User::getActive($data->active)',
-			'filter'=>array('0'=>'No','1'=>'Si'),
+			'filter'=>array(0=>'No',1=>'Si'),
 		),
 		array(
 			'class'=>'CButtonColumn',
 
-			'header'=>CHtml::dropDownList(
-				'pageSize',
-				$pageSize,
-				array(10=>10,20=>20,30=>30,40=>40,50=>50),
-				array(
-					'prompt'=>'Paginación',
-					'onchange'=>"$.fn.yiiGridView.update('user-grid',{ data:{ pageSize: $(this).val() }})",
-					)
-				),
-				
+			'header'=>CHtml::dropDownList('pageSize',
+											      $pageSize,
+												 array(10=>10,20=>20,30=>30,40=>40,50=>50,100=>100),
+												 array(
+				'prompt'=>'Paginacion',
+				'onchange'=>"$.fn.yiiGridView.update('user-grid',{ data:{ pageSize: $(this).val() }})",
+				)
+						),
 			'template'=>'{update}{view}{delete}{activate}',
-			'deleteConfirmation'=>'¿Desactivar usuario?',
 			'buttons' => array(
 
 				'activate'=>array(
@@ -65,7 +62,7 @@ o <b>=</b>) al principio de cada uno de los valores de busqueda, para especifica
 					'visible'=>'$data->active == 0',
 					'click'=>'function()
 							{
-								if(!confirm(\'¿Activar usuario?\')){
+								if(!confirm(\'¿Seguro que desea activar este elemento?\')){
 										return false;
 								}
 								$.fn.yiiGridView.update(\'user-grid\',{
@@ -78,11 +75,9 @@ o <b>=</b>) al principio de cada uno de los valores de busqueda, para especifica
 								return false;
 							}',
 				),
-				 'delete' => array(
-                    'visible' => '$data->active == 1',
-                    'label' => 'Desactivar',
-                    'imageUrl' => Yii::app()->request->baseUrl . '/images/deactive.png',
-                ),
+				'delete'=>array(
+					'visible'=>'$data->active == 1',
+				),
 			),
 		),
 	),

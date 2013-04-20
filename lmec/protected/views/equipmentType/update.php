@@ -1,7 +1,7 @@
 <?php
 $this->breadcrumbs=array(
 	'Tipos de Equipo'=>array('index'),
-	$model->type=>array('view','id'=>$model->id),
+	$model->id=>array('view','id'=>$model->id),
 	'Actualizar',
 );
 
@@ -13,6 +13,6 @@ $this->menu=array(
 );
 ?>
 
-<h1>Actualizar Tipo de Equipo: <?php echo $model->type; ?></h1>
+<h1>Actualizar Tipo de Equipo <?php echo $model->id; ?></h1>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>

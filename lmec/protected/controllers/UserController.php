@@ -28,11 +28,11 @@ class UserController extends Controller
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
 				'actions'=>array('index','view'),
-				'roles'=>array('*'),
+				'roles'=>array('administrador'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
 				'actions'=>array('create','update'),
-				'roles'=>array('*'),
+				'roles'=>array('administrador'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions'=>array('admin','delete','activate'),
@@ -62,7 +62,7 @@ class UserController extends Controller
 	public function actionCreate()
 	{
 		//create is name of scenario
-		$model=new User('scenarioCreate');
+		$model=new User('create');
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
@@ -70,36 +70,18 @@ class UserController extends Controller
 		if(isset($_POST['User']))
 		{
 			$model->attributes=$_POST['User'];
-			$model->encryptPassword();
+			$model->getPassword();
+			
 			
 			if($model->save()){
-				$model->addRolesToUser($model->id);
+			$model->add_user_role($model->id);
 				$this->redirect(array('view','id'=>$model->id));
-			}
+				}
 		}
-		
-		if(Role::model()->count('active = 1') > 0) {
+
 		$this->render('create',array(
 			'model'=>$model,
 		));
-		}
-		else if(Role::model()->count('active = 0') > 0) 
-		{
-			throw new CHttpException(
-			'',	
-			'Primero debes '.
-			CHtml::link('crear rol',array('role/create')).
-			' o '.
-			CHtml::link('activar ',array('role/admin')). 'algún rol'.'.'
-			);
-		} else
-		{
-			throw new CHttpException(
-			'',
-			'Primero debes '.
-			CHtml::link('crear rol',array('role/create')) . '.'
-			);
-		}
 	}
 
 	/**
@@ -109,49 +91,31 @@ class UserController extends Controller
 	 */
 	public function actionUpdate($id)
 	{
+	
+		//$model=new User('update');
+		
 		$model=$this->loadModel($id);
-		$model->scenario='scenarioUpdate';
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
-		
 		$pre_selected_roles = $model->getExistingRolesOfUser($model->id);
 		$model->_selected_roles = $pre_selected_roles;
+		
 
 		if(isset($_POST['User']))
 		{
 			$model->attributes=$_POST['User'];
-			
-			$transaction = Yii::app()->db->beginTransaction();
-			try{
-				if($model->save())
-				{
-					$model->deleteRolesOfUser($model->id);
-					$model->addRolesToUser($model->id);
-					$transaction->commit();
-					$this->redirect(array('view','id'=>$model->id));
-				}
-			}catch(Exception $e){
-				$transaction->rollBack();
+			if($model->save())
+			{
+				$model->deleteRolesOfUser($model->id);
+				$model->add_user_role($model->id); 
+				$this->redirect(array('view','id'=>$model->id));
 			}
 		}
-		
-		if( Role::model()->count('active = 1') > 0 ) {
+
 		$this->render('update',array(
 			'model'=>$model,
 		));
-		}
-		else
-		{
-			throw new CHttpException(
-						'',
-						'Primero debes '.
-						CHtml::link('crear',array('role/create')).
-						' o '.
-						CHtml::link('activar ',array('role/admin')). 'algún rol'.'.'
-			);
-		}
-		
 	}
 
 	/**
@@ -167,6 +131,7 @@ class UserController extends Controller
 			$model = $this->loadModel($id);
 			$model->active = 0;
 			$model->save();
+			
 
 			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 			if(!isset($_GET['ajax']))
@@ -182,8 +147,7 @@ class UserController extends Controller
 		if(Yii::app()->request->isPostRequest)
 			{
 				$model = $this->loadModel($id);
-				$model->active = 1;
-				$model->save();
+				$model->activate($id);
 
 				// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 				if(!isset($_GET['ajax']))
@@ -193,6 +157,9 @@ class UserController extends Controller
 				throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
 			}
 	}
+
+	
+	
 	
 	/**
 	 * Lists all models.
@@ -218,18 +185,17 @@ class UserController extends Controller
 	{
 		$model=new User('search');
 		$model->unsetAttributes();  // clear any default values
-		
 		if(isset($_GET['User']))
 		{
 			$model->attributes=$_GET['User'];
 		}
-			
+		
 		if (isset($_GET['pageSize'])) 
 		{
             Yii::app()->user->setState('pageSize',(int)$_GET['pageSize']);
             unset($_GET['pageSize']);
         }
-		
+			  
 		$this->render('admin',array(
 			'model'=>$model,
 		));

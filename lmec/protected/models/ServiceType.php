@@ -1,19 +1,19 @@
 <?php
 
 /**
- * This is the model class for table "{{service_type}}".
+ * This is the model class for table "tbl_service_type".
  *
- * The followings are the available columns in table '{{service_type}}':
+ * The followings are the available columns in table 'tbl_service_type':
  * @property string $id
  * @property string $name
  * @property integer $active
  *
  * The followings are the available model relations:
- * @property ActivityVerification[] $activityVerifications
- * @property Diagnostic[] $diagnostics
- * @property Order[] $orders
- * @property Service[] $services
- * @property Work[] $works
+ * @property TblActivityVerification[] $tblActivityVerifications
+ * @property TblDiagnostic[] $tblDiagnostics
+ * @property TblOrder[] $tblOrders
+ * @property TblService[] $tblServices
+ * @property TblWork[] $tblWorks
  */
 class ServiceType extends CActiveRecord
 {
@@ -32,7 +32,7 @@ class ServiceType extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return '{{service_type}}';
+		return 'tbl_service_type';
 	}
 
 	/**
@@ -61,11 +61,11 @@ class ServiceType extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'activityVerifications' => array(self::HAS_MANY, 'ActivityVerification', 'service_type_id'),
-			'diagnostics' => array(self::HAS_MANY, 'Diagnostic', 'service_type_id'),
-			'orders' => array(self::HAS_MANY, 'Order', 'service_type_id'),
-			'services' => array(self::HAS_MANY, 'Service', 'service_type_id'),
-			'works' => array(self::HAS_MANY, 'Work', 'service_type_id'),
+			'tblActivityVerifications' => array(self::HAS_MANY, 'TblActivityVerification', 'service_type_id'),
+			'tblDiagnostics' => array(self::HAS_MANY, 'TblDiagnostic', 'service_type_id'),
+			'tblOrders' => array(self::HAS_MANY, 'TblOrder', 'service_type_id'),
+			'tblServices' => array(self::HAS_MANY, 'TblService', 'service_type_id'),
+			'tblWorks' => array(self::HAS_MANY, 'TblWork', 'service_type_id'),
 		);
 	}
 

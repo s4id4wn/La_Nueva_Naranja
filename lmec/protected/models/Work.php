@@ -32,7 +32,7 @@ class Work extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return '{{work}}';
+		return 'tbl_work';
 	}
 
 	/**
@@ -108,7 +108,5 @@ class Work extends CActiveRecord
 		));
 	}
 	
-	public function getActiveText(){
-		return ($this->active)?'Si':'No';
-	}
+	
 }

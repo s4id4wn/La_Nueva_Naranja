@@ -28,7 +28,6 @@ o <b>=</b>) al principio de cada uno de los valores de busqueda, para especifica
 	'columns'=>array(
 		'id',
 		'name',
-		'url_initial',
 		array(
 			'name'=>'active',
 			'value'=>'Role::getActive($data->active)',
@@ -40,14 +39,13 @@ o <b>=</b>) al principio de cada uno de los valores de busqueda, para especifica
 			'header'=>CHtml::dropDownList(
 				'pageSize',
 				$pageSize,
-				array(10=>10,20=>20,30=>30,40=>40,50=>50),
+				array(1=>1,2=>2,5=>5,10=>10,Role::model()->count()=>'Todos'),
 				array(
 					'prompt'=>'Paginación',
 					'onchange'=>"$.fn.yiiGridView.update('role-grid',{ data:{ pageSize: $(this).val() }})",
-				)
-			),
+					)
+				),
 			'template'=>'{update}{view}{delete}{activate}',
-			'deleteConfirmation'=>'¿Desactivar rol?',
 			'buttons' => array(
 
 				'activate'=>array(
@@ -57,7 +55,7 @@ o <b>=</b>) al principio de cada uno de los valores de busqueda, para especifica
 					'visible'=>'$data->active == 0',
 					'click'=>'function()
 							{
-								if(!confirm(\'¿Activar rol?\')){
+								if(!confirm(\'¿Seguro que desea activar este elemento?\')){
 										return false;
 								}
 								$.fn.yiiGridView.update(\'role-grid\',{
@@ -70,11 +68,9 @@ o <b>=</b>) al principio de cada uno de los valores de busqueda, para especifica
 								return false;
 							}',
 				),
-				 'delete' => array(
-                    'visible' => '$data->active == 1',
-                    'label' => 'Desactivar',
-                    'imageUrl' => Yii::app()->request->baseUrl . '/images/deactive.png',
-                ),
+				'delete'=>array(
+					'visible'=>'$data->active == 1',
+				),
 			),
 		),
 	),

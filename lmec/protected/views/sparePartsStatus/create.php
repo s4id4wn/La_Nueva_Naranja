@@ -8,8 +8,8 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Listar Estados de Refacción', 'url'=>array('index')),
-	array('label'=>'Administrar Estados de Refacción', 'url'=>array('admin')),
+	array('label'=>'Listar Estados', 'url'=>array('index')),
+	array('label'=>'Administrar Estados', 'url'=>array('admin')),
 );
 ?>
 

@@ -124,10 +124,10 @@ class ServiceTypeController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('ServiceType', 
-			array(
-				'criteria' => array ('condition' => 'active = 1'),
-				'pagination' => array('pageSize' => 20),
+		$dataProvider=new CActiveDataProvider('ServiceType', array(
+			'criteria'=>array(
+			'condition'=>'active=1',
+			),
 		));
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,

@@ -1,3 +1,9 @@
+<?php
+/* @var $this DependenceController */
+/* @var $model Dependence */
+/* @var $form CActiveForm */
+?>
+
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
@@ -5,9 +11,15 @@
 	'enableAjaxValidation'=>false,
 )); ?>
 
-	<p class="note">Los campos con <span class="required">*</span> son requeridos.</p>
+	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
-	<?php /* echo $form->errorSummary($model); */?>
+	<?php echo $form->errorSummary($model); ?>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'customer_id'); ?>
+		<?php echo $form->textField($model,'customer_id',array('size'=>10,'maxlength'=>10)); ?>
+		<?php echo $form->error($model,'customer_id'); ?>
+	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'name'); ?>
@@ -26,19 +38,15 @@
 		<?php echo $form->textField($model,'telephone_number',array('size'=>15,'maxlength'=>15)); ?>
 		<?php echo $form->error($model,'telephone_number'); ?>
 	</div>
-        
-        <div class="row">
-		<?php echo $form->labelEx($model,'extension'); ?>
-		<?php echo $form->textField($model,'extension',array('size'=>5,'maxlength'=>5)); ?>
-		<?php echo $form->error($model,'extension'); ?>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'active'); ?>
+		<?php echo $form->textField($model,'active'); ?>
+		<?php echo $form->error($model,'active'); ?>
 	</div>
-        <div class="row">
-		<?php echo CHtml::encode($model->getAttributeLabel('active')); ?>
-                <?php echo $form->checkbox($model,'active', array('value'=>1,'uncheckValue'=>0,'checked'=>'checked'));?>
-                <?php echo $form->error($model,'active'); ?>
-        </div>
+
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Crear' : 'Guardar'); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

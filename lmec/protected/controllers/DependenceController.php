@@ -15,6 +15,7 @@ class DependenceController extends Controller
 	{
 		return array(
 			'accessControl', // perform access control for CRUD operations
+			'postOnly + delete', // we only allow deletion via POST request
 		);
 	}
 
@@ -31,7 +32,7 @@ class DependenceController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','activate'),
+				'actions'=>array('create','update'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -69,7 +70,6 @@ class DependenceController extends Controller
 		if(isset($_POST['Dependence']))
 		{
 			$model->attributes=$_POST['Dependence'];
-                        //$model->active = 1;
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
@@ -86,7 +86,7 @@ class DependenceController extends Controller
 	 */
 	public function actionUpdate($id)
 	{
-		$model=$this->loadModel($id);                
+		$model=$this->loadModel($id);
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
@@ -94,7 +94,6 @@ class DependenceController extends Controller
 		if(isset($_POST['Dependence']))
 		{
 			$model->attributes=$_POST['Dependence'];
-                        //$model->active = 1;
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
@@ -111,47 +110,19 @@ class DependenceController extends Controller
 	 */
 	public function actionDelete($id)
 	{
-		if(Yii::app()->request->isPostRequest)
-		{
-			// we only allow deletion via POST request
-			//$this->loadModel($id)->delete();
-                        $model = $this->loadModel($id);
-                        $model->active = 0;
-                        $model->save();
+		$this->loadModel($id)->delete();
 
-			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-			if(!isset($_GET['ajax']))
-				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
-		}
-		else
-			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
+		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
+		if(!isset($_GET['ajax']))
+			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
 	}
-        
-        public function actionActivate($id){
-            $model = $this->loadModel($id);
-            $model->active = 1;
-            $model->save();
-	 		
-            // if AJAX request (triggered by activation via admin grid view), we should not redirect the browser
-            if(!isset($_GET['ajax']))
-                    $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
-	}
+
 	/**
 	 * Lists all models.
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider(
-                        'Dependence',
-                        array(
-                            'criteria'=>array(
-                                'condition'=>'active=1',
-                            ),
-                            
-                            'pagination'=>array(
-                                'pageSize'=>20,
-                            ),                        
-                        ));
+		$dataProvider=new CActiveDataProvider('Dependence');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
@@ -166,13 +137,7 @@ class DependenceController extends Controller
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET['Dependence']))
 			$model->attributes=$_GET['Dependence'];
-                
-                if (isset($_GET['pageSize']))
-		{
-			Yii::app()->user->setState('pageSize',(int)$_GET['pageSize']);
-			unset($_GET['pageSize']);
-		}
-                
+
 		$this->render('admin',array(
 			'model'=>$model,
 		));

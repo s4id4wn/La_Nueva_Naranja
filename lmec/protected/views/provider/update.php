@@ -1,18 +1,18 @@
 <?php
 $this->breadcrumbs=array(
-	'Proveedores'=>array('index'),
-	$model->id=>array('view','id'=>$model->id),
-	'Actualizar Proveedor',
+	'Providers'=>array('index'),
+	$model->name=>array('view','id'=>$model->id),
+	'Update',
 );
 
 $this->menu=array(
-	array('label'=>'Listar Proveedor', 'url'=>array('index')),
-	array('label'=>'Crear Proveedor', 'url'=>array('create')),
-	array('label'=>'Ver Proveedor', 'url'=>array('view', 'id'=>$model->id)),
-	array('label'=>'Administrar Proveedor', 'url'=>array('admin')),
+	array('label'=>'List Provider', 'url'=>array('index')),
+	array('label'=>'Create Provider', 'url'=>array('create')),
+	array('label'=>'View Provider', 'url'=>array('view', 'id'=>$model->id)),
+	array('label'=>'Manage Provider', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Actualizar Proveedor <?php echo $model->id; ?></h1>
+<h1>Update Provider <?php echo $model->id; ?></h1>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>

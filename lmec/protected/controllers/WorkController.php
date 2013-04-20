@@ -29,15 +29,15 @@ class WorkController extends Controller
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
 				'actions'=>array('index','view'),
-				'users'=>array('*'),
+				'roles'=>array('administrador'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
 				'actions'=>array('create','update'),
-				'users'=>array('@'),
+				'roles'=>array('administrador'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions'=>array('admin','delete', 'activate'),
-				'users'=>array('admin'),
+				'roles'=>array('administrador'),
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -74,18 +74,9 @@ class WorkController extends Controller
 				$this->redirect(array('view','id'=>$model->id));
 		}
 
-		if(ServiceType::model()->count('active = 1') > 0){
-		
-			$this->render('create',array(
-				'model'=>$model,
+		$this->render('create',array(
+			'model'=>$model,
 		));
-		}else{
-			throw new CHttpException('','Primero debe '. CHtml::link('Crear un Tipo de Servicio',array('serviceType/create')) . '.');
-		}
-		
-		
-		
-
 	}
 
 	/**

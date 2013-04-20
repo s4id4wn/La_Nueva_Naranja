@@ -23,9 +23,8 @@
 	
 	<div class="row">
 		<?php echo $form->labelEx($model,'service_type_id'); ?>
-		<?php echo $form->radioButtonList($model,'service_type_id',CHtml::listData(ServiceType::model()->findAll('active = 1'),'id','name'),
-		array('separator' => '  ','labelOptions'=>array('style'=>'display:inline')));?>
-		<?php //echo $form->radioButtonList($model,'service_type_id',CHtml::listData(Brand::model()->findAll('active = 1'),'id','name'), array('empty'=>'Seleccionar Marca'));?>
+		<?php echo $form->radioButton($model,'service_type_id',array('value' => '1', 'uncheckValue' => null)).' Preventivo';?>
+		<?php echo $form->radioButton($model,'service_type_id',array('value' => '2', 'uncheckValue' => null)).' Correctivo';?>
 		<?php echo $form->error($model,'service_type_id'); ?>
 	</div>
 
@@ -39,8 +38,7 @@
 		<?php $htmlParams = array('value'=> 1, 'uncheckValue'=>0); ?>
 		<!--Si es un nuevo registro mantener el activo seleccionado-->
 		<?php if($model->isNewRecord) $htmlParams += array('checked'=>'checked'); ?>
-		<?php echo $form->labelEx($model,'active'); ?>
-		<?php echo $form->checkbox($model,'active', $htmlParams); ?>
+		<?php echo $form->checkbox($model,'active', $htmlParams). '   Activo'; ?>
 		<?php echo $form->error($model,'active'); ?>
 	</div>
 

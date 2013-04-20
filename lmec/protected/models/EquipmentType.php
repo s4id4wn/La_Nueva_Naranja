@@ -43,7 +43,7 @@ class EquipmentType extends CActiveRecord
 			array('type, active', 'required'),
 			array('active', 'numerical', 'integerOnly'=>true),
 			array('type','unique','message'=>'El {attribute} ya existe.'),
-			array('type', 'length', 'max'=>45,'message'=>'El {attribute} es muy largo'),
+			array('type', 'length', 'max'=>45),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, type, active', 'safe', 'on'=>'search'),

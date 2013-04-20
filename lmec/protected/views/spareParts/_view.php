@@ -17,7 +17,7 @@
 	<?php echo CHtml::encode($data->brand->name); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->provider->getAttributeLabel('name')); ?>:</b>
+	<b><?php echo CHtml::encode($data->provider->getAttributeLabel('provider_name')); ?>:</b>
 	<?php echo CHtml::encode($data->provider->name); ?>
 	<br />
 
@@ -27,10 +27,6 @@
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('price')); ?>:</b>
 	<?php echo CHtml::encode($data->price); ?>
-	<br />
-	
-	<b><?php echo CHtml::encode($data->getAttributeLabel('active')); ?>:</b>
-	<?php echo CHtml::encode($data->getActiveText()); ?>
 	<br />
 
 	<?php /*
@@ -50,7 +46,9 @@
 	<?php echo CHtml::encode($data->description); ?>
 	<br />
 
-	
+	<b><?php echo CHtml::encode($data->getAttributeLabel('active')); ?>:</b>
+	<?php echo CHtml::encode($data->active); ?>
+	<br />
 
 	*/ ?>
 

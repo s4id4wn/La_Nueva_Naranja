@@ -29,7 +29,7 @@ class Brand extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return '{{brand}}';
+		return 'tbl_brand';
 	}
 
 	/**
@@ -40,10 +40,9 @@ class Brand extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('name, active', 'required'),
+			array('name', 'required'),
 			array('active', 'numerical', 'integerOnly'=>true),
-			array('name', 'unique', 'message'=>'El {attribute} ya existe'),
-			array('name', 'length', 'max'=>100,'message'=>'El {attribute} es muy largo'),
+			array('name', 'length', 'max'=>100),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, brand, active', 'safe', 'on'=>'search'),
@@ -70,7 +69,7 @@ class Brand extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'name' => 'Nombre',
+			'name' => 'Marca',
 			'active' => 'Activo',
 		);
 	}
@@ -100,17 +99,7 @@ class Brand extends CActiveRecord
 		));
 	}
 	
-	public static function getActive($active)
-	{
-		if($active==1)
-		{
-			return "Si";
-		}else
-		{
-			if($active==0)
-				{
-					return "No";
-				}
-		}
+	public function getActiveText(){
+		return ($this->active)?'Si':'No';
 	}
 }

@@ -4,7 +4,7 @@
 
 $this->breadcrumbs=array(
 	'Trabajos'=>array('index'),
-	$model->name,
+	$model->id,
 );
 
 $this->menu=array(
@@ -16,27 +16,23 @@ $this->menu=array(
 );
 ?>
 
-<h1>Ver Trabajo: <?php echo $model->name; ?></h1>
+<h1>Ver Trabajo #<?php echo $model->id; ?></h1>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
 		'id',
-		'name',
-		//'description',
-		array(
-			'name' => 'description',
-			'value' => $model->description,
-		),
+		//'service_type_id',
 		array(
 			'name' => 'service_type_id',
-			'value' => $model->serviceType->name,
+			'value' => (($model->service_type_id=="1")?"Preventivo":"Correctivo"),
 		),
+		'name',
+		'description',
 		//'active',
 		array(
-			'name' => 'Activo',
-			'type' =>'raw',
-			'value' => $model->getActiveText(),
+			'name' => 'active',
+			'value' => (($model->active=="1")?"Si":"No"),
 		),
 	),
 )); ?>

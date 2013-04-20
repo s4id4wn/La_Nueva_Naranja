@@ -1,9 +1,9 @@
 <?php
 
 /**
- * This is the model class for table "{{user_role}}".
+ * This is the model class for table "tbl_user_role".
  *
- * The followings are the available columns in table '{{user_role}}':
+ * The followings are the available columns in table 'tbl_user_role':
  * @property string $user_id
  * @property string $role_id
  */
@@ -24,7 +24,7 @@ class UserRole extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return '{{user_role}}';
+		return 'tbl_user_role';
 	}
 
 	/**
@@ -51,9 +51,6 @@ class UserRole extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-		/*'user'  => array( self::BELONGS_TO, 'User', 'user_id' ),
-		'role'   => array( self::BELONGS_TO, 'Role', 'role_id' ),	
-		*/
 		);
 	}
 

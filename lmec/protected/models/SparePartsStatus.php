@@ -28,7 +28,7 @@ class SparePartsStatus extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return '{{spare_parts_status}}';
+		return 'tbl_spare_parts_status';
 	}
 
 	/**
@@ -93,10 +93,5 @@ class SparePartsStatus extends CActiveRecord
 			'pageSize'=> Yii::app()->user->getState('pageSize',Yii::app()->params['defaultPageSize']),
 			),
 		));
-	}
-	
-	
-	public function getActiveText(){
-		return ($this->active)?'Si':'No';
 	}
 }

@@ -62,14 +62,11 @@ $this->widget('zii.widgets.grid.CGridView', array(
 		array(
 			'class'=>'CButtonColumn',
 			'header'=>CHtml::dropDownList(
-			'pageSize',
+				'pageSize',
                 $pageSize,
-                array(10=>10,20=>20,30=>30,40=>40,50=>50,100=>100),
-                array(
-					'prompt'=>'Paginacion',
-					'onchange'=>"$.fn.yiiGridView.update('brand-grid',{ data:{ pageSize: $(this).val() }})",
-					)
-			),
+                array(10=>10,20=>20,50=>50,Brand::model()->count()=>'Todos'),
+                array('prompt'=>'Paginacion','onchange'=>"$.fn.yiiGridView.update('brand-grid',{ data:{ pageSize: $(this).val() }})",)
+						),
 			
 			
 			'template' => '{update}{view}{delete}{activate}',
@@ -78,35 +75,30 @@ $this->widget('zii.widgets.grid.CGridView', array(
 					'update' =>array(
 						'options' =>array('title'=> 'Actualizar'),
 					),
-					
+					'delete' =>array(
+						'options' =>array('title'=> 'Desactivar'), 
+						'visible'=>'$data->active == 1',
+						
+						
+					),
 					'activate'=>array(
 						'label'=>'Activar',
 						'url'=>'Yii::app()->createUrl("brand/activate", array("id"=>$data->id))',
 						'imageUrl'=> Yii::app()->request->baseUrl.'/images/active.png',
 						'visible'=>'$data->active == 0',
-						'click'=>"function(){
-								if(!confirm('¿Seguro que desea activar este elemento?')){ 
-									return false;
-								}
-								$.fn.yiiGridView.update('brand-grid',{
-									type:'POST',
-									url:$(this).attr('href'),
-									success:function(data){
-										$.fn.yiiGridView.update('brand-grid');
-									},
-									});
-									return false;
-							}",
-					),
-					
-					'delete' =>array(
-						'label'=>'Desactivar',
-						'imageUrl'=>Yii::app()->request->baseUrl.'/images/deactive.png',
-						'visible'=>'$data->active == 1',
+						'click'=>'function()
+						{
+							return confirm(\'¿Esta seguro que desea activar esta Marca?\');
 						
-						
+						}',
 					),
 			),
 		),
 	),
 )); ?>
+<?php Yii::app()->clientScript->registerScript('initPageSize',<<<EOD
+	$('.change-pageSize').live('change',function(){
+		$.fn.yiiGridView.update('user-grid',{ data:{ pageSize: $(this).val() }} ) 
+		});
+EOD
+	,CClientScript::POS_READY);?>

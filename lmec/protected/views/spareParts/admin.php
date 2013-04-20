@@ -80,7 +80,7 @@ $this->widget('zii.widgets.grid.CGridView', array(
 		//'active',
 		array(
 			'name' => 'active',
-			'value' =>  '$data->getActiveText()',
+			'value' =>  '($data->active=="1")?"Si":"No"',
 			'filter' => array('1'=>'Si','0'=>'No'),
 			
 		),
@@ -97,7 +97,7 @@ $this->widget('zii.widgets.grid.CGridView', array(
 			'header'=>CHtml::dropDownList(
 				'pageSize',
                 $pageSize,
-                array(10=>10,20=>20, 30=>30, 40=>40, 50=>50),
+                array(10=>10,20=>20,50=>50,SpareParts::model()->count()=>'Todos'),
                 array('prompt'=>'Paginacion','onchange'=>"$.fn.yiiGridView.update('spare-parts-grid',{ data:{ pageSize: $(this).val() }})",)
 						),
 			'template' => '{update}{view}{delete}{activate}',
@@ -108,8 +108,6 @@ $this->widget('zii.widgets.grid.CGridView', array(
 					),
 					'delete' =>array(
 						'options' =>array('title'=> 'Desactivar'), 
-						'url'=>'Yii::app()->createUrl("brand/deactive", array("id"=>$data->id))',
-						'imageUrl'=> Yii::app()->request->baseUrl.'/images/deactive.png',
 						'visible'=>'$data->active == 1',						
 					),
 					'activate'=>array(
