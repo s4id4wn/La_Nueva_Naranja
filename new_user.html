@@ -91,10 +91,12 @@
 				<FORM method=post action="cgi-bin/script.pl">
 				  <em><strong>Registro de  usuario</strong></em>
 <TABLE BORDER=0>
-  <TR>
-	<TD width="78">Nombre:</TD>
-	<TD width="206">
-	<INPUT class="border" type=text name="nombre">
+  <TR class="bordcurv">
+	<TD width="153">Nombre:</TD>
+	<TD width="172">
+    
+	<INPUT  type=text name="nombre">
+   
 	</TD>
 </TR>
 
@@ -107,7 +109,11 @@
 
 <TR>
   <TD>Correo:</TD>
-  <TD><input type="text" name="textfield" id="textfield"></TD>
+  <TD><input type="text" name="correo" id="textfield"></TD>
+</TR>
+<TR>
+  <TD>Confirmar Correo</TD>
+  <TD><input type="text" name="confCorreo" id="textfield3"></TD>
 </TR>
 <TR>
 	<TD>Contraseña:</TD>
@@ -117,26 +123,53 @@
 </TR>
 
 <TR>
-	<TD>Género</TD>
-	<TD><select name="Genero" id="Genero">
-	  <option>Hombre</option>
-	  <option>Mujer</option>
-	  </select></TD>
+  <TD>Confirmar Contraseña</TD>
+  <TD><label for="textfield4"></label>
+    <input type="password" name="textfield4" id="textfield4"></TD>
 </TR>
 <TR>
-	<TD>Comentarios</TD>
-	<TD><textarea name="comentarios">Escriba aquí sus comentarios</textarea></TD>
+  <TD>Municipio</TD>
+  <TD><label for="municipio"></label>
+    <select name="municipio" id="municipio">
+      <option selected>Seleccione su municipio</option>
+      <option>Abala</option>
+      <option>Acanceh</option>
+      <option>Akil</option>
+      <option>Baca</option>
+      <option>Bokoba</option>
+      <option>Buctzotz</option>
+      <option>Cacalchen</option>
+      <option>Calotmul</option>
+  
+    </select></TD>
 </TR>
-
+<TR>
+  <TD>Localidad</TD>
+  <TD><label for="localidad"></label>
+    <input type="text" name="localidad" id="localidad"></TD>
+</TR>
+<TR>
+  <TD>Calle</TD>
+  <TD><label for="calle"></label>
+    <input type="text" name="calle" id="calle"></TD>
+</TR>
+<TR>
+  <TD>Telefono</TD>
+  <TD><label for="telefono"></label>
+    <input type="text" name="telefono" id="telefono"></TD>
+</TR>
 <TR>
   <TD COLSPAN=2><input type="checkbox" name="checkbox" id="checkbox">
     Recibiar ofertas de La Nueva Naranja</TD>
 </TR>
 <TR>
-	<TD COLSPAN=2><INPUT type="submit" value="Registrar">
-	  <input type="reset" name="Cancelar" id="Cancelar" value="Cancelar"></TD>
+	<TD COLSPAN=2><div align="center">
+	  <INPUT type="submit" value="Registrar">
+	  <input type="reset" name="Cancelar" id="Cancelar" value="Cancelar">
+	  </div></TD>
 </TR>
-</TABLE> 
+</TABLE>
+ 
 </FORM>
 			</div>
 		</section>
