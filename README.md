@@ -1,10 +1,11 @@
-La_Nueva_Naranja
+
+<img src="http://2.bp.blogspot.com/-7_CxRaHsuBs/UXRQu9hN3QI/AAAAAAAABUg/SygHKoydLcI/s320/logo.png"/>
 ================
 
-Proyecto de Web
+Proyecto de Programación en la Web
 
-Said - Diseño
-Oscar - Registro
-Pancho -
-Chulis - 
-Charly -
+<b>Said</b> - Diseño, ...<br>
+<b>Oscar</b> - Registro, ...<br>
+<b>Pancho</b> -<br>
+<b>Chulis</b> -<br>
+<b>Charly</b> -<br>
