@@ -296,3 +296,19 @@ footer {
 	clear: both;
 	margin-bottom: 20px;
 }
+
+input[type="text"], input[type="password"]
+{	
+	background:#FFF;
+	
+	border-radius:8px;
+	border: 1px solid black;
+	padding: 2px 3px 2px 4px;
+	box-shadow: 1px 1px 6px black;
+}
+
+
+
+*:focus {
+	outline: none;
+}
