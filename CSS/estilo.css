@@ -1,7 +1,12 @@
 body{
-	background: #f6ecd3;
-	font:14px/1.6 Georgia, Palatino, Palatino Linotype, Times, Times New Roman, serif;
+	background: url('../imagenes/fondo_b.jpg');
 	color:#333;
+}
+
+@font-face {
+	font-family: 'MuseoSans-500';
+	src: url('webfonts/24B1E9_0_0.eot');
+	src: url('webfonts/24B1E9_0_0.eot?#iefix') format('embedded-opentype'),url('webfonts/24B1E9_0_0.woff') format('woff'),url('webfonts/24B1E9_0_0.ttf') format('truetype');
 }
 
 .container {
@@ -26,7 +31,7 @@ header {
 	}
 	
 	header nav { 
-		position: relative; 
+		position: relative;
 	}
 	
 	header nav ul {
@@ -46,6 +51,7 @@ header {
 		text-shadow: black 0.1em 0.1em 0.2em;
 		font-size: 14px;
 		text-decoration: none;
+			font-size: 12px;
 	}
 	
 	header nav ul li a:hover { 
@@ -56,7 +62,7 @@ header {
 	header aside ul{
 		padding-top:0px;
 	}
-	
+
 ul.logo{
 	list-style:none;
 	float:left;
@@ -81,43 +87,46 @@ ul.logo li a{
  *************************************
  */
 #second_menu{
-	padding: 0px;
-	margin-bottom: 30px;
-	clear: both;
-}
+    margin-top: 20px;
+	margin-bottom: 20px;
+	font-size: 12px;
+	-moz-box-shadow:0px 1px 3px #000;
+	-webkit-box-shadow:0px 1px 5px #000;
+	box-shadow:0px 1px 5px #000;
+	list-style: none;
+	}
 
 	#second_menu ul{
-		background: #510f01;
-		padding: 5px;
-		border-bottom-left-radius: 8px;
-		border-bottom-right-radius: 8px;
+    	margin: 0;
+		padding: 0;
+		list-style: none;
+		width: 100%;
 	}
 
 	#second_menu li{
-		list-style: none;
-		display: inline;
-		padding: 10px;
-		font-weight: bold;
+    	float: left;
+    	width:20%;
 	}
 
 	#second_menu li a{
 		color: white;
-		margin-left: 15px;
 	}
 	
 	#second_menu li a{
-		color: white;
-		margin-left: 15px;
+    	text-decoration: none;
+    	color: #333;
+    	background: #fff;
+		display: block;
+		padding: 8px 10px 8px 10px;
+		text-align: center;
+		border-top: 1px solid #ccc;
+		border-bottom: 4px solid #ccc;
 	}
 	
 	#second_menu li a.selected, #second_menu li a:hover{
 		color: white;
-		margin-left: 15px;
-		background: #8f1b03;
-		padding: 1px 3px 1px 3px;
-		-webkit-border-radius: 4px;
-		-moz-border-radius: 4px;
-		border-radius: 4px;
+    	background: #dd4814;
+		text-decoration: underline;
 	}
 
 /*
@@ -139,28 +148,20 @@ section #side_left {
 section #side_left .head_menu {
 	text-align: center;
 	padding-right: 10px;
-	background: #dd4814;
-	color: white;
+	background: #FFF;
+	color: #5E6569;
 	padding: 7px 0 7px 0;
-	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px;
-	border-radius: 4px;
-	margin-bottom: 3px;
+	margin-bottom: 8px;
 	font-weight: bold;
-	text-shadow: black 0.1em 0.1em 0.2em;
+	border-top: 1px solid #ccc;
+	border-bottom: 4px solid #ccc;
+	font-size: 12px;
 }
 	
 section #side_left .body {
+	background-color: white;
 	text-align: left;
-	padding-right: 10px;
-	padding-left: 25px;
-	padding-top: 10px;
-	padding-bottom: 10px;
-	background: #510f01;
-	color: white;
-	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px;
-	border-radius: 4px;
+	padding: 10px 10px 10px 25px;
 }
 
 	section #side_left .body ul, a{
@@ -169,8 +170,14 @@ section #side_left .body {
 	}
 	
 	section #side_left .body a{
-		color: white;
+		color: #333;
+		font-size: 12px;
 	}
+
+	section #side_left .body a:hover{
+		text-decoration: underline;
+	}
+
 
 	section #side_left .widget {
 		margin-bottom: 20px;
@@ -187,7 +194,7 @@ section #main_container {
 	padding: 10px 20px 0px 20px;
 	position: relative;
 	text-align: justify;
-	border-left: 1px solid #dd4814;
+	background-color: white;
 }
 
 	#last_items{
@@ -212,11 +219,11 @@ section #main_container {
 		text-transform: uppercase;
 		background: #dd4814;
 		padding: 8px 0 8px 0;
-		text-shadow: black 0.1em 0.1em 0.2em;
 		float: left;
 		width: 100%;
-		border-top-left-radius: 8px;
-		border-top-right-radius: 8px;
+		border-top: 1px solid #ccc;
+		border-bottom: 4px solid #ccc;
+		font-size: 12px;
 	}
 
 	.item_body{
@@ -230,6 +237,9 @@ section #main_container {
 		width: 100%;
 		float: right;
 		background: white;
+		margin-bottom: 20px;
+		font-size: 12px;
+		background-color: #ccc;
 	}
 
 		.item_foot .price{
@@ -237,31 +247,27 @@ section #main_container {
 			text-align: center;
 			float:left;
 			font-weight: bold;
-			background: #f6ca5a;
-			height: 36px;
 		}
 
 		.item_foot .car{
 			width: 33%;
 			text-align: center;
 			float:right;
-			background: #f6ca5a;
 		}
 
 		.item_foot .details a{
+			color: black;
 			width: 33%;
 			float:left;
-			color: #f6ca5a;
 			text-align: center;
 			font-weight: bold;
 			text-decoration: underline;
-			height: 36px;
 		}
 	
 		.item_foot .details a:hover{
 			width: 33%;
 			float:left;
-			color: orange;
+			color: black;
 			text-align: center;
 			font-weight: bold;
 			text-decoration: none;
@@ -277,10 +283,9 @@ footer {
 }
 	
 	footer p {
-		color: #c1c1c1;
+		color: #000;
 		font-size: 11px;
 		padding: 4px 8px 4px 8px;
-		color: #777;
 		display: inline;
 		-webkit-border-radius: 4px;
 		-moz-border-radius: 4px;
@@ -300,13 +305,11 @@ footer {
 input[type="text"], input[type="password"]
 {	
 	background:#FFF;
-	
 	border-radius:8px;
 	border: 1px solid black;
 	padding: 2px 3px 2px 4px;
 	box-shadow: 1px 1px 6px black;
 }
-
 
 
 *:focus {
