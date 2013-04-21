@@ -51,7 +51,8 @@ header {
 		text-shadow: black 0.1em 0.1em 0.2em;
 		font-size: 14px;
 		text-decoration: none;
-			font-size: 12px;
+		font-size: 12px;
+		font-weight: bold;
 	}
 	
 	header nav ul li a:hover { 
@@ -213,11 +214,11 @@ section #main_container {
 	}
 
 	.item_head{
-		color: white;
+		color: #333;
 		font-weight: bold;
 		text-align: center;
 		text-transform: uppercase;
-		background: #dd4814;
+		background: white;
 		padding: 8px 0 8px 0;
 		float: left;
 		width: 100%;
@@ -239,7 +240,6 @@ section #main_container {
 		background: white;
 		margin-bottom: 20px;
 		font-size: 12px;
-		background-color: #ccc;
 	}
 
 		.item_foot .price{
@@ -247,6 +247,7 @@ section #main_container {
 			text-align: center;
 			float:left;
 			font-weight: bold;
+			margin-top: 7px;
 		}
 
 		.item_foot .car{
@@ -262,6 +263,7 @@ section #main_container {
 			text-align: center;
 			font-weight: bold;
 			text-decoration: underline;
+			margin-top: 7px;
 		}
 	
 		.item_foot .details a:hover{
