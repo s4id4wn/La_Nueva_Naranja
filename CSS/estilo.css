@@ -129,7 +129,6 @@ ul.logo li a{
 	#second_menu li a.selected, #second_menu li a:hover{
 		color: white;
     	background: #dd4814;
-		text-decoration: underline;
 	}
 
 /*

@@ -5,11 +5,8 @@
 	<meta charset="utf-8"/> 
 	<link rel="stylesheet" type="text/css" href="css/estilo.css"/>
 	<link rel="shortcut icon" href="images/favicon.ico"/>
-	
-    <script type="text/javascript" src="scripts/jquery-1.9.0.min.js"></script> 
-    <script type="text/javascript" src="plugins/jquery.nivo.slider.js"></script>
-<link rel="stylesheet" href="plugins/light/light.css" type="text/css" media="screen" />
-	<link rel="stylesheet" href="plugins/nivo-slider.css" type="text/css" media="screen" />
+
+    <script type="text/javascript" src="../javascripts/valida_login.js"></script>
 </head>
 
 <body>
@@ -84,7 +81,7 @@
 				<!-------------------------
 					Comienzo del slider 
 				-------------------------->
-				<FORM method='post' action="">
+				<FORM name='login' method='post' action="" onsubmit="return valida()">
 				 <h2>Ingresar al Sistema</h2>
 <TABLE BORDER=0>
   <TR class="bordcurv">
@@ -96,19 +93,21 @@
 	</TD>
 </TR>
 	<TD>Contraseña:</TD>
-	<TD><label for="contra"></label>
-	  <input type="password" name="contra" id="contra"></TD>
+	<TD><label="contra"></label>
+	  <input type="password" name="password" id="password"></TD>
 </TR>
 <TR>
 	<TD COLSPAN=2>
-	  <INPUT type="submit" value="Ingresar"></TD>
+	  <INPUT type="submit" value="Ingresar" onclick="valida()"></TD>
 </TR>
 </TABLE>
  
 </FORM>
 			</div>
 		</section>
+
 		<div class="limpiar"></div>
+
 		<footer class="container">
 			<p>La Nueva Naranja &copy; 2013. Algunos derechos reservados.</p>
 		</footer>
