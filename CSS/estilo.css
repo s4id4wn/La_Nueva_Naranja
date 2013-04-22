@@ -1,12 +1,13 @@
 body{
 	background: url('../imagenes/fondo_b.jpg');
+	font-family: 'MuseoSans-500', Georgia, Palatino;
 	color:#333;
 }
 
 @font-face {
 	font-family: 'MuseoSans-500';
-	src: url('webfonts/24B1E9_0_0.eot');
-	src: url('webfonts/24B1E9_0_0.eot?#iefix') format('embedded-opentype'),url('webfonts/24B1E9_0_0.woff') format('woff'),url('webfonts/24B1E9_0_0.ttf') format('truetype');
+	src: url('../webfonts/24B1E9_0_0.eot');
+	src: url('../webfonts/24B1E9_0_0.eot?#iefix') format('embedded-opentype'),url('../webfonts/24B1E9_0_0.woff') format('woff'),url('../webfonts/24B1E9_0_0.ttf') format('truetype');
 }
 
 .container {
@@ -58,6 +59,7 @@ header {
 	header nav ul li a:hover { 
 		color: #white; 
 		font-weight: bold;
+		text-decoration: underline;
 	}	
 
 	header aside ul{
@@ -196,6 +198,7 @@ section #main_container {
 	position: relative;
 	text-align: justify;
 	background-color: white;
+	min-height: 300px;
 }
 
 	#last_items{
@@ -310,10 +313,35 @@ input[type="text"], input[type="password"]
 	border-radius:8px;
 	border: 1px solid black;
 	padding: 2px 3px 2px 4px;
-	box-shadow: 1px 1px 6px black;
+	box-shadow: 1px 1px 6px #ccc;
+	margin-bottom: 10px;
+}
+
+input[type="submit"], input[type="reset"]
+{	
+	padding: 5px 10px;
+	border: 1px solid black;
+	box-shadow: 2px 2px 5px black;
+	background-color: #dd4814;
+	color: white;
+	font-weight: bold;
+	margin-top: 10px;
+	margin-bottom: 20px;
+}
+
+input[type="submit"]:hover, input[type="reset"]:hover
+{	
+	padding: 5px 10px;
+	border: 1px solid black;
+	box-shadow: none;
 }
 
 
 *:focus {
 	outline: none;
+}
+
+h2{
+	margin-bottom: 30px;
+	border-bottom: 1px solid #ccc;
 }
