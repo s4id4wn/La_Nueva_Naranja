@@ -6,98 +6,66 @@
 	<link rel="stylesheet" type="text/css" href="css/estilo.css"/>
 	<link rel="shortcut icon" href="images/favicon.ico"/>
 	
-	<link rel="stylesheet" href="css/css/font-awesome.css">
+    <script type="text/javascript" src="scripts/jquery-1.9.0.min.js"></script> 
+    <script type="text/javascript" src="plugins/jquery.nivo.slider.js"></script>
 	
-<<<<<<< HEAD
-	<script type="text/javascript" src="JavaScript/user.js"></script>
-=======
-	<!-- <script type="text/javascript" src="JavaScript/user.js"></script> -->
->>>>>>> bb1a1dda6653731e8376484c8a6b5f865f87b024
+	 <script type="text/javascript" src="JavaScript/user.js"></script> 
 	
 <link rel="stylesheet" href="plugins/light/light.css" type="text/css" media="screen" />
 	<link rel="stylesheet" href="plugins/nivo-slider.css" type="text/css" media="screen" />
 	
 	<script>
 	
-function validateFormOfUser( User ){
+function validateFormOfUSer(user){
 
-	var is_accepted = true;
-	var message = "";
+	user.name.value = user.name.value.trim();
 	
-	User.name.value = User.name.value.trim();
-	User.last_name.value = User.last_name.value.trim();
-	User.email.value = User.email.value.trim();
-	User.repeat_email.value = User.repeat_email.value.trim();
-	User.password.value = User.password.value.trim();
-	User.confirm_password.value = User.confirm_password.value.trim();
-	User.municipio.value = User.municipio.value.trim();
-	User.localidad.value = User.localidad.value.trim();
-	User.address.value = User.address.value.trim();
-	User.telephone_number.value = User.telephone_number.value.trim();
-
-	if( User.name.value=="" || User.name.value.length > 20 ){
-			message += "Campo nombre es requerido\n";
+	if(user.name.value==""){
+		
+		$(document).ready( function(){
+		$('.error').show();
+		$('#error_name').show();
+	});
+	}else if(user.name.value!="")
+	{
+		$(document).ready( function(){
+		$('.error').hide();
+		$('#error_name').hide();
+		});
+	}
 	
-			is_accepted = false;
-		}		
-	if( User.last_name.value=="" || User.last_name.value.length > 20 ){
-			message += "Campo apellido es requerido\n";
-			is_accepted = false;
-		}
-	if( User.email.value=="" || User.email.value.length > 20 ){
-			message += "Campo correo es requerido\n";
-			is_accepted = false;
-		}
-	if( User.repeat_email.value=="" || User.repeat_email.value.length > 20 ){
-		message += "Campo repetir correo es requerido\n";
-			is_accepted = false;
-		}
-	if( User.password.value=="" || User.password.value.length > 20 ){
-			message += "Campo contraseña es requerido\n";
-			is_accepted = false;
-		}
-	if( User.confirm_password.value=="" || User.confirm_password.value.length > 20 ){
-			message += "Campo confirmar contraseña es requerido\n";
-			is_accepted = false;
-		}
-	if( User.municipio.value=="" || User.municipio.value.length > 20 ){
-			message += "Campo municipio es requerido\n";
-			is_accepted = false;
-		}
-	if( User.localidad.value=="" || User.localidad.value.length > 20 ){
-			message += "Campo localidad es requerido\n";
-			is_accepted = false;
-		}
-	if( User.address.value=="" || User.address.value.length > 20 ){
-			message += "Campo dirección es requerido\n";
-			is_accepted = false;
-		}
-	if( User.telephone_number.value=="" || User.telephone_number.value.length > 20 ){
-			message += "Campo número telefonico es requerido\n";
-			is_accepted = false;
-		}
-		if(is_accepted==false){
-			
-		}
-	return is_accepted;
-}
-
-
-
-function vali( User ){
-
-	var is_accepted = true;
-	var message = "";
+	user.last_name.value = user.last_name.value.trim();
 	
-	var name = new String();
-	name = User.name.value.toString();
-	alert(name);
-	document.getElementById("fco").innerHTML="My First JavaScript";
+	if(user.last_name.value==""){
+
+		$(document).ready(function(){
+		$('.error').show();
+			$('#error_last_name').show();
+		});
+	}else if(user.last_name.value!="")
+	{
+		$(document).ready( function(){
+		$('.error').hide();
+		$('#error_name').hide();
+		});
+	}
+
 
 	return false;
 }
 	</script>
 	
+	<style>
+	.error{
+	display: none;
+	width: 120px;
+	height: 15px;
+	padding: 0;
+	font-size: 15px;
+	color: red;
+	}
+	
+	</style>
 	
 </head>
 
@@ -105,17 +73,19 @@ function vali( User ){
 
 	<div id="page_wrapper">
 		<header>
-			<div class="container">
-			<a href="index.html"><img alt="Rescue" class="retina_logo" id="logo" src="imagenes/logo.png" /></a></div>
+			<aside>
+				<ul class="logo">
+					<li><a href="index.html"></a></li> 
+				</ul>
+			</aside>
 			<div class="container">
 				<nav>
-					<ul>
-						<li><a href="login.html"><i class="icon-user"></i>Login</a></li>
-						<li><a href="new_user.html"><i class="icon-pencil"></i>Registro</a></li>
-						<li><a href="contact.html"><i class="icon-envelope-alt"></i>Contacto</a></li>
-						<li><a href="#"><i class="icon-shopping-cart"></i>Carrito {0}</a></li>
-						<li><a href="admin_panel.html"><i class="icon-globe"></i>Panel Admin</a></li>
-					</ul>
+          <ul>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="new_user.html">Registro</a></li>
+            <li><a href="contact.html">Contacto</a></li>
+            <li><a href="#">Carrito {0}</a></li>
+          </ul>
 				</nav>
 			</div>
 		</header>
@@ -130,7 +100,7 @@ function vali( User ){
 			</ul>
 		</div>
 		<div class="limpiar"></div>
-		<section class="container">
+	<section class="container">
 		
 			<!-------------------------
 				Comeinzo lado derecho, Menu 
@@ -173,61 +143,61 @@ function vali( User ){
 					Comienzo del slider 
 				-------------------------->
 				
-<<<<<<< HEAD
-				<!--cambiar el valor del action -->				
-				
-				<FORM action="cgi-bin/script.pl" method="post" onsubmit="validateFormOfUser(this)" >
-=======
 				<!--      cambiar el valor del action action="new_user.html" -->
 				
-				<FORM method="post"  >
->>>>>>> bb1a1dda6653731e8376484c8a6b5f865f87b024
-				  <h2>Registro de  usuario</h2>
-<TABLE BORDER=0>
-  <TR class="bordcurv">
-	<TD width="153">Nombre:</TD>
-	<TD width="172">
-    
-	<INPUT  type="text" name="name">
-<<<<<<< HEAD
-=======
-	<p id="fco">  aaa</p>
->>>>>>> bb1a1dda6653731e8376484c8a6b5f865f87b024
-   
-	</TD>
-</TR>
+	<form action="new_user.html" method="post" onsubmit="return validateFormOfUSer(this)">
+	
+	<h2>Registro de  usuario</h2>
+	<table BORDER=0>
+		<tr class="bordcurv">
+			<td width="153">Nombre:</td>
+			<td width="172">    
+				<INPUT  type="text" name="name" >
+				<div class="error" >
+					<p id="error_name"> Requerido</p>
+				</div>
+			</td>
+		</tr>
 
-<TR>
-	<TD>Apellido:</TD>
-	<TD>
-	<INPUT type="text" name="last_name">
-	</TD>
-</TR>
+		<tr>
+			<td>Apellido:</td>
+			<td>
+				<INPUT type="text" name="last_name">
+				<div class="error" >
+					<p id="error_last_name"> Requerido</p>
+				</div>
+			</td>
+		</tr>
 
-<TR>
-  <TD>Correo:</TD>
-  <TD><input type="text" name="email" id="textfield"></TD>
-</TR>
+		<tr>
+			<td>Correo:</td>
+			<td>
+				<input type="text" name="email" id="textfield">
+			</td>
+		</tr>
 
-<TR>
-  <TD>Repetir Correo:</TD>
-  <TD><input type="text" name="repeat_email" id="textfield"></TD>
-</TR>
+		<tr>
+			<td>Repetir Correo:</td>
+			<td>
+				<input type="text" name="repeat_email" id="textfield">
+			</td>
+		</tr>
+		<tr>
+			<td>Contraseña:</td>
+			<td>
+				<input type="password" name="password" id="contra">
+			</td>
+		</tr>
 
-<TR>
-	<TD>Contraseña:</TD>
-	<TD><label ></label>
-	  <input type="password" name="password" id="contra"></TD>
-</TR>
-
-<TR>
-  <TD>Confirmar Contraseña</TD>
-  <TD><label ></label>
-    <input type="password" name="confirm_password"></TD>
-</TR>
-<TR>
-  <TD>Municipio</TD>
-  <TD><label ></label>
+		<tr>
+			<td>Confirmar Contraseña</td>
+			<td>
+				<input type="password" name="confirm_password">
+			</td>
+		</tr>
+		<tr>
+			<td>Municipio</td>
+			<td>
     <select name="municipio" id="municipio">
       <option >Seleccione su municipio</option>
       
@@ -341,40 +311,47 @@ function vali( User ){
       <option>Yaxkukul</option>
   	  <option>Yoba&iacute;n</option>
       
-    </select></TD>
-</TR>
-<TR>
-  <TD>Localidad</TD>
-  <TD><label ></label>
-    <input type="text" name="localidad" id="localidad"></TD>
-</TR>
-<TR>
-  <TD>Dirección</TD>
-  <TD><label ></label>
-    <input type="text" name="address" id="calle"></TD>
-</TR>
-<TR>
-  <TD>Telefono</TD>
-  <TD><label ></label>
-    <input type="text" name="telephone_number" id="telefono"></TD>
-</TR>
+    </select></td>
+	</tr>
+		<tr>
+			<td>Localidad</td>
+			<td>
+				<input type="text" name="localidad" id="localidad">
+			</td>
+		</tr>
+		
+		<tr>
+			<td>Dirección</td>
+			<td>
+				<input type="text" name="address" id="calle">
+			</td>
+		</tr>
+		
+		<tr>
+			<td>Telefono</td>
+			<td>
+				<input type="text" name="telephone_number" id="telefono">
+			</td>
+		</tr>
 
-
-<TR>
-  <TD COLSPAN=2><input type="checkbox" name="checkbox" id="checkbox">
-    Recibiar ofertas de La Nueva Naranja</TD>
-</TR>
-<TR>
-	<TD COLSPAN=2>
-	<!-- onsubmit="validateFormOfUser(this)"  -->
-	  <INPUT type="submit" value="Registrar" onclick="return vali(this)">
-</TD>
-</TR>
-</TABLE>
+		<tr>
+			<td COLSPAN=2>
+				<input type="checkbox" name="checkbox" id="checkbox">
+				Recibiar ofertas de La Nueva Naranja
+			</td>
+		</tr>
+		
+		<tr>
+			<td COLSPAN=2>
+				<INPUT type="submit" value="Registrar" >
+			</td>
+		</tr>
+</table>
  
-</FORM>
+</form>
+
 		</div>
-		</section>
+	</section>
 		<div class="limpiar"></div>
 		<footer class="container">
 			<p>La Nueva Naranja &copy; 2013. Algunos derechos reservados.</p>

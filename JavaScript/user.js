@@ -1,4 +1,44 @@
-function validateFormOfUser( User ){
+
+function validateFormOfUSer(user){
+
+	user.name.value = user.name.value.trim();
+	
+	if(user.name.value==""){
+		
+		$(document).ready( function(){
+		$('.error').show();
+		$('#error_name').show();
+	});
+	}else if(user.name.value!="")
+	{
+		$(document).ready( function(){
+		$('.error').hide();
+		$('#error_name').hide();
+		});
+	}
+	
+	user.last_name.value = user.last_name.value.trim();
+	
+	if(user.last_name.value==""){
+
+		$(document).ready(function(){
+		$('.error').show();
+			$('#error_last_name').show();
+		});
+	}else if(user.last_name.value!="")
+	{
+		$(document).ready( function(){
+		$('.error').hide();
+		$('#error_name').hide();
+		});
+	}
+
+
+	return false;
+}
+
+/*no utilizado*/
+function validateFormOfUser2( User ){
 
 	var is_accepted = true;
 	var message = "";
