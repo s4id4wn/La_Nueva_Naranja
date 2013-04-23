@@ -20,11 +20,25 @@ body{
 	padding: 0;
 }
 
+.retina_logo{
+	width:294px;
+	height:63px;
+	float:left;
+	position: relative;
+}
+
 header {
+	width: 100%; 
+	left: 0; 
+	top: 0; 
+	position: fixed; 
+	border-bottom: 1px solid black;
+	z-index: 99; 
 	background: #dd4814;
-	height: 63px;
-	border-bottom: 1px solid #5b5b5b;
-	margin-bottom: 0px;
+	opacity: 0.9;
+	height: 60px;
+	-ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity = 90);
+	filter: alpha(opacity = 90);
 }
 
 	header .select-menu { 
@@ -66,17 +80,18 @@ header {
 		padding-top:0px;
 	}
 
-ul.logo{
+header ul.logo{
 	list-style:none;
 	float:left;
+	position: relative;
 }	
 
-ul.logo li{
+header ul.logo li{
 	float:left;
 	margin-left: 200px;
 }
 
-ul.logo li a{
+header ul.logo li a{
 	width:294px;
 	height:63px;
 	display:block;
@@ -90,7 +105,7 @@ ul.logo li a{
  *************************************
  */
 #second_menu{
-    margin-top: 20px;
+    margin-top: 80px;
 	margin-bottom: 20px;
 	font-size: 12px;
 	-moz-box-shadow:0px 1px 3px #000;
