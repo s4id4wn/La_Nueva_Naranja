@@ -4,6 +4,7 @@
 	<title>La Nueva Naranja</title>
 	<meta charset="utf-8"/> 
 	<link rel="stylesheet" type="text/css" href="css/estilo.css"/>
+	<link rel="stylesheet" href="css/css/font-awesome.css">
 	<link rel="shortcut icon" href="images/favicon.ico"/>
 	
     <script type="text/javascript" src="scripts/jquery-1.9.0.min.js"></script> 
@@ -73,26 +74,25 @@ function validateFormOfUSer2(user){
 
 	<div id="page_wrapper">
 		<header>
-			<aside>
-				<ul class="logo">
-					<li><a href="index.html"></a></li> 
-				</ul>
-			</aside>
+			<div class="container">
+				<a href="index.html"><img alt="Rescue" class="retina_logo" id="logo" src="imagenes/logo.png" /></a>
+			</div>
 			<div class="container">
 				<nav>
-          <ul>
-            <li><a href="login.html">Login</a></li>
-            <li><a href="new_user.html">Registro</a></li>
-            <li><a href="contact.html">Contacto</a></li>
-            <li><a href="#">Carrito {0}</a></li>
-          </ul>
+					<ul>
+						<li><a href="login.html"><i class="icon-user"></i>Login</a></li>
+						<li><a href="new_user.html"><i class="icon-pencil"></i>Registro</a></li>
+						<li><a href="contact.html"><i class="icon-envelope-alt"></i>Contacto</a></li>
+						<li><a href="#"><i class="icon-shopping-cart"></i>Carrito {0}</a></li>
+						<li><a href="admin_panel.html"><i class="icon-globe"></i>Panel Admin</a></li>
+					</ul>
 				</nav>
 			</div>
 		</header>
 		
 		<div id="second_menu" class="container">
 			<ul>
-				<li><a href="index.html">Inicio</a></li>
+				<li><a href="index.html"><i class="icon-home"></i>Inicio</a></li>
 				<li><a href="#">Categoria2</a></li>
 				<li><a href="#">Categoria3</a></li>
 				<li><a href="#">Categoria4</a></li>
