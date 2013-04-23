@@ -8,20 +8,26 @@ function validateFormOfUser(user){
 		$(document).ready( function(){
 		$('.error').show();
 		$('#error_name').show();
+		$('#error_name_short').hide();
 	});
+	
 	}else if(user.name.value!="")
 	{
-		$(document).ready( function(){
-		$('.error').hide();
-		$('#error_name').hide();
-		});
-		
-		
+	
 		if(user.name.value.length < 3){
 			
 			$(document).ready( function(){
 			$('.error').show();
+			$('#error_name').hide();
 			$('#error_name_short').show();
+		});
+		
+		}else if (user.name.value.length >= 3){
+		
+		$(document).ready( function(){
+			$('.error').hide();
+			$('#error_name').hide();
+			$('#error_name_short').hide();
 		});
 		
 		}
