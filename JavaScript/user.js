@@ -1,10 +1,10 @@
 
-function validateFormOfUSer(user){
+function validateFormOfUser(user){
 
 	user.name.value = user.name.value.trim();
 	
-	if(user.name.value==""){
-		
+	if(user.name.value=="")
+	{
 		$(document).ready( function(){
 		$('.error').show();
 		$('#error_name').show();
@@ -15,6 +15,17 @@ function validateFormOfUSer(user){
 		$('.error').hide();
 		$('#error_name').hide();
 		});
+		
+		
+		if(user.name.value.length < 3){
+			
+			$(document).ready( function(){
+			$('.error').show();
+			$('#error_name_short').show();
+		});
+		
+		}
+		
 	}
 	
 	user.last_name.value = user.last_name.value.trim();
@@ -29,9 +40,45 @@ function validateFormOfUSer(user){
 	{
 		$(document).ready( function(){
 		$('.error').hide();
-		$('#error_name').hide();
+		$('#error_last_name').hide();
 		});
 	}
+
+	user.email.value = user.email.value.trim();
+	
+	if(user.email.value==""){
+
+		$(document).ready(function(){
+		$('.error').show();
+			$('#error_email').show();
+		});
+	}else if(user.email.value!="")
+	{
+		$(document).ready( function(){
+		$('.error').hide();
+		$('#error_email').hide();
+		});
+	}
+	
+	
+	user.repeat_email.value = user.repeat_email.value.trim();
+	
+	if(user.repeat_email.value==""){
+
+		$(document).ready(function(){
+		$('.error').show();
+			$('#error_repeat_email').show();
+		});
+	}else if(user.repeat_email.value!="")
+	{
+		$(document).ready( function(){
+		$('.error').hide();
+		$('#error_repeat_email').hide();
+		});
+	}
+	
+	
+
 
 
 	return false;
@@ -49,7 +96,7 @@ function validateFormOfUser2( User ){
 	User.repeat_email.value = User.repeat_email.value.trim();
 	User.password.value = User.password.value.trim();
 	User.confirm_password.value = User.confirm_password.value.trim();
-	User.municipio.value = User.municipio.value.trim();
+	User.town.value = User.town.value.trim();
 	User.localidad.value = User.localidad.value.trim();
 	User.address.value = User.address.value.trim();
 	User.telephone_number.value = User.telephone_number.value.trim();
@@ -81,7 +128,7 @@ function validateFormOfUser2( User ){
 			message += "Campo confirmar contraseña es requerido\n";
 			is_accepted = false;
 		}
-	if( User.municipio.value=="" || User.municipio.value.length > 20 ){
+	if( User.town.value=="" || User.town.value.length > 20 ){
 			message += "Campo municipio es requerido\n";
 			is_accepted = false;
 		}

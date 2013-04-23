@@ -16,7 +16,7 @@
 	
 	<script>
 	
-function validateFormOfUSer(user){
+function validateFormOfUSer2(user){
 
 	user.name.value = user.name.value.trim();
 	
@@ -58,10 +58,10 @@ function validateFormOfUSer(user){
 	<style>
 	.error{
 	display: none;
-	width: 120px;
+	width: 200px;
 	height: 15px;
 	padding: 0;
-	font-size: 15px;
+	font-size: 12px;
 	color: red;
 	}
 	
@@ -145,26 +145,27 @@ function validateFormOfUSer(user){
 				
 				<!--      cambiar el valor del action action="new_user.html" -->
 				
-	<form action="new_user.html" method="post" onsubmit="return validateFormOfUSer(this)">
+	<form action="new_user.html" method="post" onsubmit="return validateFormOfUser(this)">
 	
 	<h2>Registro de  usuario</h2>
 	<table BORDER=0>
 		<tr class="bordcurv">
-			<td width="153">Nombre:</td>
+			<td width="153">Nombres:</td>
 			<td width="172">    
 				<INPUT  type="text" name="name" >
-				<div class="error" >
-					<p id="error_name"> Requerido</p>
+				<div  class="error" >
+					<p  id="error_name">Nombres es requerido</p>
+					<p  id="error_name_short">No puede ser muy corto</p>
 				</div>
 			</td>
 		</tr>
 
 		<tr>
-			<td>Apellido:</td>
+			<td>Apellidos:</td>
 			<td>
 				<INPUT type="text" name="last_name">
 				<div class="error" >
-					<p id="error_last_name"> Requerido</p>
+					<p id="error_last_name">Apellidos es requerido</p>
 				</div>
 			</td>
 		</tr>
@@ -173,6 +174,9 @@ function validateFormOfUSer(user){
 			<td>Correo:</td>
 			<td>
 				<input type="text" name="email" id="textfield">
+				<div class="error" >
+					<p id="error_email">Correo es requerido</p>
+				</div>
 			</td>
 		</tr>
 
@@ -180,12 +184,18 @@ function validateFormOfUSer(user){
 			<td>Repetir Correo:</td>
 			<td>
 				<input type="text" name="repeat_email" id="textfield">
+				<div class="error" >
+					<p id="error_repeat_email">Repetir Correo es requerido</p>
+				</div>
 			</td>
 		</tr>
 		<tr>
 			<td>Contraseña:</td>
 			<td>
 				<input type="password" name="password" id="contra">
+				<div class="error" >
+					<p id="error_password">Contraseña es requerido</p>
+				</div>
 			</td>
 		</tr>
 
@@ -193,13 +203,16 @@ function validateFormOfUSer(user){
 			<td>Confirmar Contraseña</td>
 			<td>
 				<input type="password" name="confirm_password">
+				<div class="error" >
+					<p id="error_confirm_password">Confirmar Contraseña es requerido</p>
+				</div>
 			</td>
 		</tr>
 		<tr>
 			<td>Municipio</td>
 			<td>
-    <select name="municipio" id="municipio">
-      <option >Seleccione su municipio</option>
+    <select name="town" id="municipio">
+      <option >---Seleccionar---</option>
       
       <option>Abal&aacute;</option>
       <option>Acanceh</option>
