@@ -8,11 +8,98 @@
 	
     <script type="text/javascript" src="scripts/jquery-1.9.0.min.js"></script> 
     <script type="text/javascript" src="plugins/jquery.nivo.slider.js"></script>
+	
+	<!-- <script type="text/javascript" src="JavaScript/user.js"></script> -->
+	
 <link rel="stylesheet" href="plugins/light/light.css" type="text/css" media="screen" />
 	<link rel="stylesheet" href="plugins/nivo-slider.css" type="text/css" media="screen" />
+	
+	<script>
+	
+function validateFormOfUser( User ){
+
+	var is_accepted = true;
+	var message = "";
+	
+	User.name.value = User.name.value.trim();
+	User.last_name.value = User.last_name.value.trim();
+	User.email.value = User.email.value.trim();
+	User.repeat_email.value = User.repeat_email.value.trim();
+	User.password.value = User.password.value.trim();
+	User.confirm_password.value = User.confirm_password.value.trim();
+	User.municipio.value = User.municipio.value.trim();
+	User.localidad.value = User.localidad.value.trim();
+	User.address.value = User.address.value.trim();
+	User.telephone_number.value = User.telephone_number.value.trim();
+
+	if( User.name.value=="" || User.name.value.length > 20 ){
+			message += "Campo nombre es requerido\n";
+	
+			is_accepted = false;
+		}		
+	if( User.last_name.value=="" || User.last_name.value.length > 20 ){
+			message += "Campo apellido es requerido\n";
+			is_accepted = false;
+		}
+	if( User.email.value=="" || User.email.value.length > 20 ){
+			message += "Campo correo es requerido\n";
+			is_accepted = false;
+		}
+	if( User.repeat_email.value=="" || User.repeat_email.value.length > 20 ){
+		message += "Campo repetir correo es requerido\n";
+			is_accepted = false;
+		}
+	if( User.password.value=="" || User.password.value.length > 20 ){
+			message += "Campo contraseña es requerido\n";
+			is_accepted = false;
+		}
+	if( User.confirm_password.value=="" || User.confirm_password.value.length > 20 ){
+			message += "Campo confirmar contraseña es requerido\n";
+			is_accepted = false;
+		}
+	if( User.municipio.value=="" || User.municipio.value.length > 20 ){
+			message += "Campo municipio es requerido\n";
+			is_accepted = false;
+		}
+	if( User.localidad.value=="" || User.localidad.value.length > 20 ){
+			message += "Campo localidad es requerido\n";
+			is_accepted = false;
+		}
+	if( User.address.value=="" || User.address.value.length > 20 ){
+			message += "Campo dirección es requerido\n";
+			is_accepted = false;
+		}
+	if( User.telephone_number.value=="" || User.telephone_number.value.length > 20 ){
+			message += "Campo número telefonico es requerido\n";
+			is_accepted = false;
+		}
+		if(is_accepted==false){
+			
+		}
+	return is_accepted;
+}
+
+
+
+function vali( User ){
+
+	var is_accepted = true;
+	var message = "";
+	
+	var name = new String();
+	name = User.name.value.toString();
+	alert(name);
+	document.getElementById("fco").innerHTML="My First JavaScript";
+
+	return false;
+}
+	</script>
+	
+	
 </head>
 
 <body>
+
 	<div id="page_wrapper">
 		<header>
 			<aside>
@@ -84,14 +171,18 @@
 				<!-------------------------
 					Comienzo del slider 
 				-------------------------->
-				<FORM method=post action="cgi-bin/script.pl">
+				
+				<!--      cambiar el valor del action action="new_user.html" -->
+				
+				<FORM method="post"  >
 				  <h2>Registro de  usuario</h2>
 <TABLE BORDER=0>
   <TR class="bordcurv">
 	<TD width="153">Nombre:</TD>
 	<TD width="172">
     
-	<INPUT  type=text name="nombre">
+	<INPUT  type="text" name="name">
+	<p id="fco">  aaa</p>
    
 	</TD>
 </TR>
@@ -99,34 +190,36 @@
 <TR>
 	<TD>Apellido:</TD>
 	<TD>
-	<INPUT type=text name="apellido">
+	<INPUT type="text" name="last_name">
 	</TD>
 </TR>
 
 <TR>
   <TD>Correo:</TD>
-  <TD><input type="text" name="correo" id="textfield"></TD>
+  <TD><input type="text" name="email" id="textfield"></TD>
 </TR>
+
 <TR>
-  <TD>Confirmar Correo</TD>
-  <TD><input type="text" name="confCorreo" id="textfield3"></TD>
+  <TD>Repetir Correo:</TD>
+  <TD><input type="text" name="repeat_email" id="textfield"></TD>
 </TR>
+
 <TR>
 	<TD>Contraseña:</TD>
-	<TD><label for="contra"></label>
-	  <input type="password" name="contra" id="contra"></TD>
+	<TD><label ></label>
+	  <input type="password" name="password" id="contra"></TD>
 </TR>
 
 <TR>
   <TD>Confirmar Contraseña</TD>
-  <TD><label for="configcontra"></label>
-    <input type="password" name="configcontra" id="configcontra"></TD>
+  <TD><label ></label>
+    <input type="password" name="confirm_password"></TD>
 </TR>
 <TR>
   <TD>Municipio</TD>
-  <TD><label for="municipio"></label>
+  <TD><label ></label>
     <select name="municipio" id="municipio">
-      <option selected>Seleccione su municipio</option>
+      <option >Seleccione su municipio</option>
       
       <option>Abal&aacute;</option>
       <option>Acanceh</option>
@@ -242,33 +335,35 @@
 </TR>
 <TR>
   <TD>Localidad</TD>
-  <TD><label for="localidad"></label>
+  <TD><label ></label>
     <input type="text" name="localidad" id="localidad"></TD>
 </TR>
 <TR>
-  <TD>Calle</TD>
-  <TD><label for="calle"></label>
-    <input type="text" name="calle" id="calle"></TD>
+  <TD>Dirección</TD>
+  <TD><label ></label>
+    <input type="text" name="address" id="calle"></TD>
 </TR>
 <TR>
   <TD>Telefono</TD>
-  <TD><label for="telefono"></label>
-    <input type="text" name="telefono" id="telefono"></TD>
+  <TD><label ></label>
+    <input type="text" name="telephone_number" id="telefono"></TD>
 </TR>
+
+
 <TR>
   <TD COLSPAN=2><input type="checkbox" name="checkbox" id="checkbox">
     Recibiar ofertas de La Nueva Naranja</TD>
 </TR>
 <TR>
 	<TD COLSPAN=2>
-	  <INPUT type="submit" value="Registrar">
-	  <input type="reset" name="Cancelar" id="Cancelar" value="Cancelar">
+	<!-- onsubmit="validateFormOfUser(this)"  -->
+	  <INPUT type="submit" value="Registrar" onclick="return vali(this)">
 </TD>
 </TR>
 </TABLE>
  
 </FORM>
-			</div>
+		</div>
 		</section>
 		<div class="limpiar"></div>
 		<footer class="container">
