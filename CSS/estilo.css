@@ -225,6 +225,10 @@ section #side_left .body {
 		text-decoration: underline;
 	}
 
+	section #side_left .body_admin li.selected{
+		margin-left: 20px;
+	}
+
 /*
  *************************************
  * Contenedor principal.
@@ -238,6 +242,7 @@ section #main_container {
 	text-align: justify;
 	background-color: white;
 	min-height: 300px;
+	border-bottom: 5px solid #ccc;
 }
 
 	#last_items{
@@ -345,6 +350,11 @@ footer {
 	margin-bottom: 20px;
 }
 
+.admin{
+	clear: both;
+	margin-top: 80px;
+}
+
 input[type="text"], input[type="password"]
 {	
 	background:#FFF;
@@ -353,6 +363,8 @@ input[type="text"], input[type="password"]
 	padding: 2px 3px 2px 4px;
 	box-shadow: 1px 1px 6px #ccc;
 	margin-bottom: 10px;
+	color: #dd4814;
+	font-family: 'MuseoSans-500', Georgia, Palatino;
 }
 
 input[type="submit"], input[type="reset"]
@@ -398,7 +410,7 @@ h3{
 
 #customers td, #customers th {
 	font-size:1em;
-	border:1px solid #dd4814;
+	border:1px solid #000;
 	padding:3px 7px 2px 7px;
 }
 
@@ -407,11 +419,17 @@ h3{
 	text-align:left;
 	padding-top:5px;
 	padding-bottom:4px;
-	background-color:#bf5029;
+	background-color:#dd4814;
 	color:#ffffff;
 }
 
 #customers tr.alt td {
 	color:#000000;
-	background-color:#fde1b2;
+	background-color:#eee;
+}
+
+h2+p, p+p{
+	font-size: 13px;
+	margin-bottom: 15px;
+	line-height: 1.5em;
 }
