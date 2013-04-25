@@ -100,11 +100,24 @@
 			---------------------------------->
 			<div id="main_container">
 			
-				<!-------------------------
-					Comienzo del slider 
-				-------------------------->
 				<FORM name='login' method='post' action="php/login.php">
 				<h2>Ingresar al Sistema</h2>
+
+				<?php
+					if(isset($_GET['error'])){
+						$error = $_GET['error'];
+						switch ($error) {
+							case '3':
+							case '4':
+								echo '<div class="error">Usuario o contraseña invalidos</div>';
+								break;
+							case '5':
+								echo '<div class="error">Usuario sin Roles</div>';
+								break;
+						}
+					}
+				?>	
+
 				<TABLE BORDER=0>
 					<TR>
 						<TD width="153">Usuario:</TD><TD width="172"><INPUT  type='text' name="user"></TD>

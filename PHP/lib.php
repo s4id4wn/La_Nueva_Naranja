@@ -14,7 +14,7 @@ function conectaBD()
 
 function seleccionaBD()
 {
-	$baseDatos = 'said';
+	$baseDatos = 'lanuevanaranja';
 	$seleccion = mysql_select_db($baseDatos);
 	
 	if(!$seleccion)

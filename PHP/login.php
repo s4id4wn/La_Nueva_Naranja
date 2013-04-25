@@ -8,33 +8,40 @@
 		$usuario = $_POST['user'];
 		$contrasenia = $_POST['password'];
 		
-		$consulta = "SELECT * FROM usuarios WHERE user='$usuario'";
-		$resultado = mysql_query($consulta);
+		$SQL_Setence = "SELECT * FROM tbl_user WHERE user='$usuario'";
+		$result = mysql_query($SQL_Setence);
 
-		if(!$resultado){
-			//AQUI TODAVIA NO ESTA IMPLEMENTATOOOOOOOOOOOOO
-			header('Location: ../login.php?error=3');
+		if(!$result){
+			header('Location: ../login.php?error=4');
 			die();
 		}
 		
-		$user = mysql_fetch_array($resultado);
+		$user = mysql_fetch_array($result);
 		
-		//AQUI ESTO
 		//if(crypt($contrasenia,$user['contrasenia']) == $user['contrasenia']){
 		if($user['password'] === $contrasenia){
+			$role_id = $user['role_id'];
+			$SQL_Setence = "SELECT * FROM tbl_role WHERE tbl_role.id ='$role_id'";
+			$result = mysql_query($SQL_Setence);
+
+			if(!$result){
+				header('Location: ../login.php?error=5');
+				die();
+			}
+
+			$_prioridad = mysql_fetch_array($result);
+
 			session_start();
 			$_SESSION['logueado'] = "activa";
 			$_SESSION['usuario'] = $user['user'];
-			
-			//AQUI NO, DESDE LA BD
-			$_SESSION['prioridad'] = 5;
-			
-			header('Location: ../index.php');
+			$_SESSION['prioridad'] = $_prioridad['priority'];
+
+			$url_initial = $_prioridad['url_initial'];
+			header('Location: ../' . $url_initial);
 			die();
 
 		}else{
-			//AQUI TODAVIA NO ESTA IMPLEMENTATOOOOOOOOOOOOO
-			header('Location: ../index.php?error=2');
+			header('Location: ../login.php?error=3');
 			die();
 		}
 		
