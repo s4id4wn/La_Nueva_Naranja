@@ -120,7 +120,7 @@
 				Comienzo contenedor principal
 			---------------------------------->
 			<div id="main_container">
-				<form action="new_user.html" method="post" onsubmit="return validateFormOfUser(this)">
+				<form action="new_user.php" method="post" onsubmit="return validateFormOfUser(this)">
 	
 	<h2>Registro de  usuario</h2>
 	<table BORDER=0>
