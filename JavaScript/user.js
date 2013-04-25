@@ -1,7 +1,6 @@
 
 function validateFormOfUser(User)
 {
-
 	var is_accepted = false;
 	
 	User.user.value = User.user.value.trim();
@@ -28,20 +27,31 @@ function validateFormOfUser(User)
 	User.town.value = User.town.value.trim();
 	var town = User.town.value;
 	
-var a = this.validateUser(user);
-var b =	this.validateName(name);
-var c = this.validateLastName(last_name);
-var d = this.validateEmail(email);
-var e = this.validateRepeat_email(email,repeat_email);
-var f = this.validatePassword(password);
-var g = this.validateConfirmPassword(password,confirm_password);
-var h = this.validateTown(town);
+	User.locality.value = User.locality.value.trim();
+	var locality = User.locality.value;
+	
+	User.address.value = User.address.value.trim();
+	var address = User.address.value;
+	
+	User.telephone_number.value = User.telephone_number.value.trim();
+	var telephone_number = User.telephone_number.value;
+	
+	if( this.validateUser(user)==true &
+		this.validateName(name)==true &
+		this.validateLastName(last_name)==true &
+		this.validateEmail(email)==true &
+		this.validateRepeat_email(email,repeat_email)==true &
+		this.validatePassword(password)==true &
+		this.validateConfirmPassword(password,confirm_password)==true &
+		this.validateTown(town)==true &
+		this.validateLocality(locality)==true &
+		this.validateAddress(address)==true &
+		this.validateTelephoneNumber(telephone_number)==true
+	){
+		is_accepted = true;
+	}
 
-
-/*eliminar la sig linea*/
-return false;
-
-/* return is_accepted;*/
+ return is_accepted;
 }
 
  function validateUser(user)
@@ -153,6 +163,7 @@ function validateRepeat_email(email,repeat_email)
 	}
 	else if(repeat_email!="")
 	{
+		/* pattern to detec a valid email*/
 		var pattern_email=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
 	
 		if (repeat_email.search(pattern_email)!=0)
@@ -240,22 +251,99 @@ function validateConfirmPassword(password,confirm_password)
 	return is_accepted ;
 }
 
-function validateTown(town){
+function validateTown(town)
+{
+	var is_accepted = false;
+	if(town=="" || town=="Seleccionar")
+	{
+		$('#error_town').show();
+		$('#error_t').text('Municipio es requerido').show();
+	}
+	else
+	{
+		$('#error_town').hide();
+		$('#error_t').hide();
+		is_accepted=true;
+	}
+	return is_accepted;
+}
 
+function validateLocality(locality)
+{
 	var is_accepted = false;
 	
-
+	if(locality=="")
+	{
+		$('#error_locality').show();
+		$('#error_l').text('Localidad es requerido').show();
+	}
+	else if(locality!="")
+	{
+		$('#error_locality').hide();
+		$('#error_l').hide();
+		is_accepted=true;
+	}
 	return is_accepted;
 }
 
 
-function a (){
+function  validateAddress(address)
+{
+	var is_accepted = false;
 	
-	
-	
-	User.localidad.value = User.localidad.value.trim();
-	User.address.value = User.address.value.trim();
-	User.telephone_number.value = User.telephone_number.value.trim();
+	if(address=="")
+	{
+		$('#error_address').show();
+		$('#error_a').text('Dirección es requerido').show();
+	}
+	else if(address!="")
+	{
+		$('#error_address').hide();
+		$('#error_a').hide();
+		is_accepted=true;
+	}
+	return is_accepted;
+}
 
+
+function validateTelephoneNumber(telephone_number)
+{
+	var is_accepted = false;
+	var minimum_length_telephone_number = 7;
+	var maxim_length_telephone_number = 14;
+	
+	if(telephone_number=="")
+	{
+		$('#error_telephone_number').show();
+		$('#error_tl').text('Número telefónico es requerido').show();
+	}else if(telephone_number!="")
+	{
+		/*if is not a telephone number*/
+		if(!/^([0-9])*$/.test(telephone_number))
+		{
+			$('#error_telephone_number').show();
+			$('#error_tl').text('Número no válido').show();
+		}
+		else
+		{
+			if(telephone_number.length < minimum_length_telephone_number)
+			{
+				$('#error_telephone_number').show();
+				$('#error_tl').text('No menor a 7 caracteres').show();		
+			}
+			else if (telephone_number.length > maxim_length_telephone_number)
+			{
+				$('#error_telephone_number').show();
+				$('#error_tl').text('No mayor a 14 caracteres').show(); 
+			}
+			else
+			{
+				$('#error_telephone_number').hide();
+				$('#error_tl').hide();
+				is_accepted=true;
+			}
+		}
+	}
+	return is_accepted;
 }
 	

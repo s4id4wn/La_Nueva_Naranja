@@ -30,6 +30,9 @@
 	font-size: 12px;
 	color: red;
 	}
+	.requerid{
+	color:red;
+	}
 	
 	</style>
 	
@@ -120,25 +123,26 @@
 				Comienzo contenedor principal
 			---------------------------------->
 			<div id="main_container">
-				<form action="new_user.php" method="post" onsubmit="return validateFormOfUser(this)">
+	<form action="new_user.php" method="post" onsubmit="return validateFormOfUser(this)">
 	
 	<h2>Registro de  usuario</h2>
+	
+	<p>Campos con <span class="requerid">*</span> son requeridos</p>
+	
 	<table BORDER=0>
 	
 		<tr class="bordcurv">
-			<td>Usuario:</td>
+			<td>Usuario <span class="requerid">*</span> </td>
 			<td>    
 				<INPUT  type="text" name="user" >
 				<div  class="error" id="error_user">
-					
-					<p  id="error_u"></p>
-
+					<p id="error_u"></p>
 				</div>
 			</td>
 		</tr>
 		
 			<tr >
-			<td>Nombres:</td>
+			<td>Nombres <span class="requerid">*</span> </td>
 			<td>
 				<INPUT  type="text" name="name" >
 				<div  class="error" id="error_name">
@@ -148,7 +152,7 @@
 		</tr>
 
 		<tr>
-			<td>Apellidos:</td>
+			<td>Apellidos <span class="requerid">*</span> </td>
 			<td>
 				<INPUT type="text" name="last_name">
 				<div class="error" id="error_last_name">
@@ -158,9 +162,9 @@
 		</tr>
 
 		<tr>
-			<td>Correo:</td>
+			<td>Correo <span class="requerid">*</span> </td>
 			<td>
-				<input type="text" name="email" id="textfield">
+				<input type="text" name="email" >
 				<div class="error" id="error_email">
 					<p id="error_e"></p>
 				</div>
@@ -168,27 +172,26 @@
 		</tr>
 
 		<tr>
-			<td>Repetir Correo:</td>
+			<td>Repetir Correo <span class="requerid">*</span> </td>
 			<td>
-				<input type="text" name="repeat_email" id="textfield">
+				<input type="text" name="repeat_email" >
 				<div class="error" id="error_repeat_email">
 					<p id="error_re"></p>
 				</div>
 			</td>
 		</tr>
 		<tr>
-			<td>Contraseña:</td>
+			<td>Contraseña <span class="requerid">*</span> </td>
 			<td>
-				<input type="password" name="password" id="contra">
+				<input type="password" name="password">
 				<div class="error" id="error_password">
 					<p id="error_p"></p>
-					
 				</div>
 			</td>
 		</tr>
 
 		<tr>
-			<td>Confirmar Contraseña</td>
+			<td>Confirmar Contraseña <span class="requerid">*</span> </td>
 			<td>
 				<input type="password" name="confirm_password">
 				<div class="error" id="error_confirm_password">
@@ -197,10 +200,10 @@
 			</td>
 		</tr>
 		<tr>
-			<td>Municipio</td>
+			<td>Municipio <span class="requerid">*</span> </td>
 			<td>
-    <select name="town" id="municipio">
-      <option >---Seleccionar---</option>
+    <select name="town" >
+      <option>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Seleccionar</option>
       
       <option>Abal&aacute;</option>
       <option>Acanceh</option>
@@ -311,27 +314,42 @@
       <option>Yaxcab&aacute;</option>
       <option>Yaxkukul</option>
   	  <option>Yoba&iacute;n</option>
-      
-    </select></td>
+				
+    </select>
+	
+	<div class="error" id="error_town">
+			<p id="error_t"></p>
+	</div>
+	
+	</td>
 	</tr>
 		<tr>
-			<td>Localidad</td>
+			<td>Localidad <span class="requerid">*</span> </td>
 			<td>
-				<input type="text" name="localidad" id="localidad">
+				<input type="text" name="locality">
+				<div class="error" id="error_locality">
+					<p id="error_l"></p>
+				</div>
 			</td>
 		</tr>
 		
 		<tr>
-			<td>Dirección</td>
+			<td>Dirección <span class="requerid">*</span> </td>
 			<td>
-				<input type="text" name="address" id="calle">
+				<input type="text" name="address">
+				<div class="error" id="error_address">
+					<p id="error_a"></p>
+				</div>
 			</td>
 		</tr>
 		
 		<tr>
-			<td>Telefono</td>
+			<td>Número telefónico <span class="requerid">*</span> </td>
 			<td>
-				<input type="text" name="telephone_number" id="telefono">
+				<input type="text" name="telephone_number" >
+				<div class="error" id="error_telephone_number">
+					<p id="error_tl"></p>
+				</div>
 			</td>
 		</tr>
 
