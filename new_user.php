@@ -1,5 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php
+	session_start();
+	if(isset($_SESSION['logueado']) && $_SESSION['logueado'] == "activa") { 
+		header('Location: index.php');
+	} 
+?>
+<html lang="es">
 <head>
 	<title>La Nueva Naranja</title>
 	<meta charset="utf-8"/> 
@@ -12,49 +18,8 @@
 	
 	 <script type="text/javascript" src="JavaScript/user.js"></script> 
 	
-<link rel="stylesheet" href="plugins/light/light.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="plugins/light/light.css" type="text/css" media="screen" />
 	<link rel="stylesheet" href="plugins/nivo-slider.css" type="text/css" media="screen" />
-	
-	<script>
-	
-function validateFormOfUSer2(user){
-
-	user.name.value = user.name.value.trim();
-	
-	if(user.name.value==""){
-		
-		$(document).ready( function(){
-		$('.error').show();
-		$('#error_name').show();
-	});
-	}else if(user.name.value!="")
-	{
-		$(document).ready( function(){
-		$('.error').hide();
-		$('#error_name').hide();
-		});
-	}
-	
-	user.last_name.value = user.last_name.value.trim();
-	
-	if(user.last_name.value==""){
-
-		$(document).ready(function(){
-		$('.error').show();
-			$('#error_last_name').show();
-		});
-	}else if(user.last_name.value!="")
-	{
-		$(document).ready( function(){
-		$('.error').hide();
-		$('#error_name').hide();
-		});
-	}
-
-
-	return false;
-}
-	</script>
 	
 	<style>
 	.error{
@@ -75,16 +40,25 @@ function validateFormOfUSer2(user){
 	<div id="page_wrapper">
 		<header>
 			<div class="container">
-				<a href="index.html"><img alt="Rescue" class="retina_logo" id="logo" src="imagenes/logo.png" /></a>
+				<a href="index.php"><img alt="Rescue" class="retina_logo" id="logo" src="imagenes/logo.png" /></a>
 			</div>
 			<div class="container">
 				<nav>
 					<ul>
-						<li><a href="login.html"><i class="icon-user"></i>Login</a></li>
-						<li><a href="new_user.html"><i class="icon-pencil"></i>Registro</a></li>
-						<li><a href="contact.html"><i class="icon-envelope-alt"></i>Contacto</a></li>
+						<?php if (empty($_SESSION["usuario"])) { ?>
+						<li><a href="login.php"><i class="icon-user"></i>Login</a></li>
+						<li><a href="new_user.php"><i class="icon-pencil"></i>Registro</a></li>
+						<?php } ?>
+						
+						<li><a href="contact.php"><i class="icon-envelope-alt"></i>Contacto</a></li>
 						<li><a href="#"><i class="icon-shopping-cart"></i>Carrito {0}</a></li>
-						<li><a href="admin_panel.html"><i class="icon-globe"></i>Panel Admin</a></li>
+						
+						<?php if(isset($_SESSION['prioridad']) && $_SESSION['prioridad'] == "5" && isset($_SESSION['logueado']) && $_SESSION['logueado'] == "activa") { ?>
+						<li><a href="admin_panel.php"><i class="icon-globe"></i>Panel Admin</a></li>
+						<?php }
+						if(isset($_SESSION['logueado']) && $_SESSION['logueado'] == "activa") { ?>
+						<li><a href="php/logout.php"><i class="icon-signout"></i>Desconectar[<?php echo $_SESSION['usuario']; ?>]</a></li>
+						<?php } ?>
 					</ul>
 				</nav>
 			</div>
@@ -92,7 +66,7 @@ function validateFormOfUSer2(user){
 		
 		<div id="second_menu" class="container">
 			<ul>
-				<li><a href="index.html"><i class="icon-home"></i>Inicio</a></li>
+				<li><a href="index.php"><i class="icon-home"></i>Inicio</a></li>
 				<li><a href="#">Categoria2</a></li>
 				<li><a href="#">Categoria3</a></li>
 				<li><a href="#">Categoria4</a></li>
@@ -132,30 +106,43 @@ function validateFormOfUSer2(user){
 					</ul>
 				</div>
 				</div>
+				
+				<div class="widget">
+					<div class="head_menu">Nuestras Marcas</div>
+						<div class="body">
+							<img src="imagenes/marca.gif">
+						</div>
+				</div>
+				
 			</div>
 			
 			<!---------------------------------
 				Comienzo contenedor principal
 			---------------------------------->
 			<div id="main_container">
-			
-				<!-------------------------
-					Comienzo del slider 
-				-------------------------->
-				
-				<!--      cambiar el valor del action action="new_user.html" -->
-				
-	<form action="new_user.html" method="post" onsubmit="return validateFormOfUser(this)">
+				<form action="new_user.html" method="post" onsubmit="return validateFormOfUser(this)">
 	
 	<h2>Registro de  usuario</h2>
 	<table BORDER=0>
+	
 		<tr class="bordcurv">
-			<td width="153">Nombres:</td>
-			<td width="172">    
+			<td>Usuario:</td>
+			<td>    
+				<INPUT  type="text" name="user" >
+				<div  class="error" id="error_user">
+					
+					<p  id="error_u"></p>
+
+				</div>
+			</td>
+		</tr>
+		
+			<tr >
+			<td>Nombres:</td>
+			<td>
 				<INPUT  type="text" name="name" >
-				<div  class="error" >
-					<p  id="error_name">Nombres es requerido</p>
-					<p  id="error_name_short">No puede ser muy corto</p>
+				<div  class="error" id="error_name">
+					<p  id="error_n"></p>
 				</div>
 			</td>
 		</tr>
@@ -164,8 +151,8 @@ function validateFormOfUSer2(user){
 			<td>Apellidos:</td>
 			<td>
 				<INPUT type="text" name="last_name">
-				<div class="error" >
-					<p id="error_last_name">Apellidos es requerido</p>
+				<div class="error" id="error_last_name">
+					<p id="error_ln"></p>
 				</div>
 			</td>
 		</tr>
@@ -174,8 +161,8 @@ function validateFormOfUSer2(user){
 			<td>Correo:</td>
 			<td>
 				<input type="text" name="email" id="textfield">
-				<div class="error" >
-					<p id="error_email">Correo es requerido</p>
+				<div class="error" id="error_email">
+					<p id="error_e"></p>
 				</div>
 			</td>
 		</tr>
@@ -184,8 +171,8 @@ function validateFormOfUSer2(user){
 			<td>Repetir Correo:</td>
 			<td>
 				<input type="text" name="repeat_email" id="textfield">
-				<div class="error" >
-					<p id="error_repeat_email">Repetir Correo es requerido</p>
+				<div class="error" id="error_repeat_email">
+					<p id="error_re"></p>
 				</div>
 			</td>
 		</tr>
@@ -193,8 +180,9 @@ function validateFormOfUSer2(user){
 			<td>Contraseña:</td>
 			<td>
 				<input type="password" name="password" id="contra">
-				<div class="error" >
-					<p id="error_password">Contraseña es requerido</p>
+				<div class="error" id="error_password">
+					<p id="error_p"></p>
+					
 				</div>
 			</td>
 		</tr>
@@ -203,8 +191,8 @@ function validateFormOfUSer2(user){
 			<td>Confirmar Contraseña</td>
 			<td>
 				<input type="password" name="confirm_password">
-				<div class="error" >
-					<p id="error_confirm_password">Confirmar Contraseña es requerido</p>
+				<div class="error" id="error_confirm_password">
+					<p id="error_cp"></p>
 				</div>
 			</td>
 		</tr>
@@ -362,8 +350,7 @@ function validateFormOfUSer2(user){
 </table>
  
 </form>
-
-		</div>
+			</div>
 	</section>
 		<div class="limpiar"></div>
 		<footer class="container">

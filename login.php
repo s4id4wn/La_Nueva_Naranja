@@ -1,5 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php
+	session_start();
+	if(isset($_SESSION['logueado']) && $_SESSION['logueado'] == "activa") { 
+		header('Location: index.php');
+	} 
+?>
+<html lang="es">
 <head>
 	<title>La Nueva Naranja</title>
 	<meta charset="utf-8"/> 
@@ -14,15 +20,24 @@
 	<div id="page_wrapper">
 		<header>
 			<div class="container">
-			<a href="index.html"><img alt="Rescue" class="retina_logo" id="logo" src="imagenes/logo.png" /></a></div>
+			<a href="index.php"><img alt="Rescue" class="retina_logo" id="logo" src="imagenes/logo.png" /></a></div>
 			<div class="container">
 				<nav>
 					<ul>
-						<li><a href="login.html"><i class="icon-user"></i>Login</a></li>
-						<li><a href="new_user.html"><i class="icon-pencil"></i>Registro</a></li>
-						<li><a href="contact.html"><i class="icon-envelope-alt"></i>Contacto</a></li>
+						<?php if (empty($_SESSION["usuario"])) { ?>
+						<li><a href="login.php"><i class="icon-user"></i>Login</a></li>
+						<li><a href="new_user.php"><i class="icon-pencil"></i>Registro</a></li>
+						<?php } ?>
+						
+						<li><a href="contact.php"><i class="icon-envelope-alt"></i>Contacto</a></li>
 						<li><a href="#"><i class="icon-shopping-cart"></i>Carrito {0}</a></li>
-						<li><a href="admin_panel.html"><i class="icon-globe"></i>Panel Admin</a></li>
+						
+						<?php if(isset($_SESSION['prioridad']) && $_SESSION['prioridad'] == "5" && isset($_SESSION['logueado']) && $_SESSION['logueado'] == "activa") { ?>
+						<li><a href="admin_panel.php"><i class="icon-globe"></i>Panel Admin</a></li>
+						<?php }
+						if(isset($_SESSION['logueado']) && $_SESSION['logueado'] == "activa") { ?>
+						<li><a href="php/logout.php"><i class="icon-signout"></i>Desconectar[<?php echo $_SESSION['usuario']; ?>]</a></li>
+						<?php } ?>
 					</ul>
 				</nav>
 			</div>
@@ -30,7 +45,7 @@
 		
 		<div id="second_menu" class="container">
 			<ul>
-				<li><a href="index.html"><i class="icon-home"></i>Inicio</a></li>
+				<li><a href="index.php"><i class="icon-home"></i>Inicio</a></li>
 				<li><a href="#">Categoria2</a></li>
 				<li><a href="#">Categoria3</a></li>
 				<li><a href="#">Categoria4</a></li>
@@ -88,28 +103,20 @@
 				<!-------------------------
 					Comienzo del slider 
 				-------------------------->
-				<FORM name='login' method='post' action="" onsubmit="validateForm(this)">
-				 <h2>Ingresar al Sistema</h2>
-<TABLE BORDER=0>
-  <TR class="bordcurv">
-	<TD width="153">Usuario:</TD>
-	<TD width="172">
-    
-	<INPUT  type='text' name="user">
-   
-	</TD>
-</TR>
-	<TD>Contraseña:</TD>
-	<TD><label="contra"></label>
-	  <input type="password" name="password" id="password"></TD>
-</TR>
-<TR>
-	<TD COLSPAN=2>
-	  <INPUT type="submit" value="Ingresar" onclick="valida()"></TD>
-</TR>
-</TABLE>
- 
-</FORM>
+				<FORM name='login' method='post' action="php/login.php">
+				<h2>Ingresar al Sistema</h2>
+				<TABLE BORDER=0>
+					<TR>
+						<TD width="153">Usuario:</TD><TD width="172"><INPUT  type='text' name="user"></TD>
+					</TR>
+					<TD>Contraseña:</TD>
+						<TD><input type="password" name="password" id="password"></TD>
+					</TR>
+					<TR>
+						<TD><INPUT type="submit" value="Ingresar"></TD>
+					</TR>
+				</TABLE>
+				</FORM>
 			</div>
 		</section>
 

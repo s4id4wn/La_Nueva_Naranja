@@ -1,4 +1,19 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php
+	session_start();
+
+	if(empty($_SESSION['logueado']) || $_SESSION['logueado'] != "activa") {
+		//Error usuario no logueado
+		header('Location: error.php?error=1');
+		die();
+	}
+
+	if(empty($_SESSION['prioridad']) || $_SESSION['prioridad'] != 5) {
+		//Error de permisos
+		header('Location: error.php?error=2');
+		die();
+	}
+?>
 <html lang="en">
 <head>
 	<title>La Nueva Naranja</title>
@@ -14,15 +29,17 @@
 	<div id="page_wrapper">
 		<header>
 			<div class="container">
-			<a href="index.html"><img alt="Rescue" class="retina_logo" id="logo" src="imagenes/logo.png" /></a></div>
+			<a href="index.php"><img alt="Rescue" class="retina_logo" id="logo" src="imagenes/logo.png" /></a></div>
 			<div class="container">
 				<nav>
 					<ul>
-						<li><a href="login.html"><i class="icon-user"></i>Login</a></li>
-						<li><a href="new_user.html"><i class="icon-pencil"></i>Registro</a></li>
-						<li><a href="contact.html"><i class="icon-envelope-alt"></i>Contacto</a></li>
-						<li><a href="#"><i class="icon-shopping-cart"></i>Carrito {0}</a></li>
-						<li><a href="admin_panel.html"><i class="icon-globe"></i>Panel Admin</a></li>
+						<?php if (empty($_SESSION["usuario"])) { ?>
+						<li><a href="login.php"><i class="icon-user"></i>Login</a></li>
+						<?php } ?>
+						<?php
+						if(isset($_SESSION['logueado']) && $_SESSION['logueado'] == "activa") { ?>
+						<li><a href="php/logout.php"><i class="icon-signout"></i>Desconectar[<?php echo $_SESSION['usuario']; ?>]</a></li>
+						<?php } ?>
 					</ul>
 				</nav>
 			</div>
@@ -39,9 +56,9 @@
 				<div class="head_menu">Funciones</div>
 				<div class="body_admin">
 					<ul>
-						<li><a href="admin_panel.html"><i class="icon-bar-chart"></i>Administracion Index</a></li>
+						<li><a href="admin_panel.php"><i class="icon-bar-chart"></i>Administracion Index</a></li>
 						<li class="selected"><i class="icon-group"></i>Administrar Usuarios</li>
-						<li><a href="admin_items.html"><i class="icon-paste"></i>Administrar Artículos</a></li>
+						<li><a href="admin_items.php"><i class="icon-paste"></i>Administrar Artículos</a></li>
 						<li><i class="icon-truck"></i><s>Administrar Provedores</s></li>
 						<li><i class="icon-sitemap"></i><s>Administrar Página</s></li>
 						<li><i class="icon-money"></i><s>Administrar Ganancias</s></li>

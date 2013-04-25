@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="en">
 <head>
 	<title>La Nueva Naranja</title>
@@ -14,15 +14,15 @@
 	<div id="page_wrapper">
 		<header>
 			<div class="container">
-			<a href="index.html"><img alt="Rescue" class="retina_logo" id="logo" src="imagenes/logo.png" /></a></div>
+			<a href="index.php"><img alt="Rescue" class="retina_logo" id="logo" src="imagenes/logo.png" /></a></div>
 			<div class="container">
 				<nav>
 					<ul>
-						<li><a href="login.html"><i class="icon-user"></i>Login</a></li>
-						<li><a href="new_user.html"><i class="icon-pencil"></i>Registro</a></li>
-						<li><a href="contact.html"><i class="icon-envelope-alt"></i>Contacto</a></li>
+						<li><a href="login.php"><i class="icon-user"></i>Login</a></li>
+						<li><a href="new_user.php"><i class="icon-pencil"></i>Registro</a></li>
+						<li><a href="contact.php"><i class="icon-envelope-alt"></i>Contacto</a></li>
 						<li><a href="#"><i class="icon-shopping-cart"></i>Carrito {0}</a></li>
-						<li><a href="admin_panel.html"><i class="icon-globe"></i>Panel Admin</a></li>
+						<li><a href="admin_panel.php"><i class="icon-globe"></i>Panel Admin</a></li>
 					</ul>
 				</nav>
 			</div>
@@ -40,8 +40,8 @@
 				<div class="body_admin">
 					<ul>
 						<li class="selected"><i class="icon-bar-chart"></i>Administracion Index</li>
-						<li><a href="admin_users.html"><i class="icon-group"></i>Administrar Usuarios</a></li>
-						<li><a href="admin_items.html"><i class="icon-paste"></i>Administrar Artículos</a></li>
+						<li><a href="admin_users.php"><i class="icon-group"></i>Administrar Usuarios</a></li>
+						<li><a href="admin_items.php"><i class="icon-paste"></i>Administrar Artículos</a></li>
 						<li><i class="icon-truck"></i><s>Administrar Provedores</s></li>
 						<li><i class="icon-sitemap"></i><s>Administrar Página</s></li>
 						<li><i class="icon-money"></i><s>Administrar Ganancias</s></li>
@@ -57,9 +57,14 @@
 				Comienzo contenedor principal
 			---------------------------------->
 			<div id="main_container">
-				<h2>Bienvenido al panel de Administrador</h2>
-				<p>@Aquí podrá realizar acciones que le permitan editar, crear, borrar o actualizar datos.</p>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis imperdiet accumsan leo sit amet pretium. Fusce tempor euismod pulvinar. Duis dui nisl, tincidunt et porttitor ut, lobortis vitae ipsum. Vivamus malesuada tortor a est posuere vitae luctus turpis imperdiet. Sed iaculis adipiscing eros. Suspendisse lobortis fermentum turpis luctus rhoncus. Vivamus feugiat feugiat porttitor. In ut dictum mauris. Donec ornare dolor a eros consectetur non ullamcorper elit consequat. Cras consectetur, tortor eget volutpat dignissim, est nulla consequat turpis, vitae scelerisque massa tellus non lectus. Fusce tempus, erat et tempor lacinia, dolor elit suscipit dui, eu cursus arcu eros sed diam. Etiam tempor lobortis turpis sed pharetra. Cras odio purus, condimentum in dictum faucibus, bibendum consectetur enim. Donec ultrices consectetur mi ut ultricies.</p>
+				<h2>Pruebas</h2>
+
+					<form action="upload.php" method="post" enctype="multipart/form-data">
+  						 <input name="archivo" type="file" size="35" />
+ 						 <input name="enviar" type="submit" value="Upload File" />
+ 						 <input name="action" type="hidden" value="upload" />     
+					</form>
+
 			</div>
 		</section>
 
