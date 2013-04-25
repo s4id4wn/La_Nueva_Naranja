@@ -53,6 +53,16 @@
 				Comeinzo lado derecho, Menu 
 			-------------------------->
 			<div id="side_left">
+			
+				<div class="widget">
+					<div class="head_menu">Buscador</div>
+					<div class="body">
+						<FORM METHOD=POST ACTION="php/buscar.php"> 
+							<INPUT TYPE="text" NAME="busqueda"> 
+						</FORM> 
+					</div>
+				</div>
+			
 				<div class="widget">
 				<div class="head_menu">Catálogo de productos</div>
 				<div class="body">

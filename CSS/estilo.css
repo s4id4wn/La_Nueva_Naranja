@@ -168,7 +168,7 @@ section #side_left .head_menu {
 	background: #FFF;
 	color: #5E6569;
 	padding: 7px 0 7px 0;
-	margin-bottom: 8px;
+	margin-bottom: 3px;
 	font-weight: bold;
 	border-top: 1px solid #ccc;
 	border-bottom: 4px solid #ccc;
@@ -236,12 +236,12 @@ section #side_left .body {
  */	
 section #main_container {
 	float: right;
-	width: 749px;
+	width: 750px;
 	padding: 10px 20px 20px 20px;
 	position: relative;
 	text-align: justify;
 	background-color: white;
-	min-height: 300px;
+	min-height: 500px;
 	border-bottom: 5px solid #ccc;
 }
 
@@ -435,9 +435,14 @@ h2+p, p+p{
 }
 
 .error{
-	padding: 2px 5px;
+	display: none;
+	width: 200px;
+	height: 15px;
+	padding: 0;
 	font-size: 12px;
-	color: white;
-	font-weight: bold;
-	background-color: red;
+	color: red;
+}
+
+.requerid{
+	color:red;
 }

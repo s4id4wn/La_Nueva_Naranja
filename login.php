@@ -59,6 +59,16 @@
 				Comeinzo lado derecho, Menu 
 			-------------------------->
 			<div id="side_left">
+			
+				<div class="widget">
+					<div class="head_menu">Buscador</div>
+					<div class="body">
+						<FORM METHOD=POST ACTION="php/buscar.php"> 
+							<INPUT TYPE="text" NAME="busqueda"> 
+						</FORM> 
+					</div>
+				</div>
+				
 				<div class="widget">
 				<div class="head_menu">Catálogo de productos</div>
 				<div class="body">
@@ -109,10 +119,10 @@
 						switch ($error) {
 							case '3':
 							case '4':
-								echo '<div class="error">Usuario o contraseña invalidos</div>';
+								echo 'Usuario o contraseña invalidos';
 								break;
 							case '5':
-								echo '<div class="error">Usuario sin Roles</div>';
+								echo 'Usuario sin Roles';
 								break;
 						}
 					}
