@@ -20,6 +20,11 @@ body{
 	padding: 0;
 }
 
+/*
+ *************************************
+ * Cabecera [usuarios, admin], logo.
+ *************************************
+ */
 .retina_logo{
 	width:294px;
 	height:63px;
@@ -121,7 +126,7 @@ header {
 
 /*
  *************************************
- * Menu de las categorias y navegacion.
+ * Menu de las categorias y navegacion [usuarios].
  *************************************
  */
 #second_menu{
@@ -168,7 +173,7 @@ header {
 
 /*
  *************************************
- * Menu del lado derecho.
+ * Menu del lado derecho [usuarios].
  *************************************
  */
 section {
@@ -221,8 +226,11 @@ section #side_left .body {
 		margin-bottom: 20px;
 	}
 
-	/*admin*/
-
+	/*
+ 	*************************************
+ 	* Menu del lado derecho [admin].
+ 	*************************************
+ 	*/
 	section #side_left .body_admin {
 	background-color: white;
 	text-align: left;
@@ -340,7 +348,11 @@ section #main_container {
 			font-weight: bold;
 			text-decoration: none;
 		}
-
+/*
+ *************************************
+ * Pie de la pagina.
+ *************************************
+ */	
 footer {
 	clear: both;
 	padding-top: 20px;
@@ -398,11 +410,6 @@ input[type="submit"], input[type="reset"]
 	margin-bottom: 20px;
 }
 
-#no_styles input[type="submit"]
-{	
-	background: #3493d6;
-}
-
 input[type="submit"]:hover, input[type="reset"]:hover
 {	
 	padding: 5px 10px;
@@ -410,6 +417,10 @@ input[type="submit"]:hover, input[type="reset"]:hover
 	box-shadow: none;
 }
 
+#no_styles input[type="submit"]
+{	
+	background: #3493d6;
+}
 
 *:focus {
 	outline: none;
@@ -471,6 +482,11 @@ h2+p, p+p{
 	color:red;
 }
 
+/*
+ *************************************
+ * Area del buscador.
+ *************************************
+ */
 .box_producto{
 	width: 100%;
 	background: white;
