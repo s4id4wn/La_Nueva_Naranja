@@ -2,14 +2,13 @@
 	if(isset($_POST['user']) && isset($_POST['password']) ){
 		include_once('lib.php');
 		
-		conectaBD();
-		seleccionaBD();
+		connectBD();
 		
 		$usuario = $_POST['user'];
 		$contrasenia = $_POST['password'];
-		
-		$SQL_Setence = "SELECT * FROM tbl_user WHERE user='$usuario'";
-		$result = mysql_query($SQL_Setence);
+
+		$SQL_Sentence = "SELECT * FROM tbl_user WHERE user='$usuario'";
+		$result = mysql_query($SQL_Sentence);
 
 		if(!$result){
 			header('Location: ../login.php?error=4');
@@ -21,8 +20,8 @@
 		//if(crypt($contrasenia,$user['contrasenia']) == $user['contrasenia']){
 		if($user['password'] === $contrasenia){
 			$role_id = $user['role_id'];
-			$SQL_Setence = "SELECT * FROM tbl_role WHERE tbl_role.id ='$role_id'";
-			$result = mysql_query($SQL_Setence);
+			$SQL_Sentence = "SELECT * FROM tbl_role WHERE tbl_role.id ='$role_id'";
+			$result = mysql_query($SQL_Sentence);
 
 			if(!$result){
 				header('Location: ../login.php?error=5');

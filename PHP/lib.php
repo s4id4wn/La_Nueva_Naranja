@@ -1,26 +1,32 @@
-<?php
-function conectaBD()
-{
-	$servidor = 'localhost';
-	$usuario = 'root';
-	$contrasenia = '';
 
-	$conexion = mysql_connect($servidor, $usuario, $contrasenia);
-	if(!$conexion)
+<?php
+function connectBD(){
+	
+	connectToServer();
+	connnectToBD();
+}
+
+private function connectToServer()
+{
+	$server = 'localhost';
+	$user = 'root';
+	$password = '';
+	$successful_connection = mysql_connect($server, $user, $password);
+	
+	if( !$successful_connection )
 	{
-		die('Error en la conexion al servidor:'.mysql_error() );
+		die('Error en la conexion al servidor:' . mysql_error() );
 	}
 }
 
-function seleccionaBD()
+private function connnectToBD()
 {
-	$baseDatos = 'lanuevanaranja';
-	$seleccion = mysql_select_db($baseDatos);
+	$database = 'theneworange';
+	$seleccion = mysql_select_db($database);
 	
-	if(!$seleccion)
+	if( !$successful_seleccion )
 	{
 		die('Error al seleccionar la base de datos: '.mysql_error());
 	}
 }
-
 ?>
