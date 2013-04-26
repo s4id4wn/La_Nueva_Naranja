@@ -74,30 +74,56 @@ header {
 		color: #white; 
 		font-weight: bold;
 		text-decoration: underline;
-	}	
-
-	header aside ul{
-		padding-top:0px;
 	}
-
-header ul.logo{
-	list-style:none;
-	float:left;
-	position: relative;
-}	
-
-header ul.logo li{
-	float:left;
-	margin-left: 200px;
+	
+#header_admin {
+	width: 100%; 
+	left: 0; 
+	top: 0; 
+	position: fixed; 
+	border-bottom: 1px solid black;
+	z-index: 99; 
+	background: #0d71b8;
+	opacity: 0.9;
+	height: 60px;
+	-ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity = 90);
+	filter: alpha(opacity = 90);
 }
 
-header ul.logo li a{
-	width:294px;
-	height:63px;
-	display:block;
-	background:url('../imagenes/logo.png') no-repeat top left;
-}
-
+	#header_admin .select-menu { 
+		display: none; 
+	}
+	
+	#header_admin nav { 
+		position: relative;
+	}
+	
+	#header_admin nav ul {
+		list-style: none;
+		float: right;
+		padding: 22px 0px 0px 0px;
+	}
+	
+	#header_admin nav ul li {
+		float: left;
+		margin-left: 30px;
+		position: relative;
+	}
+	
+	#header_admin nav ul li a{
+		color: #fff;
+		text-shadow: black 0.1em 0.1em 0.2em;
+		font-size: 14px;
+		text-decoration: none;
+		font-size: 12px;
+		font-weight: bold;
+	}
+	
+	#header_admin nav ul li a:hover { 
+		color: #white; 
+		font-weight: bold;
+		text-decoration: underline;
+	}
 
 /*
  *************************************
@@ -379,6 +405,11 @@ input[type="submit"], input[type="reset"]
 	margin-bottom: 20px;
 }
 
+#no_styles input[type="submit"]
+{	
+	background: #3493d6;
+}
+
 input[type="submit"]:hover, input[type="reset"]:hover
 {	
 	padding: 5px 10px;
@@ -410,7 +441,7 @@ h3{
 
 #customers td, #customers th {
 	font-size:1em;
-	border:1px solid #000;
+	border:1px solid #ccc;
 	padding:3px 7px 2px 7px;
 }
 
@@ -419,13 +450,13 @@ h3{
 	text-align:left;
 	padding-top:5px;
 	padding-bottom:4px;
-	background-color:#dd4814;
+	background-color:#3493d6;
 	color:#ffffff;
 }
 
 #customers tr.alt td {
 	color:#000000;
-	background-color:#eee;
+	background-color:#f6f6f6;
 }
 
 h2+p, p+p{
@@ -445,4 +476,40 @@ h2+p, p+p{
 
 .requerid{
 	color:red;
+}
+
+.box_producto{
+	width: 100%;
+	background: white;
+	height: 120px;
+	float: left;
+	box-shadow: 1px 1px 16px #ccc;
+	margin-bottom: 15px;
+}
+
+.box_producto:hover{
+	opacity: 0.9;
+	-ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity = 90);
+	filter: alpha(opacity = 90);
+	background: #f6f6f6;
+}
+
+.box_producto .imagen{
+	width: 100px;
+	height: 110px;
+	background: #eee;
+	margin-top: 5px;
+	margin-left: 5px;
+	margin-right: 20px;
+	float: left;
+	border: 1px dashed #eee;
+}
+
+.box_producto .info{
+	float: right;
+	height: 110px;
+	margin-top: 5px;
+	margin-right: 20px;
+	width: 603px;
+	text-align: right;
 }

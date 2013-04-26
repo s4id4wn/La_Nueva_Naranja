@@ -43,7 +43,7 @@
 		<div id="second_menu" class="container">
 			<ul>
 				<li><a href="index.php"><i class="icon-home"></i>Inicio</a></li>
-				<li><a href="#">Categoria2</a></li>
+				<li><a class="selected" href="#">Categoria2</a></li>
 				<li><a href="#">Categoria3</a></li>
 				<li><a href="#">Categoria4</a></li>
 				<li><a href="#">Categoria5</a></li>
@@ -65,7 +65,7 @@
 						</FORM> 
 					</div>
 				</div>
-			
+				
 				<div class="widget">
 				<div class="head_menu">Catálogo de productos</div>
 				<div class="body">
@@ -106,19 +106,15 @@
 				Comienzo contenedor principal
 			---------------------------------->
 			<div id="main_container">
-				<h2><p><i class="icon-warning-sign icon-large"></i> ERROR</h2>
-				<?php
-					if(isset($_GET['error'])) {
-						$error = $_GET['error'];
-						if($error == 1){
-							echo '<h3>Necesita iniciar sesion</h3>';
-						}else if($error == 2){
-							echo '<h3>No tiene permisos</h3>';
-						}
-					}else{
-						header('Location: index.php');
-					}
-				?>
+				<h2>Viendo Productos : Nombre</h2>
+				<div class="box_producto">
+					<div class="imagen"><img src="imagenes/2.png"/></div>
+					<div class="info">Producto 1</div>
+				</div>
+				<div class="box_producto">
+					<div class="imagen"><img src="imagenes/3.png"/></div>
+					<div class="info">Producto 2</div>
+				</div>
 			</div>
 		</section>
 

@@ -27,12 +27,13 @@
 
 <body>
 	<div id="page_wrapper">
-		<header>
+		<div id="header_admin">
 			<div class="container">
-			<a href="index.php"><img alt="Rescue" class="retina_logo" id="logo" src="imagenes/logo.png" /></a></div>
+			<a href="index.php"><img alt="Rescue" class="retina_logo" id="logo" src="imagenes/logo_admin.png" /></a></div>
 			<div class="container">
 				<nav>
 					<ul>
+						<li><a href="index.php"><i class="icon-exchange"></i>Ir Nueva Naranja</a></li>
 						<?php if (empty($_SESSION["usuario"])) { ?>
 						<li><a href="login.php"><i class="icon-user"></i>Login</a></li>
 						<?php } ?>
@@ -43,7 +44,7 @@
 					</ul>
 				</nav>
 			</div>
-		</header>
+		</div>
 
 		<div class="admin"></div>
 		<section class="container">
@@ -75,7 +76,7 @@
 			---------------------------------->
 			<div id="main_container">
 				<h2>Bienvenido al panel de Administrador</h2>
-				<p>@Aquí podrá realizar acciones que le permitan editar, crear, borrar o actualizar datos.</p>
+				<p>@<?php echo '<b>'.$_SESSION['usuario'].'</b>'; ?> aquí podrá realizar acciones que le permitan editar, crear, borrar o actualizar datos.</p>
 				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis imperdiet accumsan leo sit amet pretium. Fusce tempor euismod pulvinar. Duis dui nisl, tincidunt et porttitor ut, lobortis vitae ipsum. Vivamus malesuada tortor a est posuere vitae luctus turpis imperdiet. Sed iaculis adipiscing eros. Suspendisse lobortis fermentum turpis luctus rhoncus. Vivamus feugiat feugiat porttitor. In ut dictum mauris. Donec ornare dolor a eros consectetur non ullamcorper elit consequat. Cras consectetur, tortor eget volutpat dignissim, est nulla consequat turpis, vitae scelerisque massa tellus non lectus. Fusce tempus, erat et tempor lacinia, dolor elit suscipit dui, eu cursus arcu eros sed diam. Etiam tempor lobortis turpis sed pharetra. Cras odio purus, condimentum in dictum faucibus, bibendum consectetur enim. Donec ultrices consectetur mi ut ultricies.</p>
 			</div>
 		</section>

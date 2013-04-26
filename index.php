@@ -48,7 +48,7 @@
 		<div id="second_menu" class="container">
 			<ul>
 				<li><a class="selected" href="#"><i class="icon-home"></i>Inicio</a></li>
-				<li><a href="#">Categoria2</a></li>
+				<li><a href="productos.php">Categoria2</a></li>
 				<li><a href="#">Categoria3</a></li>
 				<li><a href="#">Categoria4</a></li>
 				<li><a href="#">Categoria5</a></li>

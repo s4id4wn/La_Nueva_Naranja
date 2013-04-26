@@ -27,12 +27,13 @@
 
 <body>
 	<div id="page_wrapper">
-		<header>
+		<div id="header_admin">
 			<div class="container">
-			<a href="index.php"><img alt="Rescue" class="retina_logo" id="logo" src="imagenes/logo.png" /></a></div>
+			<a href="index.php"><img alt="Rescue" class="retina_logo" id="logo" src="imagenes/logo_admin.png" /></a></div>
 			<div class="container">
 				<nav>
 					<ul>
+						<li><a href="index.php"><i class="icon-exchange"></i>Ir Nueva Naranja</a></li>
 						<?php if (empty($_SESSION["usuario"])) { ?>
 						<li><a href="login.php"><i class="icon-user"></i>Login</a></li>
 						<?php } ?>
@@ -43,7 +44,7 @@
 					</ul>
 				</nav>
 			</div>
-		</header>
+		</div>
 		
 		<div class="admin"></div>
 		<section class="container">
