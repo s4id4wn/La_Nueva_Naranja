@@ -6,6 +6,12 @@ function validateFormOfUser(User)
 	User.user.value = User.user.value.trim();
 	var user = User.user.value;
 	
+	User.password.value = User.password.value.trim();
+	var password = User.password.value;
+	
+	User.confirm_password.value = User.confirm_password.value.trim();
+	var confirm_password = User.confirm_password.value;
+	
 	User.name.value = User.name.value.trim();
 	var name = User.name.value;
 
@@ -17,18 +23,9 @@ function validateFormOfUser(User)
 	
 	User.repeat_email.value = User.repeat_email.value.trim();
 	var repeat_email = User.repeat_email.value;
-	
-	User.password.value = User.password.value.trim();
-	var password = User.password.value;
-	
-	User.confirm_password.value = User.confirm_password.value.trim();
-	var confirm_password = User.confirm_password.value;
-	
+
 	User.town.value = User.town.value.trim();
 	var town = User.town.value;
-	
-	User.locality.value = User.locality.value.trim();
-	var locality = User.locality.value;
 	
 	User.address.value = User.address.value.trim();
 	var address = User.address.value;
@@ -37,14 +34,13 @@ function validateFormOfUser(User)
 	var telephone_number = User.telephone_number.value;
 	
 	if( this.validateUser(user)==true &
+		this.validatePassword(password)==true &
+		this.validateConfirmPassword(password,confirm_password)==true &
 		this.validateName(name)==true &
 		this.validateLastName(last_name)==true &
 		this.validateEmail(email)==true &
 		this.validateRepeat_email(email,repeat_email)==true &
-		this.validatePassword(password)==true &
-		this.validateConfirmPassword(password,confirm_password)==true &
 		this.validateTown(town)==true &
-		this.validateLocality(locality)==true &
 		this.validateAddress(address)==true &
 		this.validateTelephoneNumber(telephone_number)==true
 	){
@@ -54,7 +50,7 @@ function validateFormOfUser(User)
  return is_accepted;
 }
 
- function validateUser(user)
+function validateUser(user)
  {
 	var is_accepted = false;
 	var minimum_length_user = 3;
@@ -85,6 +81,69 @@ function validateFormOfUser(User)
 	}
 	return is_accepted;
 }
+
+function validatePassword(password)
+{
+	var is_accepted = false;
+	var maxim_length_password = 35;
+	
+	if(password=="")
+	{
+		$('#error_password').show();
+		$('#error_p').text('Contraseña es requerido').show();
+	}
+	else if(password!="")
+	{
+		if (password.length > maxim_length_password)
+		{
+			$('#error_password').show();
+			$('#error_p').text('No mayor a 35 caracteres').show(); 
+		}
+		else
+		{
+			$('#error_password').hide();
+			$('#error_p').hide();
+			is_accepted=true;
+		}
+	}
+	return is_accepted;
+}
+
+function validateConfirmPassword(password,confirm_password)
+{
+	var is_accepted = false;
+	var maxim_length_confirm_password = 35;
+	
+	if(confirm_password=="")
+	{
+		$('#error_confirm_password').show();
+		$('#error_cp').text('Cofirmar Contraseña es requerido').show();
+	}
+	else if(confirm_password!="")
+	{
+		if (confirm_password.length > maxim_length_confirm_password)
+		{
+			$('#error_confirm_password').show();
+			$('#error_cp').text('No mayor a 35 caracteres').show(); 
+		}
+		else
+		{
+			if(password!=confirm_password)
+			{
+				$('#error_confirm_password').show();
+				$('#error_cp').text('Repetir contraseña exactamente').show();
+			}
+			else
+			{
+				$('#error_confirm_password').hide();
+				$('#error_cp').hide();
+				is_accepted=true;
+			}
+		}
+	}
+	return is_accepted ;
+}
+
 
 function validateName(name)
 {
@@ -189,68 +248,6 @@ function validateRepeat_email(email,repeat_email)
 	return is_accepted;
 }
 
-function validatePassword(password)
-{
-	var is_accepted = false;
-	var maxim_length_password = 35;
-	
-	if(password=="")
-	{
-		$('#error_password').show();
-		$('#error_p').text('Contraseña es requerido').show();
-	}
-	else if(password!="")
-	{
-		if (password.length > maxim_length_password)
-		{
-			$('#error_password').show();
-			$('#error_p').text('No mayor a 35 caracteres').show(); 
-		}
-		else
-		{
-			$('#error_password').hide();
-			$('#error_p').hide();
-			is_accepted=true;
-		}
-	}
-	return is_accepted;
-}
-
-function validateConfirmPassword(password,confirm_password)
-{
-	var is_accepted = false;
-	var maxim_length_confirm_password = 35;
-	
-	if(confirm_password=="")
-	{
-		$('#error_confirm_password').show();
-		$('#error_cp').text('Cofirmar Contraseña es requerido').show();
-	}
-	else if(confirm_password!="")
-	{
-		if (confirm_password.length > maxim_length_confirm_password)
-		{
-			$('#error_confirm_password').show();
-			$('#error_cp').text('No mayor a 35 caracteres').show(); 
-		}
-		else
-		{
-			if(password!=confirm_password)
-			{
-				$('#error_confirm_password').show();
-				$('#error_cp').text('Repetir contraseña exactamente').show();
-			}
-			else
-			{
-				$('#error_confirm_password').hide();
-				$('#error_cp').hide();
-				is_accepted=true;
-			}
-		}
-	}
-	return is_accepted ;
-}
-
 function validateTown(town)
 {
 	var is_accepted = false;
@@ -263,24 +260,6 @@ function validateTown(town)
 	{
 		$('#error_town').hide();
 		$('#error_t').hide();
-		is_accepted=true;
-	}
-	return is_accepted;
-}
-
-function validateLocality(locality)
-{
-	var is_accepted = false;
-	
-	if(locality=="")
-	{
-		$('#error_locality').show();
-		$('#error_l').text('Localidad es requerido').show();
-	}
-	else if(locality!="")
-	{
-		$('#error_locality').hide();
-		$('#error_l').hide();
 		is_accepted=true;
 	}
 	return is_accepted;
@@ -310,7 +289,7 @@ function validateTelephoneNumber(telephone_number)
 {
 	var is_accepted = false;
 	var minimum_length_telephone_number = 7;
-	var maxim_length_telephone_number = 14;
+	var maxim_length_telephone_number = 10;
 	
 	if(telephone_number=="")
 	{
@@ -346,4 +325,3 @@ function validateTelephoneNumber(telephone_number)
 	}
 	return is_accepted;
 }
-	

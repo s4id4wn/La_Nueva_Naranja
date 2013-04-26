@@ -16,7 +16,7 @@
     <script type="text/javascript" src="scripts/jquery-1.9.0.min.js"></script> 
     <script type="text/javascript" src="plugins/jquery.nivo.slider.js"></script>
 	
-	 <script type="text/javascript" src="JavaScript/user.js"></script> 
+	 <script type="text/javascript" src="JavaScript/validate_user.js"></script> 
 	
 	<link rel="stylesheet" href="plugins/light/light.css" type="text/css" media="screen" />
 	<link rel="stylesheet" href="plugins/nivo-slider.css" type="text/css" media="screen" />
@@ -118,85 +118,89 @@
 				Comienzo contenedor principal
 			---------------------------------->
 			<div id="main_container">
-	<form action="new_user.php" method="post" onsubmit="return validateFormOfUser(this)">
+	<form action="PHP/add_user.php" method="post" onsubmit="return validateFormOfUser(this)">
 	
 	<h2>Registro de  usuario</h2>
 	
 	<p>Campos con <span class="requerid">*</span> son requeridos</p>
 	
 	<table BORDER=0>
-	
-		<tr class="bordcurv">
+		<tr>
 			<td>Usuario <span class="requerid">*</span> </td>
-			<td>    
-				<INPUT  type="text" name="user" >
+			<td> 
 				<div  class="error" id="error_user">
 					<p id="error_u"></p>
-				</div>
+				</div>				
+				<INPUT  type="text" name="user" >
 			</td>
 		</tr>
 		
-			<tr >
-			<td>Nombres <span class="requerid">*</span> </td>
-			<td>
-				<INPUT  type="text" name="name" >
-				<div  class="error" id="error_name">
-					<p  id="error_n"></p>
-				</div>
-			</td>
-		</tr>
-
-		<tr>
-			<td>Apellidos <span class="requerid">*</span> </td>
-			<td>
-				<INPUT type="text" name="last_name">
-				<div class="error" id="error_last_name">
-					<p id="error_ln"></p>
-				</div>
-			</td>
-		</tr>
-
-		<tr>
-			<td>Correo <span class="requerid">*</span> </td>
-			<td>
-				<input type="text" name="email" >
-				<div class="error" id="error_email">
-					<p id="error_e"></p>
-				</div>
-			</td>
-		</tr>
-
-		<tr>
-			<td>Repetir Correo <span class="requerid">*</span> </td>
-			<td>
-				<input type="text" name="repeat_email" >
-				<div class="error" id="error_repeat_email">
-					<p id="error_re"></p>
-				</div>
-			</td>
-		</tr>
-		<tr>
 			<td>Contraseña <span class="requerid">*</span> </td>
 			<td>
-				<input type="password" name="password">
 				<div class="error" id="error_password">
 					<p id="error_p"></p>
 				</div>
+				<input type="password" name="password">
 			</td>
 		</tr>
 
 		<tr>
 			<td>Confirmar Contraseña <span class="requerid">*</span> </td>
 			<td>
-				<input type="password" name="confirm_password">
 				<div class="error" id="error_confirm_password">
 					<p id="error_cp"></p>
 				</div>
+				<input type="password" name="confirm_password">
+			</td>
+		</tr>
+		
+			<tr >
+			<td>Nombres <span class="requerid">*</span> </td>
+			<td>
+				<div  class="error" id="error_name">
+					<p  id="error_n"></p>
+				</div>
+				<INPUT  type="text" name="name" >
+			</td>
+		</tr>
+
+		<tr>
+			<td>Apellidos <span class="requerid">*</span> </td>
+			<td>
+				<div class="error" id="error_last_name">
+					<p id="error_ln"></p>
+				</div>
+				<INPUT type="text" name="last_name">
+			</td>
+		</tr>
+
+		<tr>
+			<td>Correo <span class="requerid">*</span> </td>
+			<td>
+				<div class="error" id="error_email">
+					<p id="error_e"></p>
+				</div>
+				<input type="text" name="email" >
+			</td>
+		</tr>
+
+		<tr>
+			<td>Repetir Correo <span class="requerid">*</span> </td>
+			<td>
+				<div class="error" id="error_repeat_email">
+					<p id="error_re"></p>
+				</div>
+				<input type="text" name="repeat_email" >
 			</td>
 		</tr>
 		<tr>
+		
+		<tr>
 			<td>Municipio <span class="requerid">*</span> </td>
 			<td>
+				<div class="error" id="error_town">
+					<p id="error_t"></p>
+				</div>
     <select name="town" >
       <option>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Seleccionar</option>
       
@@ -312,46 +316,28 @@
 				
     </select>
 	
-	<div class="error" id="error_town">
-			<p id="error_t"></p>
-	</div>
+	<br><br>
 	
 	</td>
 	</tr>
-		<tr>
-			<td>Localidad <span class="requerid">*</span> </td>
-			<td>
-				<input type="text" name="locality">
-				<div class="error" id="error_locality">
-					<p id="error_l"></p>
-				</div>
-			</td>
-		</tr>
 		
 		<tr>
 			<td>Dirección <span class="requerid">*</span> </td>
 			<td>
-				<input type="text" name="address">
 				<div class="error" id="error_address">
 					<p id="error_a"></p>
 				</div>
+				<input type="text" name="address">
 			</td>
 		</tr>
 		
 		<tr>
 			<td>Número telefónico <span class="requerid">*</span> </td>
 			<td>
-				<input type="text" name="telephone_number" >
 				<div class="error" id="error_telephone_number">
 					<p id="error_tl"></p>
 				</div>
-			</td>
-		</tr>
-
-		<tr>
-			<td COLSPAN=2>
-				<input type="checkbox" name="checkbox" id="checkbox">
-				Recibiar ofertas de La Nueva Naranja
+				<input type="text" name="telephone_number" >
 			</td>
 		</tr>
 		
