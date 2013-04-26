@@ -10,6 +10,7 @@ CREATE  TABLE IF NOT EXISTS `tbl_role` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT ,
   `name` VARCHAR(45) NOT NULL ,
   `priority` INT NOT NULL ,
+  `url_initial` VARCHAR(100) NOT NULL ,
   `active` TINYINT(1) NOT NULL ,
   PRIMARY KEY (`id`) )
 ENGINE = InnoDB;
@@ -60,6 +61,7 @@ CREATE  TABLE IF NOT EXISTS `tbl_product` (
   `name` VARCHAR(45) NOT NULL ,
   `price` DECIMAL(9,2) NOT NULL ,
   `description` VARCHAR(200) NOT NULL ,
+  `amount` INT NOT NULL ,
   `active` TINYINT(1) NOT NULL ,
   PRIMARY KEY (`id`) ,
   INDEX `fk_tbl_product_tbl_brand_idx` (`brand_id` ASC) ,
