@@ -35,10 +35,7 @@ header {
 	border-bottom: 1px solid black;
 	z-index: 99; 
 	background: #dd4814;
-	opacity: 0.9;
 	height: 60px;
-	-ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity = 90);
-	filter: alpha(opacity = 90);
 }
 
 	header .select-menu { 
@@ -84,10 +81,7 @@ header {
 	border-bottom: 1px solid black;
 	z-index: 99; 
 	background: #0d71b8;
-	opacity: 0.9;
 	height: 60px;
-	-ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity = 90);
-	filter: alpha(opacity = 90);
 }
 
 	#header_admin .select-menu { 
@@ -389,7 +383,6 @@ input[type="text"], input[type="password"]
 	padding: 2px 3px 2px 4px;
 	box-shadow: 1px 1px 6px #ccc;
 	margin-bottom: 10px;
-	color: #dd4814;
 	font-family: 'MuseoSans-500', Georgia, Palatino;
 }
 
@@ -512,4 +505,5 @@ h2+p, p+p{
 	margin-right: 20px;
 	width: 603px;
 	text-align: right;
+	background-color: green;
 }

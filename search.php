@@ -5,17 +5,12 @@
 <html lang="es">
 <head>
 	<title>La Nueva Naranja</title>
-	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-	
+	<meta charset="utf-8"/> 
 	<link rel="stylesheet" type="text/css" href="css/estilo.css"/>
-	
-	<link rel="stylesheet" href="plugins/light/light.css" type="text/css" media="screen" />
-	<link rel="stylesheet" href="plugins/nivo-slider.css" type="text/css" media="screen" />
 	<link rel="stylesheet" href="css/css/font-awesome.css">
-	
-    <script type="text/javascript" src="scripts/jquery-1.9.0.min.js"></script> 
-    <script type="text/javascript" src="plugins/jquery.nivo.slider.js"></script>
-	
+	<link rel="shortcut icon" href="images/favicon.ico"/>
+
+    <script type="text/javascript" src="javascript/valida_login.js"></script>
 </head>
 
 <body>
@@ -47,14 +42,14 @@
 		
 		<div id="second_menu" class="container">
 			<ul>
-				<li><a class="selected" href="#"><i class="icon-home"></i>Inicio</a></li>
-				<li><a href="search.php">Categoria2</a></li>
+				<li><a href="index.php"><i class="icon-home"></i>Inicio</a></li>
+				<li><a class="selected" href="#">Categoria2</a></li>
 				<li><a href="#">Categoria3</a></li>
 				<li><a href="#">Categoria4</a></li>
 				<li><a href="#">Categoria5</a></li>
 			</ul>
 		</div>
- 		<div class="limpiar"></div>
+		<div class="limpiar"></div>
 		<section class="container">
 		
 			<!-------------------------
@@ -63,12 +58,12 @@
 			<div id="side_left">
 			
 				<div class="widget">
-				<div class="head_menu">Buscador</div>
-				<div class="body">
-					<FORM METHOD=POST ACTION="php/buscar.php"> 
-						<INPUT TYPE="text" NAME="busqueda"> 
-					</FORM> 
-				</div>
+					<div class="head_menu">Buscador</div>
+					<div class="body">
+						<FORM METHOD=POST ACTION="php/buscar.php"> 
+							<INPUT TYPE="text" NAME="busqueda"> 
+						</FORM> 
+					</div>
 				</div>
 				
 				<div class="widget">
@@ -81,8 +76,6 @@
 						<li><a href="#">Tu texto 4</a></li>
 						<li><a href="#">Tu texto 5</a></li>
 						<li><a href="#">Tu texto 6</a></li>
-						<li><a href="#">Tu texto 7</a></li>
-						<li><a href="#">Tu texto 8</a></li>
 					</ul>
 				</div>
 				</div>
@@ -113,55 +106,24 @@
 				Comienzo contenedor principal
 			---------------------------------->
 			<div id="main_container">
-			
-				<!-------------------------
-					Comienzo del slider 
-				-------------------------->
-				<h2>Promociones</h2>
-				<div class="limpiar"></div>
-				<div class="slider-wrapper theme-light">
-					<div id="slider" class="nivoSlider">
-						<img src="plugins/images/toystory.jpg" data-thumb="plugins/images/toystory.jpg" alt="" />
-						<img src="plugins/images/nemo.jpg" data-thumb="plugins/images/nemo.jpg" alt="" />
-						<img src="plugins/images/walle.png" data-thumb="plugins/images/walle.png" alt="" />
-					</div>
-					<div id="htmlcaption" class="nivo-html-caption">
-						<strong>This</strong> is an example of a <em>HTML</em> caption with <a href="#">a link</a>. 
-					</div>
+				<h2>Busqueda: valor1, valor2, etc.</h2>
+				<div class="box_producto">
+					<div class="imagen"><img src="imagenes/2.png"/></div>
+					<div class="info">Producto 1</div>
 				</div>
-				<script type="text/javascript">
-					$(window).load(function() {
-					$('#slider').nivoSlider();
-					});
-				</script>
-				<!-------------------------
-					Fin del slider 
-				-------------------------->
-				
-				<div class="limpiar"></div>
-				<h2>Últimos Productos</h2>
-				<div class="limpiar"></div>
-				<div id="last_items">
-					<div id="item_left">
-						<div class="item_head">Nombre producto #1</div>
-						<div class="item_body"><img src="imagenes/microondas.jpg" width="364" height="276"/></div>
-						<div class="item_foot"><div class="price">Precio: $200.00</div><div class="details"><a href="#">Detalles</a></div><div class="car"><a href="#"><img src="imagenes/add.png"/></a></div></div>
-					</div>
-					
-					<div id="item_right">
-						<div class="item_head">Nombre producto #2</div>
-						<div class="item_body"><img src="imagenes/descarga.jpg" width="364" height="276"/></div>
-						<div class="item_foot"><div class="price">Precio: $200.00</div><div class="details"><a href="#">Detalles</a></div><div class="car"><a href="#"><img src="imagenes/add.png"/></a></div></div>
-					</div>
+				<div class="box_producto">
+					<div class="imagen"><img src="imagenes/3.png"/></div>
+					<div class="info">Producto 2</div>
 				</div>
 			</div>
 		</section>
+
 		<div class="limpiar"></div>
+
 		<footer class="container">
 			<p>La Nueva Naranja &copy; 2013. Algunos derechos reservados.</p>
 		</footer>
  
 	</div>
- 
 </body>
 </html>
