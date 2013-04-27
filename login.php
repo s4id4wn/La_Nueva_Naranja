@@ -26,14 +26,14 @@
 					<ul>
 						<?php if (empty($_SESSION["usuario"])) { ?>
 						<li><a href="login.php"><i class="icon-user"></i>Login</a></li>
-						<li><a href="Modelos/user/new_user.php"><i class="icon-pencil"></i>Registro</a></li>
+						<li><a href="new_user.php"><i class="icon-pencil"></i>Registro</a></li>
 						<?php } ?>
 						
 						<li><a href="contact.php"><i class="icon-envelope-alt"></i>Contacto</a></li>
 						<li><a href="#"><i class="icon-shopping-cart"></i>Carrito {0}</a></li>
 						
 						<?php if(isset($_SESSION['prioridad']) && $_SESSION['prioridad'] == "5" && isset($_SESSION['logueado']) && $_SESSION['logueado'] == "activa") { ?>
-						<li><a href="Modelos/user/admin_panel.php"><i class="icon-globe"></i>Panel Admin</a></li>
+						<li><a href="admin_panel.php"><i class="icon-globe"></i>Panel Admin</a></li>
 						<?php }
 						if(isset($_SESSION['logueado']) && $_SESSION['logueado'] == "activa") { ?>
 						<li><a href="php/logout.php"><i class="icon-signout"></i>Desconectar[<?php echo $_SESSION['usuario']; ?>]</a></li>

@@ -1,11 +1,11 @@
 <?php
-	if(isset($_POST['user']) && isset($_POST['password']) ){
+	if(isset($_POST['user']) && isset($_POST['password']) && trim($_POST['user']) != "" && trim($_POST['password']) != ""){
 		include_once('lib.php');
 		
 		connectBD();
 		
-		$usuario = $_POST['user'];
-		$contrasenia = $_POST['password'];
+		$usuario = mysql_real_escape_string($_POST['user']);
+		$contrasenia = mysql_real_escape_string($_POST['password']);
 
 		$SQL_Sentence = "SELECT * FROM tbl_user WHERE user='$usuario'";
 		$result = mysql_query($SQL_Sentence);
