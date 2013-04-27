@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <?php
 	session_start();
-?>
+	include_once('php/lib.php');
+?> 
 <html lang="es">
 <head>
 	<title>La Nueva Naranja</title>
@@ -43,7 +44,7 @@
 		<div id="second_menu" class="container">
 			<ul>
 				<li><a href="index.php"><i class="icon-home"></i>Inicio</a></li>
-				<li><a class="selected" href="#">Categoria2</a></li>
+				<li><a href="#">Categoria2</a></li>
 				<li><a href="#">Categoria3</a></li>
 				<li><a href="#">Categoria4</a></li>
 				<li><a href="#">Categoria5</a></li>
@@ -60,8 +61,8 @@
 				<div class="widget">
 					<div class="head_menu">Buscador</div>
 					<div class="body">
-						<FORM METHOD=POST ACTION="php/buscar.php"> 
-							<INPUT TYPE="text" NAME="busqueda"> 
+						<FORM method="POST" action="php/buscar.php"> 
+							<INPUT type="text" name="busqueda" value=" <?php echo $_GET['search']; ?>"> 
 						</FORM> 
 					</div>
 				</div>
@@ -106,15 +107,63 @@
 				Comienzo contenedor principal
 			---------------------------------->
 			<div id="main_container">
-				<h2>Busqueda: valor1, valor2, etc.</h2>
+				<?php
+				if (!isset($_GET['search']) || $_GET['search'] == "" ){ 
+    				echo "<h2>Debe especificar una cadena a buscar</h2>"; 
+				}
+				else{
+					$search = $_GET['search'];
+					//Evita inyecciones HTML
+					$search = htmlspecialchars($search);
+					$search = htmlentities($search);
+
+					echo "<h2>Busqueda: " . $search . "</h2>";
+					connectBD();
+
+					$SQL_Sentence = "SELECT * FROM tbl_product WHERE name LIKE '%$search%' ORDER BY name";
+					$result = mysql_query($SQL_Sentence);
+
+					if($row = mysql_fetch_array($result)){
+					
+						do {
+							echo "<div class='box_producto'>";
+							echo "<div class='imagen'><img src='" . $row['url_image'] . "'/></div>";
+							echo "<div class='info'><div class='header'>";
+							if($row['amount'] == 0){
+								echo "<div class='agotado'>Agotado</div>";
+							}else{
+								echo "<div class='disponible'>Disponible</div>";
+							}
+							echo "<div class='product_name'>" . $row['name'] . "</div></div>";
+							echo "<div class='description'>" . $row['description'] ."</div></div></div>";
+						}while ($row = mysql_fetch_array ($result));
+
+					}else{
+						echo "No se encontro ningun resultado";
+					}
+				?>
+				<!--
 				<div class="box_producto">
 					<div class="imagen"><img src="imagenes/2.png"/></div>
-					<div class="info">Producto 1</div>
+					<div class="info">
+						<div class="header"><div class="agotado">Agotado</div><div class="product_name">Plancha</div></div>
+						<div class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis imperdiet accumsan leo sit amet pretium. Fusce tempor euismod pulvinar</div>
+					</div>
 				</div>
+
 				<div class="box_producto">
 					<div class="imagen"><img src="imagenes/3.png"/></div>
-					<div class="info">Producto 2</div>
+					<div class="info">
+						<div class="header"><div class="disponible">Disponible</div><div class="product_name">Horno 2 quemadores</div></div>
+						<div class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis imperdiet accumsan leo sit amet pretium. Fusce tempor euismod pulvinar. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis imperdiet accumsan leo sit amet pretium. Fusce tempor euismod pulvinarLorem ipsum dolor sit amet, consectetur adipiscing elit. Duis imperdiet accumsan leo sit amet pretium. Fusce tempor euismod pulvinarLorem ipsum dolor sit amet, consectetur adipiscing elit. Duis imperdiet accumsan leo sit amet pretium. Fusce tempor euismod pulvinarLorem ipsum dolor sit amet, consectetur adipiscing elit. Duis imperdiet accumsan leo sit amet pretium. Fusce tempor euismod pulvinar</div>
+					</div>
 				</div>
+				-->
+
+				<?php
+				}
+				?>
+
 			</div>
 		</section>
 

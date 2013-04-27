@@ -20,11 +20,6 @@ body{
 	padding: 0;
 }
 
-/*
- *************************************
- * Cabecera [usuarios, admin], logo.
- *************************************
- */
 .retina_logo{
 	width:294px;
 	height:63px;
@@ -126,7 +121,7 @@ header {
 
 /*
  *************************************
- * Menu de las categorias y navegacion [usuarios].
+ * Menu de las categorias y navegacion.
  *************************************
  */
 #second_menu{
@@ -173,7 +168,7 @@ header {
 
 /*
  *************************************
- * Menu del lado derecho [usuarios].
+ * Menu del lado derecho.
  *************************************
  */
 section {
@@ -226,11 +221,8 @@ section #side_left .body {
 		margin-bottom: 20px;
 	}
 
-	/*
- 	*************************************
- 	* Menu del lado derecho [admin].
- 	*************************************
- 	*/
+	/*admin*/
+
 	section #side_left .body_admin {
 	background-color: white;
 	text-align: left;
@@ -348,11 +340,7 @@ section #main_container {
 			font-weight: bold;
 			text-decoration: none;
 		}
-/*
- *************************************
- * Pie de la pagina.
- *************************************
- */	
+
 footer {
 	clear: both;
 	padding-top: 20px;
@@ -410,6 +398,11 @@ input[type="submit"], input[type="reset"]
 	margin-bottom: 20px;
 }
 
+#no_styles input[type="submit"]
+{	
+	background: #3493d6;
+}
+
 input[type="submit"]:hover, input[type="reset"]:hover
 {	
 	padding: 5px 10px;
@@ -417,10 +410,6 @@ input[type="submit"]:hover, input[type="reset"]:hover
 	box-shadow: none;
 }
 
-#no_styles input[type="submit"]
-{	
-	background: #3493d6;
-}
 
 *:focus {
 	outline: none;
@@ -482,11 +471,6 @@ h2+p, p+p{
 	color:red;
 }
 
-/*
- *************************************
- * Area del buscador.
- *************************************
- */
 .box_producto{
 	width: 100%;
 	background: white;
@@ -507,19 +491,56 @@ h2+p, p+p{
 	width: 100px;
 	height: 110px;
 	background: #eee;
-	margin-top: 5px;
-	margin-left: 5px;
-	margin-right: 20px;
+	margin: 5px 0px 0px 5px;
 	float: left;
 	border: 1px dashed #eee;
 }
 
 .box_producto .info{
-	float: right;
+	float: left;
 	height: 110px;
-	margin-top: 5px;
-	margin-right: 20px;
-	width: 603px;
+	margin: 5px 10px 0 10px;
 	text-align: right;
-	background-color: green;
+	background-color: #eee;
+	width: 622px;
 }
+
+	.info .header{
+		width: 100%;
+		height: 20px;
+		border-bottom: 1px dashed #ccc;
+	}
+
+	.info .header .product_name{
+		width: 70%;
+		font-size: 16px;
+		font-weight: bolder;
+		color: #5E6569;
+		float: right;
+	}
+
+	.info .header .disponible{
+		width: 30%;
+		font-size: 10px;
+		color: green;
+		float: left;
+		text-align: left;
+	}
+
+	.info .header .agotado{
+		width: 30%;
+		font-size: 10px;
+		color: red;
+		float: left;
+		text-align: left;
+	}
+
+	.info .description{
+		width: 500px;
+		height: 80px;
+		font-size: 11px;
+		clear: both;
+		text-align: left;
+		padding: 5px 0 0 5px;
+		overflow: auto;
+	}
