@@ -3,7 +3,11 @@
 	session_start();
 	if(isset($_SESSION['logueado']) && $_SESSION['logueado'] == "activa") { 
 		header('Location: index.php');
-	} 
+	}
+	else
+	{
+		if(isset($_POST['id']) && is_numeric($_POST['id']))
+	}
 ?>
 <html lang="es">
 <head>
@@ -117,10 +121,27 @@
 			<!---------------------------------
 				Comienzo contenedor principal
 			---------------------------------->
+
 			<div id="main_container">
-	<form action="PHP/user/add_user.php" method="post" onsubmit="return validateFormOfUser(this)">
-	
-	<h2>Registro de  usuario</h2>
+		<?php
+		
+		if(isset($_POST['id']))
+		{
+		?>
+		<!--  Cambiar las validaciones y el valor del action *************************************-->
+		
+			<form action="PHP/user/add_user.php" method="post" onsubmit="return validateFormOfUser(this)">
+			<h2>Editar usuario</h2>
+		<?php
+		}
+		else
+		{
+		?>
+			<form action="PHP/user/add_user.php" method="post" onsubmit="return validateFormOfUser(this)">
+			<h2>Registro de  usuario</h2>
+		<?php
+		}
+		?>
 	
 	<p>Campos con <span class="requerid">*</span> son requeridos</p>
 	

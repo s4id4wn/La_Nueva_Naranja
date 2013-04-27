@@ -13,6 +13,7 @@
 		header('Location: ../../error.php?error=2');
 		die();
 	}
+				
 ?>
 <html lang="en">
 <head>
@@ -75,35 +76,69 @@
 				Comienzo contenedor principal
 			---------------------------------->
 			<div id="main_container">
+			
+			<h2>Administrar Usuarios</h2>
 
-<h2>Administación de Usuarios</h2>
-
-<table id="customers">
+<?php
+	include_once('PHP/lib.php');
+			
+	connectBD();
+	
+	include_once('PHP/user/SQL/user.php');
+	
+	$result = getAllUsers();
+	
+//	mysql_close();
+	
+	if( mysql_num_rows( $result ) != 0)
+	{
+	?>
+	
+	<table id="customers" >
 <tr>
-  <th>Nombre</th>
+  <th>Id</th>
+  <th>Usuario</th>
+  <th>Nombres</th>
+  <th>Apellidos</th>
   <th>Correo</th>
-  <th>Telefono</th>
-  <th>Contact</th>
+  <th>Municipio</th>
+  <th>Dirección</th>
+  <th>Teléfono</th>
   <th>Acciones</th>
 </tr>
 
-<tr>
-	<td>Alfreds Futterkiste</td>
-	<td>Maria Anders</td>
-	<td>Germany</td>
-	<td>Maria Anders</td>
-	<td>Germany</td>
-</tr>
-
-<tr class="alt">
-	<td>Alfreds Futterkiste</td>
-	<td>Maria Anders</td>
-	<td>Germany</td>
-	<td>Maria Anders</td>
-	<td>Germany</td>
-</tr>
-
+<?php	
+	while( $user = mysql_fetch_array( $result ) ){
+?>
+	<tr bgcolor=#bdc3d6>
+				
+	<tr>			
+		<td align="center"><?php echo $user['id']; ?></td>
+		<td align="center"><?php echo $user['user']; ?></td>
+		<td align="center"><?php echo $user['name']; ?></td>
+		<td align="center"><?php echo $user['last_name']; ?></td>
+		<td align="center"><?php echo $user['email']; ?></td>
+		<td align="center"><?php echo $user['town']; ?></td>
+		<td align="center"><?php echo $user['address']?></td>
+		<td align="center"><?php echo $user['telephone_number']?></td>
+					
+		<td align="center">
+			<a href="new_user.php?id=<?php echo $user['id']; ?>">Editar</a>
+			<!-- Corregir la siguiente linea-->
+			<a href="EliminarUsuario.php?id=<?php echo $user['id']; ?>" onclick="return confirm('¿Desactivar el usuario:&nbsp;<?php echo $user['name']?>?')">Desactivar</a>
+		</td>
+	</tr>
+<?php
+	}    
+?>
 </table>
+	<?php
+	}
+	else
+	{
+	//no hay registros de usuarios
+	}
+?>
 
 			</div>
 		</section>
