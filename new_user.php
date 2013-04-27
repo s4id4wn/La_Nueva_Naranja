@@ -118,7 +118,7 @@
 				Comienzo contenedor principal
 			---------------------------------->
 			<div id="main_container">
-	<form action="../../PHP/add_user.php" method="post" onsubmit="return validateFormOfUser(this)">
+	<form action="PHP/user/add_user.php" method="post" onsubmit="return validateFormOfUser(this)">
 	
 	<h2>Registro de  usuario</h2>
 	

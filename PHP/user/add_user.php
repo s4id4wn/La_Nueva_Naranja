@@ -35,7 +35,7 @@ if( //isset($_POST['role_id']) && trim($_POST['role_id'])!='' &&
 				$address = $_POST['address'];
 				$telephone_number = $_POST['telephone_number'];
 				
-				include_once('../../SQL/user.php');
+				include_once('users/SQL/user.php');
 				
 				if(!existsUser($user))
 				{
@@ -87,7 +87,7 @@ if( //isset($_POST['role_id']) && trim($_POST['role_id'])!='' &&
 else
 {	/* los campos no son por post*/
 	echo 'No lo intentes de nuevo';
-	header('Location: ../../new_user.php');
+	header('Location: ../../../new_user.php');
 	die();
 }
 
