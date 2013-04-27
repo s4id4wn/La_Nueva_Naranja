@@ -15,6 +15,16 @@
 	
     <script type="text/javascript" src="scripts/jquery-1.9.0.min.js"></script> 
     <script type="text/javascript" src="plugins/jquery.nivo.slider.js"></script>
+	<script type="text/javascript" src="plugins/konami/konami.js"></script>
+	
+        <script type="text/javascript" charset="utf-8">
+            $(document).konami({
+                code: ['up', 'up', 'down', 'down'], 
+                callback: function() {
+                    document.getElementById('hola').innerHTML = '<h1>HOLA!!!!</h1><br><img src="imagenes/xd.jpg"/>';
+                }
+			});
+		</script>
 	
 </head>
 
@@ -118,6 +128,7 @@
 					Comienzo del slider 
 				-------------------------->
 				<h2>Promociones</h2>
+				<p id="hola"></p>
 				<div class="limpiar"></div>
 				<div class="slider-wrapper theme-light">
 					<div id="slider" class="nivoSlider">
