@@ -128,7 +128,7 @@
 					}
 				?>	
 
-				<TABLE BORDER=0>
+				<TABLE border=0>
 					<TR>
 						<TD width="153">Usuario:</TD><TD width="172"><INPUT  type='text' name="user"></TD>
 					</TR>

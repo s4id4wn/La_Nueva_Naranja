@@ -103,9 +103,6 @@
 
 			</div>
 			
-			<!---------------------------------
-				Comienzo contenedor principal
-			---------------------------------->
 			<div id="main_container">
 				<?php
 				if (!isset($_GET['search']) || $_GET['search'] == "" ){ 
@@ -116,51 +113,33 @@
 					//Evita inyecciones HTML
 					$search = htmlspecialchars($search);
 					$search = htmlentities($search);
+					//Evita inyeccions SQL
+					$search = mysql_real_escape_string($search);
 
 					echo "<h2>Busqueda: " . $search . "</h2>";
-					connectBD();
 
+					connectBD();
 					$SQL_Sentence = "SELECT * FROM tbl_product WHERE name LIKE '%$search%' ORDER BY name";
 					$result = mysql_query($SQL_Sentence);
 
 					if($row = mysql_fetch_array($result)){
 					
 						do {
-							echo "<div class='box_producto'>";
-							echo "<div class='imagen'><img src='" . $row['url_image'] . "'/></div>";
-							echo "<div class='info'><div class='header'>";
-							if($row['amount'] == 0){
-								echo "<div class='agotado'>Agotado</div>";
-							}else{
-								echo "<div class='disponible'>Disponible</div>";
-							}
-							echo "<div class='product_name'>" . $row['name'] . "</div></div>";
-							echo "<div class='description'>" . $row['description'] ."</div></div></div>";
+								echo "<div class='box_producto'>";
+								echo "<div class='imagen'><img src='" . $row['url_image'] . "'/></div>";
+								echo "<div class='info'><div class='header'>";
+								if($row['amount'] == 0){
+									echo "<div class='agotado'>Agotado</div>";
+								}else{
+									echo "<div class='disponible'>Disponible</div>";
+								}
+								echo "<div class='product_name'>" . $row['name'] . "</div></div>";
+								echo "<div class='description'>" . $row['description'] ."</div></div></div>";
 						}while ($row = mysql_fetch_array ($result));
 
 					}else{
 						echo "No se encontro ningun resultado";
 					}
-				?>
-				<!--
-				<div class="box_producto">
-					<div class="imagen"><img src="imagenes/2.png"/></div>
-					<div class="info">
-						<div class="header"><div class="agotado">Agotado</div><div class="product_name">Plancha</div></div>
-						<div class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis imperdiet accumsan leo sit amet pretium. Fusce tempor euismod pulvinar</div>
-					</div>
-				</div>
-
-				<div class="box_producto">
-					<div class="imagen"><img src="imagenes/3.png"/></div>
-					<div class="info">
-						<div class="header"><div class="disponible">Disponible</div><div class="product_name">Horno 2 quemadores</div></div>
-						<div class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis imperdiet accumsan leo sit amet pretium. Fusce tempor euismod pulvinar. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis imperdiet accumsan leo sit amet pretium. Fusce tempor euismod pulvinarLorem ipsum dolor sit amet, consectetur adipiscing elit. Duis imperdiet accumsan leo sit amet pretium. Fusce tempor euismod pulvinarLorem ipsum dolor sit amet, consectetur adipiscing elit. Duis imperdiet accumsan leo sit amet pretium. Fusce tempor euismod pulvinarLorem ipsum dolor sit amet, consectetur adipiscing elit. Duis imperdiet accumsan leo sit amet pretium. Fusce tempor euismod pulvinar</div>
-					</div>
-				</div>
-				-->
-
-				<?php
 				}
 				?>
 
