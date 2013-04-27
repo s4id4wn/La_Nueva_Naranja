@@ -6,8 +6,8 @@ body{
 
 @font-face {
 	font-family: 'MuseoSans-500';
-	src: url('../webfonts/24B1E9_0_0.eot');
-	src: url('../webfonts/24B1E9_0_0.eot?#iefix') format('embedded-opentype'),url('../webfonts/24B1E9_0_0.woff') format('woff'),url('../webfonts/24B1E9_0_0.ttf') format('truetype');
+	src: url('webfonts/24B1E9_0_0.eot');
+	src: url('webfonts/24B1E9_0_0.eot?#iefix') format('embedded-opentype'),url('webfonts/24B1E9_0_0.woff') format('woff'),url('webfonts/24B1E9_0_0.ttf') format('truetype');
 }
 
 .container {
