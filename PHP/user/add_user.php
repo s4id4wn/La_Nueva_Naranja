@@ -18,8 +18,8 @@ if( //isset($_POST['role_id']) && trim($_POST['role_id'])!='' &&
 		if($_POST['email'] == $_POST['repeat_email'])
 		{
 		//validar si existe el id del rol
-			if(   )
-			{
+		/*	if(   )
+			{    */
 				include_once('../lib.php');
 			
 				connectBD();
@@ -35,7 +35,7 @@ if( //isset($_POST['role_id']) && trim($_POST['role_id'])!='' &&
 				$address = $_POST['address'];
 				$telephone_number = $_POST['telephone_number'];
 				
-				include_once('users/SQL/user.php');
+				include_once('SQL/user.php');
 				
 				if(!existsUser($user))
 				{
@@ -65,10 +65,10 @@ if( //isset($_POST['role_id']) && trim($_POST['role_id'])!='' &&
 					die();
 				}
 			
-			}else
+		/*	}else
 			{
 			//no existe el id del role
-			}
+			}    */
 		}
 		else
 		{
@@ -87,7 +87,7 @@ if( //isset($_POST['role_id']) && trim($_POST['role_id'])!='' &&
 else
 {	/* los campos no son por post*/
 	echo 'No lo intentes de nuevo';
-	header('Location: ../../../new_user.php');
+	header('Location: ../../new_user.php');
 	die();
 }
 
