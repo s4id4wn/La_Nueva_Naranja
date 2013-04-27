@@ -62,6 +62,7 @@ CREATE  TABLE IF NOT EXISTS `tbl_product` (
   `price` DECIMAL(9,2) NOT NULL ,
   `description` VARCHAR(200) NOT NULL ,
   `amount` INT NOT NULL ,
+  `url_image` VARCHAR(200) NOT NULL ,
   `active` TINYINT(1) NOT NULL ,
   PRIMARY KEY (`id`) ,
   INDEX `fk_tbl_product_tbl_brand_idx` (`brand_id` ASC) ,

@@ -2,7 +2,7 @@
 
 public function existsUser($user)
 {
-	if(mysql_num_rows(getUserByAttributeUser($user)) != 0 ){
+	if(mysql_num_rows(getUserByAttributeUser($user)) == 0 ){
 	
 		return false;
 	}
