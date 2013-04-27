@@ -25,6 +25,7 @@ body{
 	height:63px;
 	float:left;
 	position: relative;
+	border: 0px;
 }
 
 header {
@@ -35,7 +36,7 @@ header {
 	border-bottom: 1px solid black;
 	z-index: 99; 
 	background: #dd4814;
-	height: 60px;
+	height: 63px;
 }
 
 	header .select-menu { 
@@ -81,7 +82,7 @@ header {
 	border-bottom: 1px solid black;
 	z-index: 99; 
 	background: #0d71b8;
-	height: 60px;
+	height: 63px;
 }
 
 	#header_admin .select-menu { 
