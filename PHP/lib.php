@@ -1,12 +1,12 @@
 
 <?php
-function connectBD(){
-	
+function connectBD()
+{	
 	connectToServer();
 	connnectToBD();
 }
 
-private function connectToServer()
+function connectToServer()
 {
 	$server = 'localhost';
 	$user = 'root';
@@ -19,14 +19,14 @@ private function connectToServer()
 	}
 }
 
-private function connnectToBD()
+function connnectToBD()
 {
 	$database = 'theneworange';
-	$seleccion = mysql_select_db($database);
+	$successful_seleccion = mysql_select_db($database);
 	
 	if( !$successful_seleccion )
 	{
-		die('Error al seleccionar la base de datos: '.mysql_error());
+		die('Error al seleccionar la base de datos: ' . mysql_error() );
 	}
 }
 ?>

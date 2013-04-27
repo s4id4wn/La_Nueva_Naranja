@@ -1,9 +1,9 @@
 <?php
 
-public function existsUser($user)
+function existsUser($user)
 {
-	if(mysql_num_rows(getUserByAttributeUser($user)) == 0 ){
-	
+	if( mysql_num_rows(getUserByAttributeUser($user)) == 0 )
+	{
 		return false;
 	}
 	return true;
@@ -28,39 +28,39 @@ function updateUser($id,$role_id,$user,$password,$name,$last_name,$email,$town,$
 	return $result;
 }
 		
-public function getUserById($id)
+function getUserById($id)
 {
 	return getUser($id);
 }
 
-public function getAllUsers()
+function getAllUsers()
 {
 	return getActiveUsers();
 }
 
-function logicDeleteUser($id)
+function logicDeleteUserById($id)
 {
-	$sql_sentence = "UPDATE tbl_user SET active ='0' WHERE id ='" . $id"'";
+	$sql_sentence = "UPDATE tbl_user SET active ='0' WHERE id ='" . $id . "'";
 	$result = mysql_query($sql_sentence);
 	return $retult;
 }
 
 
-private function getUserByAttributeUser($user)
+function getUserByAttributeUser($user)
 {
-	$sql_sentence = "SELEC * FROM tbl_user WHERE user='" . $user . "'";
+	$sql_sentence = "SELECT * FROM tbl_user WHERE user='" . $user . "'";
 	$result = mysql_query($sql_sentence);
 	return $result;
 }
 
-private function getUser($id)
+function getUser($id)
 {
-	$sql_sentence = "SELEC * FROM tbl_user WHERE id='" . $id . "'";
+	$sql_sentence = "SELECT * FROM tbl_user WHERE id='" . $id . "'";
 	$result = mysql_query($sql_sentence);
 	return $result;
 }
 
-private function getActiveUsers()
+function getActiveUsers()
 {
 	$sql_sentence = "SELECT * FROM tbl_user WHERE active='1'";
 	$result = mysql_query($sql_sentence);
