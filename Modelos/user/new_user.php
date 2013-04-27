@@ -2,24 +2,24 @@
 <?php
 	session_start();
 	if(isset($_SESSION['logueado']) && $_SESSION['logueado'] == "activa") { 
-		header('Location: index.php');
+		header('Location: ../../index.php');
 	} 
 ?>
 <html lang="es">
 <head>
 	<title>La Nueva Naranja</title>
 	<meta charset="utf-8"/> 
-	<link rel="stylesheet" type="text/css" href="css/estilo.css"/>
-	<link rel="stylesheet" href="css/css/font-awesome.css">
+	<link rel="stylesheet" type="text/css" href="../../css/estilo.css"/>
+	<link rel="stylesheet" href="../../css/css/font-awesome.css">
 	<link rel="shortcut icon" href="images/favicon.ico"/>
 	
-    <script type="text/javascript" src="scripts/jquery-1.9.0.min.js"></script> 
-    <script type="text/javascript" src="plugins/jquery.nivo.slider.js"></script>
+    <script type="text/javascript" src="../../scripts/jquery-1.9.0.min.js"></script> 
+    <script type="text/javascript" src="../../plugins/jquery.nivo.slider.js"></script>
 	
-	 <script type="text/javascript" src="JavaScript/validate_user.js"></script> 
+	 <script type="text/javascript" src="../../JavaScript/validate_user.js"></script> 
 	
-	<link rel="stylesheet" href="plugins/light/light.css" type="text/css" media="screen" />
-	<link rel="stylesheet" href="plugins/nivo-slider.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="../../plugins/light/light.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="../../plugins/nivo-slider.css" type="text/css" media="screen" />
 	
 </head>
 
@@ -28,24 +28,24 @@
 	<div id="page_wrapper">
 		<header>
 			<div class="container">
-				<a href="index.php"><img alt="Rescue" class="retina_logo" id="logo" src="imagenes/logo.png" /></a>
+				<a href="index.php"><img alt="Rescue" class="retina_logo" id="logo" src="../../imagenes/logo.png" /></a>
 			</div>
 			<div class="container">
 				<nav>
 					<ul>
 						<?php if (empty($_SESSION["usuario"])) { ?>
-						<li><a href="login.php"><i class="icon-user"></i>Login</a></li>
+						<li><a href="../../login.php"><i class="icon-user"></i>Login</a></li>
 						<li><a href="new_user.php"><i class="icon-pencil"></i>Registro</a></li>
 						<?php } ?>
 						
-						<li><a href="contact.php"><i class="icon-envelope-alt"></i>Contacto</a></li>
+						<li><a href="../../contact.php"><i class="icon-envelope-alt"></i>Contacto</a></li>
 						<li><a href="#"><i class="icon-shopping-cart"></i>Carrito {0}</a></li>
 						
 						<?php if(isset($_SESSION['prioridad']) && $_SESSION['prioridad'] == "5" && isset($_SESSION['logueado']) && $_SESSION['logueado'] == "activa") { ?>
-						<li><a href="admin_panel.php"><i class="icon-globe"></i>Panel Admin</a></li>
+						<li><a href="../../admin_panel.php"><i class="icon-globe"></i>Panel Admin</a></li>
 						<?php }
 						if(isset($_SESSION['logueado']) && $_SESSION['logueado'] == "activa") { ?>
-						<li><a href="php/logout.php"><i class="icon-signout"></i>Desconectar[<?php echo $_SESSION['usuario']; ?>]</a></li>
+						<li><a href="../../php/logout.php"><i class="icon-signout"></i>Desconectar[<?php echo $_SESSION['usuario']; ?>]</a></li>
 						<?php } ?>
 					</ul>
 				</nav>
@@ -54,7 +54,7 @@
 		
 		<div id="second_menu" class="container">
 			<ul>
-				<li><a href="index.php"><i class="icon-home"></i>Inicio</a></li>
+				<li><a href="../../index.php"><i class="icon-home"></i>Inicio</a></li>
 				<li><a href="#">Categoria2</a></li>
 				<li><a href="#">Categoria3</a></li>
 				<li><a href="#">Categoria4</a></li>
@@ -72,7 +72,7 @@
 				<div class="widget">
 					<div class="head_menu">Buscador</div>
 					<div class="body">
-						<FORM METHOD=POST ACTION="php/buscar.php"> 
+						<FORM METHOD=POST ACTION="../../php/buscar.php"> 
 							<INPUT TYPE="text" NAME="busqueda"> 
 						</FORM> 
 					</div>
@@ -108,7 +108,7 @@
 				<div class="widget">
 					<div class="head_menu">Nuestras Marcas</div>
 						<div class="body">
-							<img src="imagenes/marca.gif">
+							<img src="../../imagenes/marca.gif">
 						</div>
 				</div>
 				
@@ -118,7 +118,7 @@
 				Comienzo contenedor principal
 			---------------------------------->
 			<div id="main_container">
-	<form action="PHP/add_user.php" method="post" onsubmit="return validateFormOfUser(this)">
+	<form action="../../PHP/add_user.php" method="post" onsubmit="return validateFormOfUser(this)">
 	
 	<h2>Registro de  usuario</h2>
 	
