@@ -1,13 +1,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <?php
+/*
 	session_start();
 	if(isset($_SESSION['logueado']) && $_SESSION['logueado'] == "activa") { 
 		header('Location: index.php');
 	}
-	else
-	{
-		if(isset($_POST['id']) && is_numeric($_POST['id']))
-	}
+	
+*/
 ?>
 <html lang="es">
 <head>
@@ -125,13 +124,33 @@
 			<div id="main_container">
 		<?php
 		
-		if(isset($_POST['id']))
+		if(isset($_GET['id']))
 		{
+		
+			$user_id = $_GET['id'];
+		
+			include_once('PHP/lib.php');
+			
+			connectBD();
+			
+			include_once('PHP/user/SQL/user.php');
+			
+			$succesful_result = getUserById($user_id);
+			
+			if( $succesful_result )
+			{
+				$user = mysql_fetch_array($succesful_result);
+			}
+			else
+			{
+				//no existe el usuario o hubo un error con la BD
+			}
+				
 		?>
 		<!--  Cambiar las validaciones y el valor del action *************************************-->
 		
-			<form action="PHP/user/add_user.php" method="post" onsubmit="return validateFormOfUser(this)">
-			<h2>Editar usuario</h2>
+			<form action="PHP/user/edit_user.php" method="post" onsubmit="return validateFormOfUser(this)">
+			<h2>Editar usuario: <?php echo $user['name']?></h2>
 		<?php
 		}
 		else
@@ -152,7 +171,15 @@
 				<div  class="error" id="error_user">
 					<p id="error_u"></p>
 				</div>				
-				<INPUT  type="text" name="user" >
+				<INPUT  type="text" name="user"
+				<?php
+					if(isset($_GET['id']))
+					{
+				?>
+					value ="<?php echo $user['user']; ?>" />
+				<?php
+					}
+				?>
 			</td>
 		</tr>
 		
@@ -181,7 +208,16 @@
 				<div  class="error" id="error_name">
 					<p  id="error_n"></p>
 				</div>
-				<INPUT  type="text" name="name" >
+				<INPUT  type="text" name="name"
+				<?php
+					if(isset($_GET['id']))
+					{
+				?>
+					value ="<?php echo $user['name']; ?>" />
+				<?php
+					}
+				?>
+				
 			</td>
 		</tr>
 
@@ -191,7 +227,16 @@
 				<div class="error" id="error_last_name">
 					<p id="error_ln"></p>
 				</div>
-				<INPUT type="text" name="last_name">
+				<INPUT type="text" name="last_name"
+				<?php
+					if(isset($_GET['id']))
+					{
+				?>
+					value ="<?php echo $user['last_name']; ?>" />
+				<?php
+					}
+				?>
+				
 			</td>
 		</tr>
 
@@ -201,7 +246,16 @@
 				<div class="error" id="error_email">
 					<p id="error_e"></p>
 				</div>
-				<input type="text" name="email" >
+				<input type="text" name="email" 
+				<?php
+					if(isset($_GET['id']))
+					{
+				?>
+					value ="<?php echo $user['email']; ?>" />
+				<?php
+					}
+				?>
+				
 			</td>
 		</tr>
 
@@ -211,7 +265,15 @@
 				<div class="error" id="error_repeat_email">
 					<p id="error_re"></p>
 				</div>
-				<input type="text" name="repeat_email" >
+				<input type="text" name="repeat_email" 
+				<?php
+					if(isset($_GET['id']))
+					{
+				?>
+					value ="<?php echo $user['email']; ?>" />
+				<?php
+					}
+				?>
 			</td>
 		</tr>
 		<tr>
@@ -348,7 +410,16 @@
 				<div class="error" id="error_address">
 					<p id="error_a"></p>
 				</div>
-				<input type="text" name="address">
+				<input type="text" name="address"
+				<?php
+					if(isset($_GET['id']))
+					{
+				?>
+					value ="<?php echo $user['address']; ?>" />
+				<?php
+					}
+				?>
+				
 			</td>
 		</tr>
 		
@@ -358,7 +429,16 @@
 				<div class="error" id="error_telephone_number">
 					<p id="error_tl"></p>
 				</div>
-				<input type="text" name="telephone_number" >
+				<input type="text" name="telephone_number"
+				<?php
+					if(isset($_GET['id']))
+					{
+				?>
+					value ="<?php echo $user['telephone_number']; ?>" />
+				<?php
+					}
+				?>
+				
 			</td>
 		</tr>
 		

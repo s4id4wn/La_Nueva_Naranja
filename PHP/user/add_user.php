@@ -26,8 +26,7 @@ if( //isset($_POST['role_id']) && trim($_POST['role_id'])!='' &&
 				
 				//$role_id = $_POST['role_id'];
 				$user = $_POST['user'];
-				//$password_encrypted = crypt($_POST['password']);
-				$password = $_POST['password'];
+				$password_encrypted = crypt($_POST['password']);
 				$name = $_POST['name'];
 				$last_name = $_POST['last_name'];
 				$email = $_POST['email'];
@@ -41,7 +40,7 @@ if( //isset($_POST['role_id']) && trim($_POST['role_id'])!='' &&
 				{
 					//$succesful = addUser($role_id,$user,$password_encrypted,$name,$last_name,$email,$town,$address,$telephone_number);
 					//$succesful = addUser($role_id,$user,$password,$name,$last_name,$email,$town,$address,$telephone_number);
-					$succesful = addUser(1,$user,$password,$name,$last_name,$email,$town,$address,$telephone_number);
+					$succesful = addUser(1,$user,$password_encrypted,$name,$last_name,$email,$town,$address,$telephone_number);
 
 					//verificar que retorna un sql_query()
 					if( $succesful )
