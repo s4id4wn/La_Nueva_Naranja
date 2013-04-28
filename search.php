@@ -59,12 +59,12 @@
 			<div id="side_left">
 			
 				<div class="widget">
-					<div class="head_menu">Buscador</div>
-					<div class="body">
-						<FORM method="POST" action="php/buscar.php"> 
-							<INPUT type="text" name="busqueda" value=" <?php echo $_GET['search']; ?>"> 
-						</FORM> 
-					</div>
+				<div class="head_menu">Buscador</div>
+				<div class="body">
+					<FORM method="GET" action="search.php"> 
+						<INPUT type="text" name="search"> 
+					</FORM> 
+				</div>
 				</div>
 				
 				<div class="widget">
@@ -116,10 +116,14 @@
 					//Evita inyeccions SQL
 					$search = mysql_real_escape_string($search);
 
+					if(substr($search, -1) == 's'){
+						$search = substr($search, 0, -1);
+					}
+
 					echo "<h2>Busqueda: " . $search . "</h2>";
 
 					connectBD();
-					$SQL_Sentence = "SELECT * FROM tbl_product WHERE name LIKE '%$search%' ORDER BY name";
+					$SQL_Sentence = "SELECT * FROM tbl_product WHERE name LIKE '%$search%'";
 					$result = mysql_query($SQL_Sentence);
 
 					if($row = mysql_fetch_array($result)){

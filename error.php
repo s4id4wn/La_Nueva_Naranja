@@ -58,12 +58,12 @@
 			<div id="side_left">
 			
 				<div class="widget">
-					<div class="head_menu">Buscador</div>
-					<div class="body">
-						<FORM METHOD=POST ACTION="php/buscar.php"> 
-							<INPUT TYPE="text" NAME="busqueda"> 
-						</FORM> 
-					</div>
+				<div class="head_menu">Buscador</div>
+				<div class="body">
+					<FORM method="GET" action="search.php"> 
+						<INPUT type="text" name="search"> 
+					</FORM> 
+				</div>
 				</div>
 			
 				<div class="widget">
