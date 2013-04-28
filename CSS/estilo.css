@@ -397,6 +397,23 @@ input[type="text"].user{ background-position: 4px -18px; }
 input[type="password"].password{ background-position: 4px -41px; }
 input[type="text"].search{ background-position: 4px 5px; width: 148px; }
 
+input[type="text"].contact{
+	padding: 10px 15px 10px 15px;
+	width: 295px;
+	font-size: 16px;
+	margin-bottom: 20px;
+}
+
+textarea{
+	background:#FFF;
+	border-radius:2px;
+	border: 1px solid #ccc;
+	padding: 2px 3px 2px 4px;
+	box-shadow: 1px 1px 6px #ccc;
+	margin-bottom: 10px;
+	font-family: 'MuseoSans-500', Georgia, Palatino;
+}
+
 input[type="submit"], input[type="reset"]
 {	
 	padding: 5px 10px;

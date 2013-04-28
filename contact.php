@@ -51,15 +51,78 @@
 		</div>
  		<div class="limpiar"></div>
 		<section class="container">
-					
+			<div id="side_left">
+			
+				<div class="widget">
+				<div class="head_menu">Buscador</div>
+				<div class="body">
+					<FORM method="GET" action="search.php"> 
+						<INPUT type="text" name="search" class="loginn search"> 
+					</FORM> 
+				</div>
+				</div>
+				
+				<div class="widget">
+				<div class="head_menu">Catálogo de productos</div>
+				<div class="body">
+					<ul>
+						<li><a href="#" class="selected">Linea Blanca</a></li>
+						<li><a href="#">Electrodomesticos</a></li>
+						<li><a href="#">Tu texto 3</a></li>
+						<li><a href="#">Tu texto 4</a></li>
+						<li><a href="#">Tu texto 5</a></li>
+						<li><a href="#">Tu texto 6</a></li>
+						<li><a href="#">Tu texto 7</a></li>
+						<li><a href="#">Tu texto 8</a></li>
+					</ul>
+				</div>
+				</div>
+				<div class="widget">
+				<div class="head_menu">Catálogo de productos</div>
+				<div class="body">
+					<ul>
+						<li><a href="#" class="selected">Tu texto 1</a></li>
+						<li><a href="#">Tu texto 2</a></li>
+						<li><a href="#">Tu texto 3</a></li>
+						<li><a href="#">Tu texto 4</a></li>
+						<li><a href="#">Tu texto 5</a></li>
+						<li><a href="#">Tu texto 6</a></li>
+					</ul>
+				</div>
+				</div>
+
+				<div class="widget">
+				<div class="head_menu">Nuestras Marcas</div>
+				<div class="body">
+					<img src="imagenes/marca.gif">
+				</div>
+				</div>
+
+			</div>
 			<!---------------------------------
 				Comienzo contenedor principal
 			---------------------------------->
-			<div id="main_container">				
-				<div class="limpiar"></div>
-
-					<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=es-419&amp;geocode=&amp;q=Merida+-+Uc%C3%BA,+M%C3%A9xico&amp;aq=&amp;sll=21.029071,-89.843016&amp;sspn=0.0284,0.045447&amp;t=h&amp;ie=UTF8&amp;hq=&amp;hnear=Merida+-+Caucel,+Caucel,+Yucat%C3%A1n,+M%C3%A9xico&amp;ll=20.9958,-89.672374&amp;spn=0.007102,0.011362&amp;z=14&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com/maps?f=q&amp;source=embed&amp;hl=es-419&amp;geocode=&amp;q=Merida+-+Uc%C3%BA,+M%C3%A9xico&amp;aq=&amp;sll=21.029071,-89.843016&amp;sspn=0.0284,0.045447&amp;t=h&amp;ie=UTF8&amp;hq=&amp;hnear=Merida+-+Caucel,+Caucel,+Yucat%C3%A1n,+M%C3%A9xico&amp;ll=20.9958,-89.672374&amp;spn=0.007102,0.011362&amp;z=14" style="color:#0000FF;text-align:left">Ver mapa más grande</a></small>
-
+			<div id="main_container">		
+				<h2>Envianos tus sugerencias</h2>		
+				<FORM name='login' method='post' action="php/login.php">
+				<table>
+					<tr>
+						<TD>Nombre:</TD><TD><INPUT type='text' name="user" class="contact"></TD>
+					</tr>
+					<tr>
+						<TD>Correo:</TD><TD><INPUT type='text' name="user" class="contact"</TD>
+					</tr>
+					<tr>
+						<td>Comentario:</td><td><textarea rows="4" cols="50"></textarea></td>
+					</tr>
+					<tr>
+						<td>CAPTCHA AQUI</td>
+					</tr>
+					<tr>
+						<td><INPUT type="submit" value="Ingresar"></td>
+					</tr>
+				</table>
+				</FORM>
 			</div>
 		</section>
 		<div class="limpiar"></div>
