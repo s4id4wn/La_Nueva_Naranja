@@ -182,7 +182,7 @@
 				?>
 			</td>
 		</tr>
-		
+		<tr>
 			<td>Contraseña <span class="requerid">*</span> </td>
 			<td>
 				<div class="error" id="error_password">
