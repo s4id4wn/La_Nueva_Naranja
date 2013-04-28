@@ -61,7 +61,7 @@
 				<div class="head_menu">Buscador</div>
 				<div class="body">
 					<FORM method="GET" action="search.php"> 
-						<INPUT type="text" name="search"> 
+						<INPUT type="text" name="search" class="loginn search"> 
 					</FORM> 
 				</div>
 				</div>

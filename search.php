@@ -118,6 +118,8 @@
 
 					if(substr($search, -1) == 's'){
 						$search = substr($search, 0, -1);
+					}elseif (substr($search, -2) == 'es') {
+						$search = substr($search, 0, -2);
 					}
 
 					echo "<h2>Busqueda: " . $search . "</h2>";

@@ -199,13 +199,14 @@ section #side_left .head_menu {
 section #side_left .body {
 	background-color: white;
 	text-align: left;
-	padding: 10px 10px 10px 25px;
+	padding: 10px 10px 10px 10px;
 	font-size: 12px;
 }
 
-	section #side_left .body ul, a{
+	section #side_left .body ul{
 		list-style-image:url('../imagenes/naran.png');
 		text-decoration: none;
+		margin-left: 25px;
 	}
 	
 	section #side_left .body a{
@@ -387,16 +388,26 @@ input[type="text"], input[type="password"]
 	font-family: 'MuseoSans-500', Georgia, Palatino;
 }
 
+input[type="text"].loginn, input[type="password"].loginn{
+	padding: 5px 5px 5px 25px;
+	background: url("../imagenes/iconos.gif") no-repeat scroll 0 0 transparent;
+}
+
+input[type="text"].user{ background-position: 4px -18px; }
+input[type="password"].password{ background-position: 4px -41px; }
+input[type="text"].search{ background-position: 4px 5px; width: 148px; }
+
 input[type="submit"], input[type="reset"]
 {	
 	padding: 5px 10px;
 	border: 1px solid black;
-	box-shadow: 2px 2px 5px black;
+	box-shadow: 2px 2px 5px #ccc;
 	background-color: #dd4814;
 	color: white;
 	font-weight: bold;
 	margin-top: 10px;
 	margin-bottom: 20px;
+	font-family: 'MuseoSans-500', Georgia, Palatino;
 }
 
 #no_styles input[type="submit"]
@@ -468,10 +479,23 @@ h2+p, p+p{
 	color: red;
 }
 
+.error2{
+	width: 200px;
+	height: 15px;
+	padding: 0;
+	font-size: 12px;
+	color: red;
+	margin-bottom: 10px;
+}
+
 .requerid{
 	color:red;
 }
 
+
+/*
+ Buscador
+*/
 .box_producto{
 	width: 100%;
 	background: white;
@@ -502,7 +526,6 @@ h2+p, p+p{
 	height: 110px;
 	margin: 5px 10px 0 10px;
 	text-align: right;
-	background-color: #eee;
 	width: 622px;
 }
 
@@ -545,3 +568,8 @@ h2+p, p+p{
 		padding: 5px 0 0 5px;
 		overflow: auto;
 	}
+
+#table_login{
+	font-size: 12px;
+	border-collapse:collapse;
+}

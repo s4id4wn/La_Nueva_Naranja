@@ -64,7 +64,7 @@
 				<div class="head_menu">Buscador</div>
 				<div class="body">
 					<FORM method="GET" action="search.php"> 
-						<INPUT type="text" name="search"> 
+						<INPUT type="text" name="search" class="loginn search"> 
 					</FORM> 
 				</div>
 				</div>
@@ -119,7 +119,7 @@
 						switch ($error) {
 							case '3':
 							case '4':
-								echo 'Usuario o contraseña invalidos';
+								echo '<div class="error2">Usuario o contraseña invalidos</div>';
 								break;
 							case '5':
 								echo 'Usuario sin Roles';
@@ -127,18 +127,17 @@
 						}
 					}
 				?>	
-
-				<TABLE border=0>
-					<TR>
-						<TD width="153">Usuario:</TD><TD width="172"><INPUT  type='text' name="user"></TD>
-					</TR>
-					<TD>Contraseña:</TD>
-						<TD><input type="password" name="password" id="password"></TD>
-					</TR>
+				<table id="table_login">
+					<tr>
+						<TD>Usuario:</TD><TD><INPUT type='text' name="user" class="loginn user"></TD>
+					</tr>
+					<tr>
+						<TD>Contraseña:</TD><TD><input type="password" name="password" class="loginn password"></TD>
+					</tr>
 					<TR>
 						<TD><INPUT type="submit" value="Ingresar"></TD>
 					</TR>
-				</TABLE>
+				</table>
 				</FORM>
 			</div>
 		</section>
