@@ -38,7 +38,7 @@
 					<ul>
 						<?php if (empty($_SESSION["usuario"])) { ?>
 						<li><a href="login.php"><i class="icon-user"></i>Login</a></li>
-						<li><a href="new_user.php"><i class="icon-pencil"></i>Registro</a></li>
+						<li><a href="form_user.php"><i class="icon-pencil"></i>Registro</a></li>
 						<?php } ?>
 						
 						<li><a href="contact.php"><i class="icon-envelope-alt"></i>Contacto</a></li>
@@ -171,15 +171,7 @@
 				<div  class="error" id="error_user">
 					<p id="error_u"></p>
 				</div>				
-				<INPUT  type="text" name="user"
-				<?php
-					if(isset($_GET['id']))
-					{
-				?>
-					value ="<?php echo $user['user']; ?>" />
-				<?php
-					}
-				?>
+				<INPUT  type="text" name="user" value="<?php echo (isset($_GET['id']) && is_numeric($_GET['id']))? $user['user']:''; ?>" />
 			</td>
 		</tr>
 		<tr>
@@ -208,16 +200,7 @@
 				<div  class="error" id="error_name">
 					<p  id="error_n"></p>
 				</div>
-				<INPUT  type="text" name="name"
-				<?php
-					if(isset($_GET['id']))
-					{
-				?>
-					value ="<?php echo $user['name']; ?>" />
-				<?php
-					}
-				?>
-				
+				<INPUT  type="text" name="name" value="<?php echo (isset($_GET['id']) && is_numeric($_GET['id']))? $user['name']:''; ?>" />
 			</td>
 		</tr>
 
@@ -227,16 +210,7 @@
 				<div class="error" id="error_last_name">
 					<p id="error_ln"></p>
 				</div>
-				<INPUT type="text" name="last_name"
-				<?php
-					if(isset($_GET['id']))
-					{
-				?>
-					value ="<?php echo $user['last_name']; ?>" />
-				<?php
-					}
-				?>
-				
+				<INPUT type="text" name="last_name" value="<?php echo (isset($_GET['id']) && is_numeric($_GET['id']))? $user['last_name']:''; ?>" />				
 			</td>
 		</tr>
 
@@ -246,16 +220,7 @@
 				<div class="error" id="error_email">
 					<p id="error_e"></p>
 				</div>
-				<input type="text" name="email" 
-				<?php
-					if(isset($_GET['id']))
-					{
-				?>
-					value ="<?php echo $user['email']; ?>" />
-				<?php
-					}
-				?>
-				
+				<input type="text" name="email" value="<?php echo (isset($_GET['id']) && is_numeric($_GET['id']))? $user['email']:''; ?>" />
 			</td>
 		</tr>
 
@@ -265,19 +230,10 @@
 				<div class="error" id="error_repeat_email">
 					<p id="error_re"></p>
 				</div>
-				<input type="text" name="repeat_email" 
-				<?php
-					if(isset($_GET['id']))
-					{
-				?>
-					value ="<?php echo $user['email']; ?>" />
-				<?php
-					}
-				?>
+				<input type="text" name="repeat_email" value="<?php echo (isset($_GET['id']) && is_numeric($_GET['id']))? $user['email']:''; ?>" />
 			</td>
 		</tr>
-		<tr>
-		
+
 		<tr>
 			<td>Municipio <span class="requerid">*</span> </td>
 			<td>
@@ -410,16 +366,7 @@
 				<div class="error" id="error_address">
 					<p id="error_a"></p>
 				</div>
-				<input type="text" name="address"
-				<?php
-					if(isset($_GET['id']))
-					{
-				?>
-					value ="<?php echo $user['address']; ?>" />
-				<?php
-					}
-				?>
-				
+				<input type="text" name="address" value="<?php echo (isset($_GET['id']) && is_numeric($_GET['id']))? $user['address']:''; ?>" />
 			</td>
 		</tr>
 		
@@ -429,16 +376,7 @@
 				<div class="error" id="error_telephone_number">
 					<p id="error_tl"></p>
 				</div>
-				<input type="text" name="telephone_number"
-				<?php
-					if(isset($_GET['id']))
-					{
-				?>
-					value ="<?php echo $user['telephone_number']; ?>" />
-				<?php
-					}
-				?>
-				
+				<input type="text" name="telephone_number" value="<?php echo (isset($_GET['id']) && is_numeric($_GET['id']))? $user['telephone_number']:''; ?>" />				
 			</td>
 		</tr>
 		

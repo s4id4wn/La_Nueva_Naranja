@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <?php
-	session_start();
+	/*session_start();
 
 	if(empty($_SESSION['logueado']) || $_SESSION['logueado'] != "activa") {
 		//Error usuario no logueado
@@ -12,7 +12,7 @@
 		//Error de permisos
 		header('Location: ../../error.php?error=2');
 		die();
-	}
+	}*/
 				
 ?>
 <html lang="en">
@@ -123,9 +123,9 @@
 		<td align="center"><?php echo $user['telephone_number']?></td>
 					
 		<td align="center">
-			<a href="new_user.php?id=<?php echo $user['id']; ?>">Editar</a>
+			<a href="form_user.php?id=<?php echo $user['id']; ?>">Editar</a>
 			<!-- Corregir la siguiente linea-->
-			<a href="EliminarUsuario.php?id=<?php echo $user['id']; ?>" onclick="return confirm('¿Desactivar el usuario:&nbsp;<?php echo $user['name']?>?')">Desactivar</a>
+			<a href="PHP/user/logic_delete_user.php?id=<?php echo $user['id']; ?>" onclick="return confirm('¿Desactivar el usuario:&nbsp;<?php echo $user['name']?>?')">Desactivar</a>
 		</td>
 	</tr>
 <?php

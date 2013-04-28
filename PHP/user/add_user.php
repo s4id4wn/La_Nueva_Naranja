@@ -86,7 +86,7 @@ if( //isset($_POST['role_id']) && trim($_POST['role_id'])!='' &&
 else
 {	/* los campos no son por post*/
 	echo 'No lo intentes de nuevo';
-	header('Location: ../../new_user.php');
+	header('Location: ../../form_user.php');
 	die();
 }
 
@@ -94,7 +94,7 @@ else
 	//creo que no es necesario
 /* 	
 if(isset($succesful_action) && $succesful_action == true){
-header('Location: ../../new_user.php');
+header('Location: ../../form_user.php');
 die();
 }*/
 ?>

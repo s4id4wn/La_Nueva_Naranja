@@ -15,7 +15,7 @@
 		
 	connectBD();
 
-	include_once('../../SQL/user.php');
+	include_once('SQL/user.php');
 	
 	$id_user = $_GET['id'];
 	//verificar si null retorna cuando no existe el usuario

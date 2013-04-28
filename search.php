@@ -24,7 +24,7 @@
 					<ul>
 						<?php if (empty($_SESSION["usuario"])) { ?>
 						<li><a href="login.php"><i class="icon-user"></i>Login</a></li>
-						<li><a href="new_user.php"><i class="icon-pencil"></i>Registro</a></li>
+						<li><a href="form_user.php"><i class="icon-pencil"></i>Registro</a></li>
 						<?php } ?>
 						
 						<li><a href="contact.php"><i class="icon-envelope-alt"></i>Contacto</a></li>

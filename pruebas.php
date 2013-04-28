@@ -19,7 +19,7 @@
 				<nav>
 					<ul>
 						<li><a href="login.php"><i class="icon-user"></i>Login</a></li>
-						<li><a href="new_user.php"><i class="icon-pencil"></i>Registro</a></li>
+						<li><a href="form_user.php"><i class="icon-pencil"></i>Registro</a></li>
 						<li><a href="contact.php"><i class="icon-envelope-alt"></i>Contacto</a></li>
 						<li><a href="#"><i class="icon-shopping-cart"></i>Carrito {0}</a></li>
 						<li><a href="admin_panel.php"><i class="icon-globe"></i>Panel Admin</a></li>
