@@ -62,7 +62,7 @@
 				<div class="head_menu">Buscador</div>
 				<div class="body">
 					<FORM method="GET" action="search.php"> 
-						<INPUT type="text" name="search"> 
+						<INPUT type="text" name="search" value=" <?php echo (isset($_GET['search'])) ? $_GET['search'] : ''; ?>"> 
 					</FORM> 
 				</div>
 				</div>
