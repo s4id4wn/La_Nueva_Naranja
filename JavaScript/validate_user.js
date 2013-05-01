@@ -27,7 +27,7 @@ function validateFormOfUser(User)
 	User.town.value = User.town.value.trim();
 	var town = User.town.value;
 	
-	User.address.value = User.nuevo.address.trim();
+	User.address.value = User.address.value.trim();
 	var address = User.address.value;
 	
 	User.telephone_number.value = User.telephone_number.value.trim();
@@ -42,7 +42,7 @@ function validateFormOfUser(User)
 		this.validateRepeat_email(email,repeat_email)==true &
 		this.validateTown(town)==true &
 		this.validateAddress(address)==true &
-		this.validateTelephoneNumber(telephone_number)==true 
+		this.validateTelephoneNumber(telephone_number)==true
 	){
 		is_accepted = true;
 	}
@@ -59,7 +59,7 @@ function validateUser(user)
 	if(user=="")
 	{
 		$('#error_user').show();
-		$('#error_u').text('Usuario es requerido').show();
+		$('#error_u').text('Usuario, es requerido').show();
 	}else if(user!="")
 	{
 		if(user.length < minimum_length_user)
@@ -314,7 +314,7 @@ function validateTelephoneNumber(telephone_number)
 			else if (telephone_number.length > maxim_length_telephone_number)
 			{
 				$('#error_telephone_number').show();
-				$('#error_tl').text('No mayor a 10 caracteres').show(); 
+				$('#error_tl').text('No mayor a 1 caracteres').show(); 
 			}
 			else
 			{
