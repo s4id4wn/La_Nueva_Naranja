@@ -27,7 +27,7 @@ function validateFormOfUser(User)
 	User.town.value = User.town.value.trim();
 	var town = User.town.value;
 	
-	User.address.value = User.address.value.trim();
+	User.address.value = User.nuevo.address.trim();
 	var address = User.address.value;
 	
 	User.telephone_number.value = User.telephone_number.value.trim();
@@ -42,7 +42,7 @@ function validateFormOfUser(User)
 		this.validateRepeat_email(email,repeat_email)==true &
 		this.validateTown(town)==true &
 		this.validateAddress(address)==true &
-		this.validateTelephoneNumber(telephone_number)==true
+		this.validateTelephoneNumber(telephone_number)==true 
 	){
 		is_accepted = true;
 	}
@@ -59,7 +59,7 @@ function validateUser(user)
 	if(user=="")
 	{
 		$('#error_user').show();
-		$('#error_u').text('Usuario, es requerido').show();
+		$('#error_u').text('Usuario es requerido').show();
 	}else if(user!="")
 	{
 		if(user.length < minimum_length_user)
@@ -152,7 +152,7 @@ function validateName(name)
 	if(name=="")
 	{
 		$('#error_name').show();
-		$('#error_n').text('Nombres, es requerido').show();
+		$('#error_n').text('Nombres son requeridos').show();
 	}
 	else if(name!="")
 	{
@@ -171,7 +171,7 @@ function validateLastName(last_name)
 	if(last_name=="")
 	{
 		$('#error_last_name').show();
-		$('#error_ln').text('Apellidos, es requerido').show();
+		$('#error_ln').text('Apellidos son requeridos').show();
 	}
 	else if(last_name!="")
 	{
@@ -194,6 +194,7 @@ function validateEmail(email)
 	}
 	else if(email!="")
 	{
+		/* pattern to detec a valid email*/
 		var pattern_email=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
 	
 		if (email.search(pattern_email)!=0)
@@ -313,7 +314,7 @@ function validateTelephoneNumber(telephone_number)
 			else if (telephone_number.length > maxim_length_telephone_number)
 			{
 				$('#error_telephone_number').show();
-				$('#error_tl').text('No mayor a 14 caracteres').show(); 
+				$('#error_tl').text('No mayor a 10 caracteres').show(); 
 			}
 			else
 			{
