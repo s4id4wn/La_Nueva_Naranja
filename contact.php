@@ -23,7 +23,7 @@
 					<ul>
 						<?php if (empty($_SESSION["usuario"])) { ?>
 						<li><a href="login.php"><i class="icon-user"></i>Login</a></li>
-						<li><a href="form_user.php"><i class="icon-pencil"></i>Registro</a></li>
+						<li><a href="new_user.php"><i class="icon-pencil"></i>Registro</a></li>
 						<?php } ?>
 						
 						<li><a href="contact.php"><i class="icon-envelope-alt"></i>Contacto</a></li>
@@ -51,81 +51,60 @@
 		</div>
  		<div class="limpiar"></div>
 		<section class="container">
-			<div id="side_left">
-			
-				<div class="widget">
-				<div class="head_menu">Buscador</div>
-				<div class="body">
-					<FORM method="GET" action="search.php"> 
-						<INPUT type="text" name="search" class="loginn search"> 
-					</FORM> 
-				</div>
-				</div>
-				
-				<div class="widget">
-				<div class="head_menu">Catálogo de productos</div>
-				<div class="body">
-					<ul>
-						<li><a href="#" class="selected">Linea Blanca</a></li>
-						<li><a href="#">Electrodomesticos</a></li>
-						<li><a href="#">Tu texto 3</a></li>
-						<li><a href="#">Tu texto 4</a></li>
-						<li><a href="#">Tu texto 5</a></li>
-						<li><a href="#">Tu texto 6</a></li>
-						<li><a href="#">Tu texto 7</a></li>
-						<li><a href="#">Tu texto 8</a></li>
-					</ul>
-				</div>
-				</div>
-				<div class="widget">
-				<div class="head_menu">Catálogo de productos</div>
-				<div class="body">
-					<ul>
-						<li><a href="#" class="selected">Tu texto 1</a></li>
-						<li><a href="#">Tu texto 2</a></li>
-						<li><a href="#">Tu texto 3</a></li>
-						<li><a href="#">Tu texto 4</a></li>
-						<li><a href="#">Tu texto 5</a></li>
-						<li><a href="#">Tu texto 6</a></li>
-					</ul>
-				</div>
-				</div>
-
-				<div class="widget">
-				<div class="head_menu">Nuestras Marcas</div>
-				<div class="body">
-					<img src="imagenes/marca.gif">
-				</div>
-				</div>
-
-			</div>
+					
 			<!---------------------------------
 				Comienzo contenedor principal
 			---------------------------------->
-			<div id="main_container">		
-				<h2>Envianos tus sugerencias</h2>		
-				<FORM name='login' method='post' action="php/login.php">
-				<table>
-					<tr>
-						<TD>Nombre:</TD><TD><INPUT type='text' name="user" class="contact"></TD>
-					</tr>
-					<tr>
-						<TD>Correo:</TD><TD><INPUT type='text' name="user" class="contact"</TD>
-					</tr>
-					<tr>
-						<td>Comentario:</td><td><textarea rows="4" cols="50"></textarea></td>
-					</tr>
-					<tr>
-						<td>CAPTCHA AQUI</td>
-					</tr>
-					<tr>
-						<td><INPUT type="submit" value="Ingresar"></td>
-					</tr>
-				</table>
-				</FORM>
+		  <div id="main_container">				
+		    <div class="limpiar"></div>
+		    <form id="comentarios" name="form1" method="post" action="contacto.php">
+		      <table border="0">
+		        <tr>
+		          <td width="193">Nombre:</td>
+		          <td width="285"><label for="nombreCont"></label>
+	              <input name="nombreCont" type="text" id="nombreCont" size="30" /></td>
+	            </tr>
+		        <tr>
+		          <td>Apellido:</td>
+		          <td><label for="apePatCont"></label>
+	              <input name="apeCont" type="text" id="apeCont" size="30" /></td>
+	            </tr>
+		        <tr>
+		          <td>Telefono:</td>
+		          <td><label for="teleCont"></label>
+	              <input name="teleCont" type="text" id="teleCont" size="30" /></td>
+	            </tr>
+		        <tr>
+		          <td>Correo Electronico:</td>
+		          <td><input name="CorreoElec" type="text" id="CorreoElec" size="30" /></td>
+	            </tr>
+		        <tr>
+		          <td height="68">Comentario:</td>
+		          <td><label for="comentCont"></label>
+	              <textarea name="comentCont" id="comentCont" cols="30" rows="5"></textarea></td>
+	            </tr>
+		        <tr align="center" valign="middle">
+		          <td height="68" colspan="2">
+				  <?php
+require_once('recaptchalib.php');
+$publickey = "6LdIl-ASAAAAAGNMMojfXbZ13bV708jtjY1EOkEp";
+$privatekey = 			   "6LdIl-ASAAAAACf7l26DuXLmD5HY3f8TAehaY6fB";
+	$error = null;
+		echo recaptcha_get_html($publickey, $error);
+	?>
+</td>
+	            </tr>
+		        <tr align="center" valign="middle">
+		          <td height="68" colspan="2"><label for="comentCont"></label>		            <label for="comentCont"></label>		            <label for="CorreoElec">
+		            <input type="submit" name="enviarMen" id="enviarMen" value="Enviar Mensaje" />
+		          </label></td>
+	            </tr>
+	          </table>
+	        </form>
+		    <br />
 			</div>
 		</section>
-		<div class="limpiar"></div>
+    <div class="limpiar"></div>
 		<footer class="container">
 			<p>La Nueva Naranja &copy; 2013. Algunos derechos reservados.</p>
 		</footer>
