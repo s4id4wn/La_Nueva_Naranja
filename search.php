@@ -34,7 +34,7 @@
 						<li><a href="admin_panel.php"><i class="icon-globe"></i>Panel Admin</a></li>
 						<?php }
 						if(isset($_SESSION['logueado']) && $_SESSION['logueado'] == "activa") { ?>
-						<li><a href="php/logout.php"><i class="icon-signout"></i>Desconectar[<?php echo $_SESSION['usuario']; ?>]</a></li>
+						<li><a href="php/logout.php"><i class="icon-signout"></i>[<?php echo $_SESSION['usuario']; ?>]</a></li>
 						<?php } ?>
 					</ul>
 				</nav>
@@ -97,7 +97,7 @@
 				<div class="widget">
 				<div class="head_menu">Nuestras Marcas</div>
 				<div class="body">
-					<img src="imagenes/marca.gif">
+					<div align="center"><img src="imagenes/marca.gif"></div>
 				</div>
 				</div>
 
@@ -115,6 +115,7 @@
 					$search = htmlentities($search);
 					//Evita inyeccions SQL
 					$search = mysql_real_escape_string($search);
+					$realSearch = $search;
 
 					if(substr($search, -1) == 's'){
 						$search = substr($search, 0, -1);
@@ -122,7 +123,7 @@
 						$search = substr($search, 0, -2);
 					}
 
-					echo "<h2>Busqueda: " . $search . "</h2>";
+					echo "<h2><i class='icon-search icon-large'></i> Busqueda: " . $realSearch . "</h2>";
 
 					connectBD();
 					$SQL_Sentence = "SELECT * FROM tbl_product WHERE name LIKE '%$search%'";
@@ -134,13 +135,16 @@
 								echo "<div class='box_producto'>";
 								echo "<div class='imagen'><img src='" . $row['url_image'] . "'/></div>";
 								echo "<div class='info'><div class='header'>";
+								echo "<div class='product_name'>" . $row['name'] . "</div>";
 								if($row['amount'] == 0){
 									echo "<div class='agotado'>Agotado</div>";
 								}else{
 									echo "<div class='disponible'>Disponible</div>";
 								}
-								echo "<div class='product_name'>" . $row['name'] . "</div></div>";
-								echo "<div class='description'>" . $row['description'] ."</div></div></div>";
+								echo "</div>";
+								echo "<div class='description'>" . $row['description'] ."</div>";
+								echo "<div class='price'>$" . $row['price'] ."</div>";
+								echo "<div class='car'><i class='icon-shopping-cart icon-large'></i></div></div></div>";
 						}while ($row = mysql_fetch_array ($result));
 
 					}else{

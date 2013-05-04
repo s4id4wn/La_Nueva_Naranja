@@ -40,7 +40,7 @@
 						<?php } ?>
 						<?php
 						if(isset($_SESSION['logueado']) && $_SESSION['logueado'] == "activa") { ?>
-						<li><a href="php/logout.php"><i class="icon-signout"></i>Desconectar[<?php echo $_SESSION['usuario']; ?>]</a></li>
+						<li><a href="php/logout.php"><i class="icon-signout"></i>[<?php echo $_SESSION['usuario']; ?>]</a></li>
 						<?php } ?>
 					</ul>
 				</nav>

@@ -17,14 +17,24 @@
     <script type="text/javascript" src="plugins/jquery.nivo.slider.js"></script>
 	<script type="text/javascript" src="plugins/konami/konami.js"></script>
 	
-        <script type="text/javascript" charset="utf-8">
+    <script type="text/javascript" charset="utf-8">
             $(document).konami({
                 code: ['up', 'up', 'down', 'down'], 
                 callback: function() {
-                    document.getElementById('hola').innerHTML = '<h1>HOLA!!!!</h1><br><img src="imagenes/xd.jpg"/>';
+                    document.getElementById('hola').innerHTML = '<img src="imagenes/yao.jpg"/>';
                 }
 			});
-		</script>
+	</script>
+	<script type="text/javascript">
+		function ajustar(){
+			alert('hola');
+			var side_left = document.getElementById('side_left').style.height;
+			var main_container = document.getElementById('main_container').style.height;
+			if(side_left > main_container){
+				side_left = main_container;
+			}
+		}	
+	</script>
 	
 </head>
 
@@ -48,10 +58,11 @@
 						<li><a href="admin_panel.php"><i class="icon-globe"></i>Panel Admin</a></li>
 						<?php }
 						if(isset($_SESSION['logueado']) && $_SESSION['logueado'] == "activa") { ?>
-						<li><a href="php/logout.php"><i class="icon-signout"></i>Desconectar[<?php echo $_SESSION['usuario']; ?>]</a></li>
+						<li><a href="php/logout.php" alt="Desconectar"><i class="icon-signout"></i>[<?php echo $_SESSION['usuario']; ?>]</a></li>
 						<?php } ?>
 					</ul>
 				</nav>
+					<!--<p class="as container">hola</p>-->
 			</div>
 		</header>
 		
@@ -65,6 +76,7 @@
 			</ul>
 		</div>
  		<div class="limpiar"></div>
+
 		<section class="container">
 		
 			<!-------------------------
@@ -85,8 +97,8 @@
 				<div class="head_menu">Catálogo de productos</div>
 				<div class="body">
 					<ul>
-						<li><a href="#" class="selected">Linea Blanca</a></li>
-						<li><a href="#">Electrodomesticos</a></li>
+						<li><a href="#" class="selected">Televisores (30)</a></li>
+						<li><a href="#">Estufas (14)</a></li>
 						<li><a href="#">Tu texto 3</a></li>
 						<li><a href="#">Tu texto 4</a></li>
 						<li><a href="#">Tu texto 5</a></li>
@@ -113,7 +125,7 @@
 				<div class="widget">
 				<div class="head_menu">Nuestras Marcas</div>
 				<div class="body">
-					<img src="imagenes/marca.gif">
+					<div align="center"><img src="imagenes/marca.gif"></div>
 				</div>
 				</div>
 

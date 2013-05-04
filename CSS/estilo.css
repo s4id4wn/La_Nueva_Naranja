@@ -180,7 +180,7 @@ section #side_left {
 	float: left;
 	width: 200px;
 	text-align: right;
-	padding-right: 10px;
+	margin-right: 10px;
 }
 	
 section #side_left .head_menu {
@@ -197,7 +197,7 @@ section #side_left .head_menu {
 }
 	
 section #side_left .body {
-	background-color: white;
+	background: white;
 	text-align: left;
 	padding: 10px 10px 10px 10px;
 	font-size: 12px;
@@ -262,7 +262,7 @@ section #main_container {
 	padding: 10px 20px 20px 20px;
 	position: relative;
 	text-align: justify;
-	background-color: white;
+	background: white;
 	min-height: 500px;
 	border-bottom: 5px solid #ccc;
 }
@@ -550,6 +550,7 @@ h2+p, p+p{
 		width: 100%;
 		height: 20px;
 		border-bottom: 1px dashed #ccc;
+		background-color: #eee;
 	}
 
 	.info .header .product_name{
@@ -557,7 +558,9 @@ h2+p, p+p{
 		font-size: 16px;
 		font-weight: bolder;
 		color: #5E6569;
-		float: right;
+		float: left;
+		color: #dd4814;
+		text-align: left;
 	}
 
 	.info .header .disponible{
@@ -565,7 +568,8 @@ h2+p, p+p{
 		font-size: 10px;
 		color: green;
 		float: left;
-		text-align: left;
+		text-align: right;
+		font-weight: bolder;
 	}
 
 	.info .header .agotado{
@@ -573,20 +577,43 @@ h2+p, p+p{
 		font-size: 10px;
 		color: red;
 		float: left;
-		text-align: left;
+		text-align: right;
+		font-weight: bolder;
 	}
 
 	.info .description{
-		width: 500px;
+		width: 499px;
 		height: 80px;
 		font-size: 11px;
-		clear: both;
 		text-align: left;
 		padding: 5px 0 0 5px;
 		overflow: auto;
+		float: left;
+	}
+
+	.info .price{
+		float: left;
+		text-align: center;
+		width: 117px;
+		height: 30px;
+		font-weight: bolder;
+		margin-top: 5px;
+		padding: 10px 0 0 0;
+	}
+
+	.info .car{
+		float: left;
+		text-align: center;
+		width: 117px;
+		height: 30px;
+		font-weight: bolder;
+		color: white;
+		background-color: #dd4814;
+		padding: 10px 0 0 0;
+		text-shadow: black 0.1em 0.1em 0.2em;
 	}
 
 #table_login{
 	font-size: 12px;
-	border-collapse:collapse;
+	border-collapse: collapse;
 }

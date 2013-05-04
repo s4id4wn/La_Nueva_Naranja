@@ -33,7 +33,7 @@
 						<li><a href="admin_panel.php"><i class="icon-globe"></i>Panel Admin</a></li>
 						<?php }
 						if(isset($_SESSION['logueado']) && $_SESSION['logueado'] == "activa") { ?>
-						<li><a href="php/logout.php"><i class="icon-signout"></i>Desconectar[<?php echo $_SESSION['usuario']; ?>]</a></li>
+						<li><a href="php/logout.php"><i class="icon-signout"></i>[<?php echo $_SESSION['usuario']; ?>]</a></li>
 						<?php } ?>
 					</ul>
 				</nav>
@@ -50,7 +50,56 @@
 			</ul>
 		</div>
  		<div class="limpiar"></div>
+
 		<section class="container">
+						<div id="side_left">
+			
+				<div class="widget">
+				<div class="head_menu">Buscador</div>
+				<div class="body">
+					<FORM method="GET" action="search.php"> 
+						<INPUT type="text" name="search" class="loginn search"> 
+					</FORM> 
+				</div>
+				</div>
+				
+				<div class="widget">
+				<div class="head_menu">Catálogo de productos</div>
+				<div class="body">
+					<ul>
+						<li><a href="#" class="selected">Linea Blanca</a></li>
+						<li><a href="#">Electrodomesticos</a></li>
+						<li><a href="#">Tu texto 3</a></li>
+						<li><a href="#">Tu texto 4</a></li>
+						<li><a href="#">Tu texto 5</a></li>
+						<li><a href="#">Tu texto 6</a></li>
+						<li><a href="#">Tu texto 7</a></li>
+						<li><a href="#">Tu texto 8</a></li>
+					</ul>
+				</div>
+				</div>
+				<div class="widget">
+				<div class="head_menu">Catálogo de productos</div>
+				<div class="body">
+					<ul>
+						<li><a href="#" class="selected">Tu texto 1</a></li>
+						<li><a href="#">Tu texto 2</a></li>
+						<li><a href="#">Tu texto 3</a></li>
+						<li><a href="#">Tu texto 4</a></li>
+						<li><a href="#">Tu texto 5</a></li>
+						<li><a href="#">Tu texto 6</a></li>
+					</ul>
+				</div>
+				</div>
+
+				<div class="widget">
+				<div class="head_menu">Nuestras Marcas</div>
+				<div class="body">
+					<div align="center"><img src="imagenes/marca.gif"></div>
+				</div>
+				</div>
+
+			</div>
 					
 			<!---------------------------------
 				Comienzo contenedor principal

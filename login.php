@@ -3,7 +3,7 @@
 	session_start();
 	if(isset($_SESSION['logueado']) && $_SESSION['logueado'] == "activa") { 
 		header('Location: index.php');
-	} 
+	}
 ?>
 <html lang="es">
 <head>
@@ -14,6 +14,7 @@
 	<link rel="shortcut icon" href="images/favicon.ico"/>
 
     <script type="text/javascript" src="javascript/valida_login.js"></script>
+
 </head>
 
 <body>
@@ -36,7 +37,7 @@
 						<li><a href="admin_panel.php"><i class="icon-globe"></i>Panel Admin</a></li>
 						<?php }
 						if(isset($_SESSION['logueado']) && $_SESSION['logueado'] == "activa") { ?>
-						<li><a href="php/logout.php"><i class="icon-signout"></i>Desconectar[<?php echo $_SESSION['usuario']; ?>]</a></li>
+						<li><a href="php/logout.php"><i class="icon-signout"></i>[<?php echo $_SESSION['usuario']; ?>]</a></li>
 						<?php } ?>
 					</ul>
 				</nav>
@@ -99,7 +100,7 @@
 				<div class="widget">
 				<div class="head_menu">Nuestras Marcas</div>
 				<div class="body">
-					<img src="imagenes/marca.gif">
+					<div align="center"><img src="imagenes/marca.gif"></div>
 				</div>
 				</div>
 
@@ -134,9 +135,9 @@
 					<tr>
 						<TD>Contraseña:</TD><TD><input type="password" name="password" class="loginn password"></TD>
 					</tr>
-					<TR>
-						<TD><INPUT type="submit" value="Ingresar"></TD>
-					</TR>
+					<tr>
+						<td><INPUT type="submit" value="Ingresar"></td>
+					</tr>
 				</table>
 				</FORM>
 			</div>
