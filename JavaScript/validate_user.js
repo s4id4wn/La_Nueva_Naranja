@@ -3,46 +3,16 @@ function validateFormOfUser(User)
 {
 	var is_accepted = false;
 	
-	User.user.value = User.user.value.trim();
-	var user = User.user.value;
-	
-	User.password.value = User.password.value.trim();
-	var password = User.password.value;
-	
-	User.confirm_password.value = User.confirm_password.value.trim();
-	var confirm_password = User.confirm_password.value;
-	
-	User.name.value = User.name.value.trim();
-	var name = User.name.value;
-
-	User.last_name.value = User.last_name.value.trim();
-	var last_name = User.last_name.value;
-	
-	User.email.value = User.email.value.trim();
-	var email = User.email.value;
-	
-	User.repeat_email.value = User.repeat_email.value.trim();
-	var repeat_email = User.repeat_email.value;
-
-	User.town.value = User.town.value.trim();
-	var town = User.town.value;
-	
-	User.address.value = User.address.value.trim();
-	var address = User.address.value;
-	
-	User.telephone_number.value = User.telephone_number.value.trim();
-	var telephone_number = User.telephone_number.value;
-	
-	if( this.validateUser(user)==true &
-		this.validatePassword(password)==true &
-		this.validateConfirmPassword(password,confirm_password)==true &
-		this.validateName(name)==true &
-		this.validateLastName(last_name)==true &
-		this.validateEmail(email)==true &
-		this.validateRepeat_email(email,repeat_email)==true &
-		this.validateTown(town)==true &
-		this.validateAddress(address)==true &
-		this.validateTelephoneNumber(telephone_number)==true
+	if( this.validateUser(User.user.value)==true &
+		this.validatePassword(User.password.value)==true &
+		this.validateConfirmPassword(User.password.value,User.confirm_password.value)==true &
+		this.validateName(User.name.value)==true &
+		this.validateLastName(User.last_name.value)==true &
+		this.validateEmail(User.email.value)==true &
+		this.validateRepeatEmail(User.email.value,User.repeat_email.value)==true &
+		this.validateTown(User.town.value)==true &
+		this.validateAddress(User.address.value)==true &
+		this.validateTelephoneNumber(User.telephone_number.value)==true
 	){
 		is_accepted = true;
 	}
@@ -52,6 +22,7 @@ function validateFormOfUser(User)
 
 function validateUser(user)
  {
+	var user = user.trim();
 	var is_accepted = false;
 	var minimum_length_user = 3;
 	var maxim_length_user = 20;
@@ -59,23 +30,27 @@ function validateUser(user)
 	if(user=="")
 	{
 		$('#error_user').show();
-		$('#error_u').text('Usuario, es requerido').show();
+		$('#error_u').text('Usuario es requerido').show();
+		$('.error2').hide();
 	}else if(user!="")
 	{
 		if(user.length < minimum_length_user)
 		{
 			$('#error_user').show();
-			$('#error_u').text('No menor a 3 caracteres').show();		
+			$('#error_u').text('No menor a 3 caracteres').show();
+			$('.error2').hide();
 		}
 		else if (user.length > maxim_length_user)
 		{
 			$('#error_user').show();
 			$('#error_u').text('No mayor a 20 caracteres').show(); 
+			$('.error2').hide();
 		}
 		else
 		{
 			$('#error_user').hide();
 			$('#error_u').hide();
+			$('.error2').hide();
 			is_accepted=true;
 		}
 	}
@@ -84,6 +59,7 @@ function validateUser(user)
 
 function validatePassword(password)
 {
+	var password = password.trim();
 	var is_accepted = false;
 	var maxim_length_password = 35;
 	
@@ -111,6 +87,8 @@ function validatePassword(password)
 
 function validateConfirmPassword(password,confirm_password)
 {
+	var password = password.trim();
+	var confirm_password = confirm_password.trim();
 	var is_accepted = false;
 	var maxim_length_confirm_password = 35;
 	
@@ -148,6 +126,7 @@ function validateConfirmPassword(password,confirm_password)
 function validateName(name)
 {
 	var is_accepted = false;
+	var name = name.trim();
 	
 	if(name=="")
 	{
@@ -167,6 +146,7 @@ function validateName(name)
 function validateLastName(last_name)
 {
 	var is_accepted = false;
+	var last_name = last_name.trim();
 	
 	if(last_name=="")
 	{
@@ -186,6 +166,7 @@ function validateLastName(last_name)
 function validateEmail(email)
 {
 	var is_accepted = false;
+	var email = email.trim();
 	
 	if(email=="")
 	{
@@ -212,9 +193,11 @@ function validateEmail(email)
 	return is_accepted;
 }
 
-function validateRepeat_email(email,repeat_email)
+function validateRepeatEmail(email,repeat_email)
 {
 	var is_accepted = false;
+	var email = email.trim();
+	var repeat_email = repeat_email.trim();
 
 	if(repeat_email=="")
 	{
@@ -252,6 +235,7 @@ function validateRepeat_email(email,repeat_email)
 function validateTown(town)
 {
 	var is_accepted = false;
+	var town = town.trim();
 	if(town=="" || town=="Seleccionar")
 	{
 		$('#error_town').show();
@@ -269,6 +253,7 @@ function validateTown(town)
 
 function  validateAddress(address)
 {
+	var address = address.trim();
 	var is_accepted = false;
 	
 	if(address=="")
@@ -289,6 +274,7 @@ function  validateAddress(address)
 function validateTelephoneNumber(telephone_number)
 {
 	var is_accepted = false;
+	var telephone_number = telephone_number.trim();
 	var minimum_length_telephone_number = 7;
 	var maxim_length_telephone_number = 10;
 	
@@ -314,7 +300,7 @@ function validateTelephoneNumber(telephone_number)
 			else if (telephone_number.length > maxim_length_telephone_number)
 			{
 				$('#error_telephone_number').show();
-				$('#error_tl').text('No mayor a 1 caracteres').show(); 
+				$('#error_tl').text('No mayor a 10 caracteres').show(); 
 			}
 			else
 			{

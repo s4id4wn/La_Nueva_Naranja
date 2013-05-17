@@ -21,7 +21,7 @@
 	//verificar si null retorna cuando no existe el usuario
 	if( getUserById($id_user) != null )
 	{
-		$rows = logicDeleteUserById($id_user);
+		$rows = active($id_user);
 		if( $rows==true)
 		{
 			$succesful_action = true;

@@ -2,12 +2,9 @@
 <?php
 
 	session_start();
-	/*
 	if(isset($_SESSION['logueado']) && $_SESSION['logueado'] == "activa") { 
 		header('Location: index.php');
 	}
-	
-*/
 ?>
 <html lang="es">
 <head>
@@ -77,7 +74,7 @@
 				<div class="head_menu">Buscador</div>
 				<div class="body">
 					<FORM method="GET" action="search.php"> 
-						<INPUT type="text" name="search" class="loginn search"> 
+						<input type="text" name="search" class="loginn search"> 
 					</FORM> 
 				</div>
 				</div>
@@ -150,14 +147,15 @@
 		?>
 		<!--  Cambiar las validaciones y el valor del action *************************************-->
 		
-			<form action="PHP/user/edit_user.php" method="post" onsubmit="return validateFormOfUser(this)">
-			<h2>Editar usuario: <?php echo $user['name']?></h2>
+			<form name="form" action="PHP/user/edit_user.php" method="post" onsubmit="return validateFormOfUser(this)">
+			<h2>Editar usuario: <?php echo $user['user']?></h2>
+			<input type="hidden" name="id" value="<?php echo $_GET['id']?>"/>
 		<?php
 		}
 		else
 		{
 		?>
-			<form action="PHP/user/add_user.php" method="post" onsubmit="return validateFormOfUser(this)">
+			<form name="form" action="PHP/user/add_user.php" method="post" onsubmit="return validateFormOfUser(this)">
 			<h2>Registro de  usuario</h2>
 		<?php
 		}
@@ -169,79 +167,105 @@
 		<tr>
 			<td>Usuario <span class="requerid">*</span> </td>
 			<td> 
+				<input <?php echo (isset($_GET['id']))? 'disabled' : '' ; ?> type="text" name="user" onBlur="return validateUser(this.value)" value="<?php echo (isset($_GET['id']) && is_numeric($_GET['id']))? $user['user']: (isset($_GET['user'])? $_GET['user']: '' ); ?>" />
+				
+				<?php
+					if(isset($_GET['exists_user']) && $_GET['exists_user'])
+					{
+				?>
+						<p class="error2"><?php echo $_GET['exists_user'];?></p>
+				<?php
+					}
+				?>
 				<div  class="error" id="error_user">
-					<p id="error_u"></p>
+					<p  id="error_u"></p>
 				</div>				
-				<INPUT  type="text" name="user" value="<?php echo (isset($_GET['id']) && is_numeric($_GET['id']))? $user['user']:''; ?>" />
+				
 			</td>
 		</tr>
 		<tr>
 			<td>Contraseña <span class="requerid">*</span> </td>
 			<td>
+				<input type="password" name="password" onBlur="return validatePassword(this.value)" value="<?php (isset($_GET['password'])? $_GET['password']: '' ); ?>" />
 				<div class="error" id="error_password">
 					<p id="error_p"></p>
 				</div>
-				<input type="password" name="password">
+				
 			</td>
 		</tr>
 
 		<tr>
 			<td>Confirmar Contraseña <span class="requerid">*</span> </td>
 			<td>
+				<input type="password" name="confirm_password" onBlur="return validateConfirmPassword(password.value, this.value)" value="<?php (isset($_GET['password'])? $_GET['password']: '' ); ?>" />
 				<div class="error" id="error_confirm_password">
 					<p id="error_cp"></p>
 				</div>
-				<input type="password" name="confirm_password">
+				
 			</td>
 		</tr>
 		
-			<tr>
+		<tr>
 			<td>Nombres <span class="requerid">*</span> </td>
 			<td>
+			<input  type="text" name="name" onBlur="return validateName(this.value)" value="<?php echo (isset($_GET['id']) && is_numeric($_GET['id']))? $user['name']: (isset($_GET['name'])? $_GET['name']: '' ); ?>" />
 				<div  class="error" id="error_name">
 					<p  id="error_n"></p>
 				</div>
-				<INPUT  type="text" name="name" value="<?php echo (isset($_GET['id']) && is_numeric($_GET['id']))? $user['name']:''; ?>" />
 			</td>
 		</tr>
 
 		<tr>
 			<td>Apellidos <span class="requerid">*</span> </td>
 			<td>
+			<input type="text" name="last_name" onBlur="return validateLastName(this.value)" value="<?php echo (isset($_GET['id']) && is_numeric($_GET['id']))? $user['last_name']: (isset($_GET['last_name'])? $_GET['last_name']: '' ); ?>" />
 				<div class="error" id="error_last_name">
 					<p id="error_ln"></p>
 				</div>
-				<INPUT type="text" name="last_name" value="<?php echo (isset($_GET['id']) && is_numeric($_GET['id']))? $user['last_name']:''; ?>" />				
+				
 			</td>
 		</tr>
 
 		<tr>
 			<td>Correo <span class="requerid">*</span> </td>
 			<td>
+				
+				<input type="text" name="email" onBlur="return validateEmail(this.value)" value="<?php echo (isset($_GET['id']) && is_numeric($_GET['id']))? $user['email']: (isset($_GET['email'])? $_GET['email']: '' ); ?>" />
 				<div class="error" id="error_email">
 					<p id="error_e"></p>
 				</div>
-				<input type="text" name="email" value="<?php echo (isset($_GET['id']) && is_numeric($_GET['id']))? $user['email']:''; ?>" />
 			</td>
 		</tr>
 
 		<tr>
 			<td>Repetir Correo <span class="requerid">*</span> </td>
 			<td>
+			<input type="text" name="repeat_email" onBlur="return validateRepeatEmail(email.value, this.value)" value="<?php echo (isset($_GET['id']) && is_numeric($_GET['id']))? $user['email']: (isset($_GET['email'])? $_GET['email']: '' ); ?>" />
+
+				<?php
+					//if(isset($_GET['re']) && $_GET['re']==1)
+					//{
+				?>
+					<!--	<p class="error2"><?php echo $_GET['mensaje'];?></p> -->
+				<?php
+					//}
+				?>
+				
 				<div class="error" id="error_repeat_email">
 					<p id="error_re"></p>
 				</div>
-				<input type="text" name="repeat_email" value="<?php echo (isset($_GET['id']) && is_numeric($_GET['id']))? $user['email']:''; ?>" />
+				
 			</td>
 		</tr>
 
+
 		<tr>
-			<td>Municipio <span class="requerid">*</span> </td>
+			<td>Municipio <span class="requerid">*</span></td>
+			
 			<td>
-				<div class="error" id="error_town">
-					<p id="error_t"></p>
-				</div>
-    <select name="town" >
+
+    <select name="town" onBlur="return validateTown(this.value)" >
+	
       <option>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Seleccionar</option>
       
       <option>Abal&aacute;</option>
@@ -356,7 +380,9 @@
 				
     </select>
 	
-	<br><br>
+		<div class="error" id="error_town">
+			<p id="error_t"></p>
+		</div>
 	
 	</td>
 	</tr>
@@ -364,26 +390,28 @@
 		<tr>
 			<td>Dirección <span class="requerid">*</span> </td>
 			<td>
+				
+				<input type="text" name="address" onBlur="return validateAddress(this.value)" value="<?php echo (isset($_GET['id']) && is_numeric($_GET['id']))? $user['address']: (isset($_GET['address'])? $_GET['address']: '' ); ?>" />
 				<div class="error" id="error_address">
 					<p id="error_a"></p>
 				</div>
-				<input type="text" name="address" value="<?php echo (isset($_GET['id']) && is_numeric($_GET['id']))? $user['address']:''; ?>" />
 			</td>
 		</tr>
 		
 		<tr>
 			<td>Número telefónico <span class="requerid">*</span> </td>
 			<td>
+				<input type="text" name="telephone_number" onBlur="return validateTelephoneNumber(this.value)" value="<?php echo (isset($_GET['id']) && is_numeric($_GET['id']))? $user['telephone_number']: (isset($_GET['telephone_number'])? $_GET['telephone_number']: '' ); ?>" />
 				<div class="error" id="error_telephone_number">
 					<p id="error_tl"></p>
 				</div>
-				<input type="text" name="telephone_number" value="<?php echo (isset($_GET['id']) && is_numeric($_GET['id']))? $user['telephone_number']:''; ?>" />
+				
 			</td>
 		</tr>
 		
 		<tr>
 			<td COLSPAN=2>
-				<INPUT type="submit" value="Registrar" >
+				<input type="submit" name="Guardar" value="Guardar" >
 			</td>
 		</tr>
 </table>
