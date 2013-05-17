@@ -163,7 +163,7 @@
 	
 	<p>Campos con <span class="requerid">*</span> son requeridos</p>
 	
-	<table BORDER=0>
+	<table BORDER=0 align="center" id="login_box">
 		<tr>
 			<td>Usuario <span class="requerid">*</span> </td>
 			<td> 

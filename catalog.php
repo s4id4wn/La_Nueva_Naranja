@@ -8,8 +8,33 @@
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	
 	<link rel="stylesheet" type="text/css" href="css/estilo.css"/>
-	<link rel="stylesheet" type="text/css" href="css/estilos_menores.css"/>
+	
+	<link rel="stylesheet" href="plugins/light/light.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="plugins/nivo-slider.css" type="text/css" media="screen" />
 	<link rel="stylesheet" href="css/css/font-awesome.css">
+	
+    <script type="text/javascript" src="scripts/jquery-1.9.0.min.js"></script> 
+    <script type="text/javascript" src="plugins/jquery.nivo.slider.js"></script>
+	<script type="text/javascript" src="plugins/konami/konami.js"></script>
+	
+    <script type="text/javascript" charset="utf-8">
+            $(document).konami({
+                code: ['up', 'up', 'down', 'down'], 
+                callback: function() {
+                    document.getElementById('hola').innerHTML = '<img src="imagenes/yao.jpg"/>';
+                }
+			});
+	</script>
+	<script type="text/javascript">
+		function ajustar(){
+			alert('hola');
+			var side_left = document.getElementById('side_left').style.height;
+			var main_container = document.getElementById('main_container').style.height;
+			if(side_left > main_container){
+				side_left = main_container;
+			}
+		}	
+	</script>
 	
 </head>
 
@@ -33,16 +58,17 @@
 						<li><a href="admin_panel.php"><i class="icon-globe"></i>Panel Admin</a></li>
 						<?php }
 						if(isset($_SESSION['logueado']) && $_SESSION['logueado'] == "activa") { ?>
-						<li><a href="php/logout.php"><i class="icon-signout"></i>[<?php echo $_SESSION['usuario']; ?>]</a></li>
+						<li><a href="php/logout.php" alt="Desconectar"><i class="icon-signout"></i>[<?php echo $_SESSION['usuario']; ?>]</a></li>
 						<?php } ?>
 					</ul>
 				</nav>
+					<!--<p class="as container">hola</p>-->
 			</div>
 		</header>
 		
 		<div id="second_menu" class="container">
 			<ul>
-				<li><a class="selected" href="#">Inicio</a></li>
+				<li><a class="selected" href="#"><i class="icon-home"></i>Inicio</a></li>
 				<li><a href="#">Categoria2</a></li>
 				<li><a href="#">Categoria3</a></li>
 				<li><a href="#">Categoria4</a></li>
@@ -52,7 +78,11 @@
  		<div class="limpiar"></div>
 
 		<section class="container">
-						<div id="side_left">
+		
+			<!-------------------------
+				Comeinzo lado derecho, Menu 
+			-------------------------->
+			<div id="side_left">
 			
 				<div class="widget">
 				<div class="head_menu">Buscador</div>
@@ -67,8 +97,8 @@
 				<div class="head_menu">Catálogo de productos</div>
 				<div class="body">
 					<ul>
-						<li><a href="#" class="selected">Linea Blanca</a></li>
-						<li><a href="#">Electrodomesticos</a></li>
+						<li><a href="#" class="selected">Televisores (30)</a></li>
+						<li><a href="#">Estufas (14)</a></li>
 						<li><a href="#">Tu texto 3</a></li>
 						<li><a href="#">Tu texto 4</a></li>
 						<li><a href="#">Tu texto 5</a></li>
@@ -100,60 +130,48 @@
 				</div>
 
 			</div>
-					
+			
 			<!---------------------------------
 				Comienzo contenedor principal
 			---------------------------------->
-		  <div id="main_container">				
-		  	<h2>Contacto</h2>
-		    <form id="comentarios" name="form1" method="post" action="contacto.php">
-		      <table border="0" align="center" id="login_box">
-		        <tr>
-		          <td width="193">Nombre:</td>
-		          <td width="285"><label for="nombreCont"></label>
-	              <input name="nombreCont" type="text" id="nombreCont" size="30" /></td>
-	            </tr>
-		        <tr>
-		          <td>Apellido:</td>
-		          <td><label for="apePatCont"></label>
-	              <input name="apeCont" type="text" id="apeCont" size="30" /></td>
-	            </tr>
-		        <tr>
-		          <td>Telefono:</td>
-		          <td><label for="teleCont"></label>
-	              <input name="teleCont" type="text" id="teleCont" size="30" /></td>
-	            </tr>
-		        <tr>
-		          <td>Correo Electronico:</td>
-		          <td><input name="CorreoElec" type="text" id="CorreoElec" size="30" /></td>
-	            </tr>
-		        <tr>
-		          <td height="68">Comentario:</td>
-		          <td><label for="comentCont"></label>
-	              <textarea name="comentCont" id="comentCont" cols="30" rows="5"></textarea></td>
-	            </tr>
-		        <tr align="center" valign="middle">
-		          <td height="68" colspan="2">
-				  <?php
-require_once('recaptchalib.php');
-$publickey = "6LdIl-ASAAAAAGNMMojfXbZ13bV708jtjY1EOkEp";
-$privatekey = 			   "6LdIl-ASAAAAACf7l26DuXLmD5HY3f8TAehaY6fB";
-	$error = null;
-		echo recaptcha_get_html($publickey, $error);
-	?>
-</td>
-	            </tr>
-		        <tr align="center" valign="middle">
-		          <td height="68" colspan="2"><label for="comentCont"></label>		            <label for="comentCont"></label>		            <label for="CorreoElec">
-		            <input type="submit" name="enviarMen" id="enviarMen" value="Enviar Mensaje" />
-		          </label></td>
-	            </tr>
-	          </table>
-	        </form>
-		    <br />
+			<div id="main_container">
+				<h2>Catálogo: Televisores</h2>
+					
+					<div class="box_item_cat">
+						<div class="item_cat_name">Producto 1</div>
+						<div class="item_cat_image"><img src="imagenes/ooo.jpg" height="100px"></div>
+						<div class="item_cat_info">Detalles</div>
+						<div class="item_cat_price">$200</div>
+						<div class="item_cat_addcar"><a href="sasa">Agregar</a></div>
+					</div>
+					
+					<div class="box_item_cat">
+						<div class="item_cat_name">Producto 2</div>
+						<div class="item_cat_image"><img src="imagenes/descarga.jpg" height="100px"></div>
+						<div class="item_cat_info">Detalles</div>
+						<div class="item_cat_price">$200</div>
+						<div class="item_cat_addcar"><a href="sasa">Agregar</a></div>
+					</div>
+					
+					<div class="box_item_cat">
+						<div class="item_cat_name">Producto 3</div>
+						<div class="item_cat_image"><img src="imagenes/ppp.jpg" height="100px"></div>
+						<div class="item_cat_info">Detalles</div>
+						<div class="item_cat_price">$200</div>
+						<div class="item_cat_addcar"><a href="sasa">Agregar</a></div>
+					</div>
+					
+					<div class="box_item_cat">
+						<div class="item_cat_name">Producto 4</div>
+						<div class="item_cat_image"><img src="imagenes/hhh.jpg" height="100px"></div>
+						<div class="item_cat_info">Detalles</div>
+						<div class="item_cat_price">$200</div>
+						<div class="item_cat_addcar"><a href="sasa">Agregar</a></div>
+					</div>
+					
 			</div>
 		</section>
-    <div class="limpiar"></div>
+		<div class="limpiar"></div>
 		<footer class="container">
 			<p>La Nueva Naranja &copy; 2013. Algunos derechos reservados.</p>
 		</footer>

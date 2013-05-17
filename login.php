@@ -110,8 +110,6 @@
 				Comienzo contenedor principal
 			---------------------------------->
 			<div id="main_container">
-			
-				<FORM name='login' method='post' action="php/login.php">
 				<h2>Ingresar al Sistema</h2>
 
 				<?php
@@ -127,7 +125,9 @@
 								break;
 						}
 					}
-				?>	
+				?>
+			<div align="center" id="login_box">
+				<FORM name='login' method='post' action="php/login.php">
 				<table id="table_login">
 					<tr>
 						<TD>Usuario:</TD><TD><INPUT type='text' name="user" class="loginn user"></TD>
@@ -136,10 +136,14 @@
 						<TD>Contraseña:</TD><TD><input type="password" name="password" class="loginn password"></TD>
 					</tr>
 					<tr>
+						<td><input type="checkbox" name="" value=""> Recordar contraseña</td>
+					</tr>
+					<tr>
 						<td><INPUT type="submit" value="Ingresar"></td>
 					</tr>
 				</table>
 				</FORM>
+			</div>
 			</div>
 		</section>
 
