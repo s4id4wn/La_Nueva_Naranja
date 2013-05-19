@@ -34,7 +34,7 @@
 						<li><a href="admin_panel.php"><i class="icon-globe"></i>Panel Admin</a></li>
 						<?php }
 						if(isset($_SESSION['logueado']) && $_SESSION['logueado'] == "activa") { ?>
-						<li><a href="php/logout.php"><i class="icon-signout"></i>[<?php echo $_SESSION['usuario']; ?>]</a></li>
+						<li><a href="php/logout.php"><i class="icon-signout"></i>Desconectar[<?php echo $_SESSION['usuario']; ?>]</a></li>
 						<?php } ?>
 					</ul>
 				</nav>
@@ -44,9 +44,9 @@
 		<div id="second_menu" class="container">
 			<ul>
 				<li><a href="index.php"><i class="icon-home"></i>Inicio</a></li>
-				<li><a href="#">Categoria2</a></li>
-				<li><a href="#">Categoria3</a></li>
-				<li><a href="#">Categoria4</a></li>
+				<li><a href="#">Electrodom&eacute;sticos</a></li>
+				<li><a href="catalogo_linea_blanca.php">L&iacute;nea blanca</a></li>
+				<li><a href="quienes_somos.php">¿Qui&eacute;nes somos?</a></li>
 				<li><a href="#">Categoria5</a></li>
 			</ul>
 		</div>
@@ -97,7 +97,7 @@
 				<div class="widget">
 				<div class="head_menu">Nuestras Marcas</div>
 				<div class="body">
-					<div align="center"><img src="imagenes/marca.gif"></div>
+					<img src="imagenes/marca.gif">
 				</div>
 				</div>
 
@@ -106,16 +106,15 @@
 			<div id="main_container">
 				<?php
 				if (!isset($_GET['search']) || $_GET['search'] == "" ){ 
-    				echo "<h2>Debe especificar una cadena a buscar</h2>"; 
+    				echo "<h2>Debe especificar el artículo a buscar.</h2>"; 
 				}
 				else{
 					$search = $_GET['search'];
 					//Evita inyecciones HTML
 					$search = htmlspecialchars($search);
 					$search = htmlentities($search);
-					//Evita inyeccions SQL
+					//Evita inyecciones SQL
 					$search = mysql_real_escape_string($search);
-					$realSearch = $search;
 
 					if(substr($search, -1) == 's'){
 						$search = substr($search, 0, -1);
@@ -123,7 +122,7 @@
 						$search = substr($search, 0, -2);
 					}
 
-					echo "<h2><i class='icon-search icon-large'></i> Busqueda: " . $realSearch . "</h2>";
+					echo "<h2>Búsqueda: " . $search . "</h2>";
 
 					connectBD();
 					$SQL_Sentence = "SELECT * FROM tbl_product WHERE name LIKE '%$search%'";
@@ -135,20 +134,17 @@
 								echo "<div class='box_producto'>";
 								echo "<div class='imagen'><img src='" . $row['url_image'] . "'/></div>";
 								echo "<div class='info'><div class='header'>";
-								echo "<div class='product_name'>" . $row['name'] . "</div>";
 								if($row['amount'] == 0){
 									echo "<div class='agotado'>Agotado</div>";
 								}else{
 									echo "<div class='disponible'>Disponible</div>";
 								}
-								echo "</div>";
-								echo "<div class='description'>" . $row['description'] ."</div>";
-								echo "<div class='price'>$" . $row['price'] ."</div>";
-								echo "<div class='car'><i class='icon-shopping-cart icon-large'></i></div></div></div>";
+								echo "<div class='product_name'>" . $row['name'] . "</div></div>";
+								echo "<div class='description'>" . $row['description'] ."</div></div></div>";
 						}while ($row = mysql_fetch_array ($result));
 
 					}else{
-						echo "No se encontro ningun resultado";
+						echo "No se encontraron resultados";
 					}
 				}
 				?>

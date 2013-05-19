@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <?php
 include_once('PHP/lib.php');
-include_once('PHP/user/manager.php');
+include_once('PHP/product/manager.php');
 	/*session_start();
 
 	if(empty($_SESSION['logueado']) || $_SESSION['logueado'] != "activa") {
@@ -29,18 +29,6 @@ include_once('PHP/user/manager.php');
 </head>
 
 <body>
-<div id="second_menu" class="container">
-			<ul>
-			
-				<li><a href="index.php">Inicio</a></li>
-				<li><a class="selected" href="#">Usuarios</a></li>
-				<li><a href="#">Productos</a></li>
-				<li><a href="#">Marcas</a></li>
-				<li><a href="#">Ventas</a></li>
-			</ul>
-			
-		</div>
-		
 	<div id="page_wrapper">
 		<div id="header_admin">
 			<div class="container">
@@ -74,8 +62,7 @@ include_once('PHP/user/manager.php');
 					<ul>
 						<li><a href="admin_panel.php"><i class="icon-bar-chart"></i>Administracion Index</a></li>
 						<li class="selected"><i class="icon-group"></i>Administrar Usuarios</li>
-						<li><a href="form_user.php">Registro de usuario</a></li>
-						<li><a href="#"><i class="icon-paste"></i>Administrar Artículos</a></li>
+						<li><a href="admin_items.php"><i class="icon-paste"></i>Administrar Artículos</a></li>
 						<li><i class="icon-truck"></i><s>Administrar Provedores</s></li>
 						<li><i class="icon-sitemap"></i><s>Administrar Página</s></li>
 						<li><i class="icon-money"></i><s>Administrar Ganancias</s></li>
@@ -97,16 +84,18 @@ include_once('PHP/user/manager.php');
 	<table id="customers" >
 <tr>
   <th>Id</th>
-  <th>Usuario</th>
-  <th>Nombres</th>
-  <th>Apellidos</th>
-  <th>Correo</th>
+  <th>Brand</th>
+  <th>Nombre</th>
+  <th>Precio</th>
+  <th>Descripción</th>
+  <th>Cantidad</th>
+  <th>Imagen</th>
   <th>Activo</th>
   <th colspan="3" align="center">Acciones</th>
 </tr>
 
 <?php
-echo getUsers();
+echo getProducts();
 ?>
 
 </table>

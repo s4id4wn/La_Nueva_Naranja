@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 18-05-2013 a las 16:19:07
+-- Tiempo de generación: 19-05-2013 a las 20:22:06
 -- Versión del servidor: 5.5.24-log
 -- Versión de PHP: 5.3.13
 
@@ -28,10 +28,10 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `tbl_brand` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) NOT NULL,
+  `name` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   `active` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
 
 --
 -- Volcado de datos para la tabla `tbl_brand`
@@ -44,31 +44,43 @@ INSERT INTO `tbl_brand` (`id`, `name`, `active`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `tbl_category`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_category` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
+
+--
+-- Volcado de datos para la tabla `tbl_category`
+--
+
+INSERT INTO `tbl_category` (`id`, `name`) VALUES
+(1, 'electrodomestico'),
+(2, 'lineablanca');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `tbl_product`
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_product` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `category_id` int(10) unsigned NOT NULL,
   `brand_id` int(10) unsigned NOT NULL,
-  `name` varchar(45) NOT NULL,
+  `name` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `description` text COLLATE utf8_unicode_ci NOT NULL,
   `price` decimal(9,2) NOT NULL,
-  `description` varchar(200) NOT NULL,
   `amount` int(11) NOT NULL,
-  `url_image` varchar(200) NOT NULL,
+  `url_image` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
   `active` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk_tbl_product_tbl_brand_idx` (`brand_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
-
---
--- Volcado de datos para la tabla `tbl_product`
---
-
-INSERT INTO `tbl_product` (`id`, `brand_id`, `name`, `price`, `description`, `amount`, `url_image`, `active`) VALUES
-(1, 1, 'Plancha X100', '200.00', 'Una plancha que calienta a 2000 revoluciones por minuto capaz de generar tanto calor como la corona solar.', 20, 'imagenes/productos/5.png', 1),
-(2, 1, 'Plancha Mabe d340', '500.00', 'Plancha electrica.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor justo pulvinar elit vehicula euismod. Ut adipiscing facilisis tempus.', 0, 'imagenes/productos/2.png', 1),
-(3, 2, 'Estufa', '2000.00', 'Una estufa', 2, 'imagenes/productos/3.png', 1),
-(4, 1, 'Super Plancha ', '450.00', 'Super plancha XLZ', 5, 'imagenes/productos/6.png', 1);
+  KEY `fk_tbl_product_tbl_brand_idx` (`brand_id`),
+  KEY `fk_tbl_product_tbl_category_idx` (`category_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -78,12 +90,12 @@ INSERT INTO `tbl_product` (`id`, `brand_id`, `name`, `price`, `description`, `am
 
 CREATE TABLE IF NOT EXISTS `tbl_role` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) NOT NULL,
+  `name` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   `priority` int(11) NOT NULL,
-  `url_initial` varchar(100) NOT NULL,
+  `url_initial` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `active` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
 
 --
 -- Volcado de datos para la tabla `tbl_role`
@@ -105,7 +117,7 @@ CREATE TABLE IF NOT EXISTS `tbl_sale` (
   `total_price` decimal(12,2) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_tbl_sale_tbl_user_idx` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -118,7 +130,7 @@ CREATE TABLE IF NOT EXISTS `tbl_sale_product` (
   `product_id` int(10) unsigned NOT NULL,
   KEY `fk_tbl_sale_product_tbl_sale_idx` (`sale_id`),
   KEY `fk_tbl_sale_product_tbl_product_idx` (`product_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -129,35 +141,25 @@ CREATE TABLE IF NOT EXISTS `tbl_sale_product` (
 CREATE TABLE IF NOT EXISTS `tbl_user` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `role_id` int(10) unsigned NOT NULL,
-  `user` varchar(20) NOT NULL,
-  `password` varchar(35) NOT NULL,
-  `name` varchar(45) NOT NULL,
-  `last_name` varchar(45) NOT NULL,
-  `email` varchar(45) NOT NULL,
-  `town` varchar(45) NOT NULL,
-  `address` varchar(45) NOT NULL,
-  `telephone_number` varchar(10) NOT NULL,
+  `user` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(35) COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `last_name` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `town` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `address` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `telephone_number` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
   `active` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_tbl_user_tbl_role_idx` (`role_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
 
 --
 -- Volcado de datos para la tabla `tbl_user`
 --
 
 INSERT INTO `tbl_user` (`id`, `role_id`, `user`, `password`, `name`, `last_name`, `email`, `town`, `address`, `telephone_number`, `active`) VALUES
-(2, 1, 'said', 'dawn', 'Adrian Said', 'Dawn Rodriguez', 'said_dara@hotmail.com', 'Merida', 'calle 20', '9992466242', 0),
-(3, 1, 'usuario', '12345678', 'said', 'dawn', 'said_dara@hotmail.com', 'nada', 'menos', '232323', 0),
-(4, 1, 'usuario2', 'qwqwqwqw', 'Lady Pirete', 'qwqwqwq', 'teo.dawn@hotmail.com', 'Cuncunul', 'asdsdasd', '124324234', 0),
-(5, 2, 'dskfjsdkf', '$1$lG4.Kq5.$56ShrnFjqrJwHdN4ljHXE0', 'dd', '1', 'eltigre_balam@hotmail.com', 'Chemax', 'calle 20', '12345678', 1),
-(6, 2, 'q1q1', '$1$MR..l00.$9j3NXFHHf77yr3shLKryn1', 'dd', '1', 'nati_ja66@hotmail.com', 'Acanceh', 'calle 20', '12345678', 0),
-(7, 1, 'admin', '$1$2I1.hf5.$VKW4YDDMTblmTLjzY2ky3.', 'ss', '1', 'nati_ja66@hotmail.com', 'Akil', 'calle 20', '12345678', 1),
-(8, 1, 'nnn', '$1$wl3.3Y3.$ybDiPV9aMisgzhV6tG6VT.', 'dd', '1', 'nati_ja66@hotmail.com', 'Acanceh', 'calle 20', '12345678', 1),
-(9, 1, 'nnn1', '$1$qF4.rd4.$.2aRc3PTsoj/IePM/OLRq/', 'dd', '1', 'nati_ja66@hotmail.com', 'Acanceh', 'calle 20', '12345678', 1),
-(10, 2, 'nn3', '$1$Xp5.Up1.$W1H3KcRQpqi5xiYYLv9Rm1', 'dd', 'Dawn Rodriguez', 'eltigre_balam@hotmail.com', 'AbalÃ¡', '123', '9992466242', 1),
-(11, 2, 'nn4', '$1$jr/.w12.$0vJzaFNPHEwCt55TU.nqM/', '1', '1', 'nati_ja66@hotmail.com', 'Chankom', 'calle 20', '9992466242', 1),
-(12, 2, 'nn5', '$1$3C0.OL3.$QcVJ8xEdRgHU5bSN1pwyn0', 'dd', 'Dawn Rodriguez', 'nati_ja66@hotmail.com', 'CacalchÃ©n', 'calle 20', '9992466242', 1);
+(1, 1, 'said', 'dawn', 'Adrian Said', 'Dawn Rodriguez', 'said_dara@hotmail.com', 'Baca', 'calle 20', '9992466242', 1);
 
 --
 -- Restricciones para tablas volcadas
@@ -167,7 +169,8 @@ INSERT INTO `tbl_user` (`id`, `role_id`, `user`, `password`, `name`, `last_name`
 -- Filtros para la tabla `tbl_product`
 --
 ALTER TABLE `tbl_product`
-  ADD CONSTRAINT `fk_tbl_product_tbl_brand` FOREIGN KEY (`brand_id`) REFERENCES `tbl_brand` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_tbl_product_tbl_brand` FOREIGN KEY (`brand_id`) REFERENCES `tbl_brand` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_tbl_product_tbl_category` FOREIGN KEY (`category_id`) REFERENCES `tbl_category` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `tbl_sale`
@@ -179,8 +182,8 @@ ALTER TABLE `tbl_sale`
 -- Filtros para la tabla `tbl_sale_product`
 --
 ALTER TABLE `tbl_sale_product`
-  ADD CONSTRAINT `fk_tbl_sale_product_tbl_product` FOREIGN KEY (`product_id`) REFERENCES `tbl_product` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_tbl_sale_product_tbl_sale` FOREIGN KEY (`sale_id`) REFERENCES `tbl_sale` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_tbl_sale_product_tbl_sale` FOREIGN KEY (`sale_id`) REFERENCES `tbl_sale` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_tbl_sale_product_tbl_product` FOREIGN KEY (`product_id`) REFERENCES `tbl_product` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `tbl_user`

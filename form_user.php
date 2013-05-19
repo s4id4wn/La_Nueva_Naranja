@@ -2,9 +2,12 @@
 <?php
 
 	session_start();
+	/*
 	if(isset($_SESSION['logueado']) && $_SESSION['logueado'] == "activa") { 
 		header('Location: index.php');
 	}
+	
+*/
 ?>
 <html lang="es">
 <head>
@@ -56,10 +59,10 @@
 		<div id="second_menu" class="container">
 			<ul>
 				<li><a href="index.php"><i class="icon-home"></i>Inicio</a></li>
-				<li><a href="#">Categoria2</a></li>
-				<li><a href="#">Categoria3</a></li>
-				<li><a href="#">Categoria4</a></li>
-				<li><a href="#">Categoria5</a></li>
+				<li><a href="catalogo_electrodomesticos.php"> Electrodom&eacute;sticos</a></li>
+				<li><a href="catalogo_linea_blanca.php">L&iacute;nea blanca</a></li>
+				<li><a href="quienes_somos.php">¿Qui&eacute;nes somos?</a></li>
+				<li><a href="#">Sucursales</a></li>
 			</ul>
 		</div>
 		<div class="limpiar"></div>
@@ -139,14 +142,8 @@
 			{
 				$user = mysql_fetch_array($succesful_result);
 			}
-			else
-			{
-				//no existe el usuario o hubo un error con la BD
-			}
 				
 		?>
-		<!--  Cambiar las validaciones y el valor del action *************************************-->
-		
 			<form name="form" action="PHP/user/edit_user.php" method="post" onsubmit="return validateFormOfUser(this)">
 			<h2>Editar usuario: <?php echo $user['user']?></h2>
 			<input type="hidden" name="id" value="<?php echo $_GET['id']?>"/>
@@ -156,14 +153,14 @@
 		{
 		?>
 			<form name="form" action="PHP/user/add_user.php" method="post" onsubmit="return validateFormOfUser(this)">
-			<h2>Registro de  usuario</h2>
+			<h2>Registro de usuario</h2>
 		<?php
 		}
 		?>
 	
 	<p>Campos con <span class="requerid">*</span> son requeridos</p>
 	
-	<table BORDER=0 align="center" id="login_box">
+	<table BORDER=0>
 		<tr>
 			<td>Usuario <span class="requerid">*</span> </td>
 			<td> 

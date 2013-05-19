@@ -1,10 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <?php
 	session_start();
-	if(isset($_SESSION['logueado']) && $_SESSION['logueado'] == "activa") { 
-		header('Location: index.php');
-	} 
-?>
+	include_once('php/lib.php');
+?> 
 <html lang="es">
 <head>
 	<title>La Nueva Naranja</title>
@@ -14,6 +12,15 @@
 	<link rel="shortcut icon" href="images/favicon.ico"/>
 
     <script type="text/javascript" src="javascript/valida_login.js"></script>
+	<style>
+	.imagen{
+	width: 200px;
+	height: 200px;
+	}
+	#imagen_1{
+	float: right;
+	}
+	</style>
 </head>
 
 <body>
@@ -48,8 +55,9 @@
 				<li><a href="index.php"><i class="icon-home"></i>Inicio</a></li>
 				<li><a href="catalogo_electrodomesticos.php">Electrodom&eacute;sticos</a></li>
 				<li><a href="catalogo_linea_blanca.php">L&iacute;nea blanca</a></li>
-				<li><a href="quienes_somos.php">¿Qui&eacute;nes somos?</a></li>
+				<li><a class="selected" href="" >¿Qui&eacute;nes somos?</a></li>
 				<li><a href="#">Sucursales</a></li>
+				
 			</ul>
 		</div>
 		<div class="limpiar"></div>
@@ -64,7 +72,7 @@
 				<div class="head_menu">Buscador</div>
 				<div class="body">
 					<FORM method="GET" action="search.php"> 
-						<INPUT type="text" name="search" class="loginn search"> 
+						<INPUT type="text" name="search" class="loginn search" value="<?php echo (isset($_GET['search']))?$_GET['search']:''; ?>"> 
 					</FORM> 
 				</div>
 				</div>
@@ -105,40 +113,69 @@
 
 			</div>
 			
-			<!---------------------------------
-				Comienzo contenedor principal
-			---------------------------------->
 			<div id="main_container">
 			
-				<FORM name='login' method='post' action="php/login.php">
-				<h2>Ingresar al Sistema</h2>
-
+			<p>
+			<br>
+			En LG México somos conscientes que la vida es algo más que tener la última tecnología. 
+			Se trata de crear experiencias con la tecnología que aplicamos en todos nuestros productos,
+			que desde las más innovadoras televisiones y electrodomésticos, a los últimos dispositivos móviles y 
+			equipos de cómputo, LG te permite disfrutar de la vida y prepararte para tus mejores momentos.
+			<br><br><br>
+			LG Electronics diseña productos denominados electrohogar que destacan por ser intuitivos,
+			 flexibles y energéticamente eficientes, lo que te permitirá gastar con sabiduría, ser más productivo y 
+			 reducir el impacto en nuestro mundo. En LG estamos comprometidos a ofrecer productos electrónicos que se 
+			 adapten mejor a tu estilo de vida y que te mantengan actualizado con los últimos avances tecnológicos. 
+			 Después de todo, la vida es más sencilla cuando se está preparado.
+			</p>
+			
 				<?php
-					if(isset($_GET['error'])){
-						$error = $_GET['error'];
-						switch ($error) {
-							case '3':
-							case '4':
-								echo '<div class="error2">Usuario o contraseña invalidos</div>';
-								break;
-							case '5':
-								echo 'Usuario sin Roles';
-								break;
-						}
+				/*
+				if (!isset($_GET['search']) || $_GET['search'] == "" ){ 
+    				echo "<h2>Debe especificar el artículo a buscar.</h2>"; 
+				}
+				else{
+					$search = $_GET['search'];
+					//Evita inyecciones HTML
+					$search = htmlspecialchars($search);
+					$search = htmlentities($search);
+					//Evita inyecciones SQL
+					$search = mysql_real_escape_string($search);
+
+					if(substr($search, -1) == 's'){
+						$search = substr($search, 0, -1);
+					}elseif (substr($search, -2) == 'es') {
+						$search = substr($search, 0, -2);
 					}
-				?>	
-				<table id="table_login">
-					<tr>
-						<TD>Usuario:</TD><TD><INPUT type='text' name="user" class="loginn user"></TD>
-					</tr>
-					<tr>
-						<TD>Contraseña:</TD><TD><input type="password" name="password" class="loginn password"></TD>
-					</tr>
-					<TR>
-						<TD><INPUT type="submit" value="Ingresar"></TD>
-					</TR>
-				</table>
-				</FORM>
+
+					echo "<h2>Búsqueda: " . $search . "</h2>";
+
+					connectBD();
+					$SQL_Sentence = "SELECT * FROM tbl_product WHERE name LIKE '%$search%'";
+					$result = mysql_query($SQL_Sentence);
+
+					if($row = mysql_fetch_array($result)){
+					
+						do {
+								echo "<div class='box_producto'>";
+								echo "<div class='imagen'><img src='" . $row['url_image'] . "'/></div>";
+								echo "<div class='info'><div class='header'>";
+								if($row['amount'] == 0){
+									echo "<div class='agotado'>Agotado</div>";
+								}else{
+									echo "<div class='disponible'>Disponible</div>";
+								}
+								echo "<div class='product_name'>" . $row['name'] . "</div></div>";
+								echo "<div class='description'>" . $row['description'] ."</div></div></div>";
+						}while ($row = mysql_fetch_array ($result));
+
+					}else{
+						echo "No se encontraron resultados";
+					}
+				}
+				*/
+				?>
+
 			</div>
 		</section>
 

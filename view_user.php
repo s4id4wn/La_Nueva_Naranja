@@ -1,7 +1,14 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <?php
-include_once('PHP/lib.php');
-include_once('PHP/user/manager.php');
+
+if(isset($_GET['id']))
+{
+	include_once('PHP/lib.php');
+	include_once('PHP/user/SQL/user.php');
+	$result = getUserById($_GET['id']);
+	$user = mysql_fetch_array($result);
+}
+
 	/*session_start();
 
 	if(empty($_SESSION['logueado']) || $_SESSION['logueado'] != "activa") {
@@ -16,6 +23,7 @@ include_once('PHP/user/manager.php');
 		die();
 	}*/
 				
+	
 ?>
 <html lang="en">
 <head>
@@ -29,18 +37,6 @@ include_once('PHP/user/manager.php');
 </head>
 
 <body>
-<div id="second_menu" class="container">
-			<ul>
-			
-				<li><a href="index.php">Inicio</a></li>
-				<li><a class="selected" href="#">Usuarios</a></li>
-				<li><a href="#">Productos</a></li>
-				<li><a href="#">Marcas</a></li>
-				<li><a href="#">Ventas</a></li>
-			</ul>
-			
-		</div>
-		
 	<div id="page_wrapper">
 		<div id="header_admin">
 			<div class="container">
@@ -74,8 +70,7 @@ include_once('PHP/user/manager.php');
 					<ul>
 						<li><a href="admin_panel.php"><i class="icon-bar-chart"></i>Administracion Index</a></li>
 						<li class="selected"><i class="icon-group"></i>Administrar Usuarios</li>
-						<li><a href="form_user.php">Registro de usuario</a></li>
-						<li><a href="#"><i class="icon-paste"></i>Administrar Artículos</a></li>
+						<li><a href="admin_items.php"><i class="icon-paste"></i>Administrar Artículos</a></li>
 						<li><i class="icon-truck"></i><s>Administrar Provedores</s></li>
 						<li><i class="icon-sitemap"></i><s>Administrar Página</s></li>
 						<li><i class="icon-money"></i><s>Administrar Ganancias</s></li>
@@ -92,21 +87,36 @@ include_once('PHP/user/manager.php');
 			---------------------------------->
 			<div id="main_container">
 			
-			<h2>Administrar Usuarios</h2>
+			<h2>Ver usuario: </h2>
 
-	<table id="customers" >
+	<table border="1" width="40%">
 <tr>
-  <th>Id</th>
-  <th>Usuario</th>
-  <th>Nombres</th>
-  <th>Apellidos</th>
-  <th>Correo</th>
-  <th>Activo</th>
-  <th colspan="3" align="center">Acciones</th>
+  <th>Id</th><td><?php echo (isset($_GET['id']))? $user['id'] : ''; ?></td>
+</tr>
+<tr>
+  <th>Usuario</th><td>s</td>
+</tr>
+<tr>
+  <th>Apellidos</th><td>s</td>
+</tr>
+<tr>
+  <th>Correo electr&oacute;nico</th><td></td>
+</tr>
+<tr>
+  <th>Municipio</th><td></td>
+</tr>
+<tr>
+  <th>Dirección</th><td></td>
+</tr>
+<tr>
+  <th>Número telefónico</th><td></td>
+</tr>  
+<tr>
+  <th>Activo</th><td></td>
 </tr>
 
 <?php
-echo getUsers();
+//echo getProducts();
 ?>
 
 </table>

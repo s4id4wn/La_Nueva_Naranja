@@ -33,7 +33,7 @@
 						<li><a href="admin_panel.php"><i class="icon-globe"></i>Panel Admin</a></li>
 						<?php }
 						if(isset($_SESSION['logueado']) && $_SESSION['logueado'] == "activa") { ?>
-						<li><a href="php/logout.php"><i class="icon-signout"></i>[<?php echo $_SESSION['usuario']; ?>]</a></li>
+						<li><a href="php/logout.php"><i class="icon-signout"></i>Desconectar[<?php echo $_SESSION['usuario']; ?>]</a></li>
 						<?php } ?>
 					</ul>
 				</nav>
@@ -42,72 +42,24 @@
 		
 		<div id="second_menu" class="container">
 			<ul>
-				<li><a class="selected" href="#">Inicio</a></li>
-				<li><a href="#">Categoria2</a></li>
-				<li><a href="#">Categoria3</a></li>
-				<li><a href="#">Categoria4</a></li>
-				<li><a href="#">Categoria5</a></li>
+				<li><a href="#">Inicio</a></li>
+				<li><a href="catalogo_electrodomesticos.php">Electrodom&eacute;sticos</a></li>
+				<li><a href="catalogo_linea_blanca.php">L&iacute;nea blanca</a></li>
+				<li><a href="quienes_somos.php">¿Qui&eacute;nes somos?</a></li>
+				<li><a href="#">Sucursales</a></li>
 			</ul>
 		</div>
  		<div class="limpiar"></div>
-
 		<section class="container">
-						<div id="side_left">
-			
-				<div class="widget">
-				<div class="head_menu">Buscador</div>
-				<div class="body">
-					<FORM method="GET" action="search.php"> 
-						<INPUT type="text" name="search" class="loginn search"> 
-					</FORM> 
-				</div>
-				</div>
-				
-				<div class="widget">
-				<div class="head_menu">Catálogo de productos</div>
-				<div class="body">
-					<ul>
-						<li><a href="#" class="selected">Linea Blanca</a></li>
-						<li><a href="#">Electrodomesticos</a></li>
-						<li><a href="#">Tu texto 3</a></li>
-						<li><a href="#">Tu texto 4</a></li>
-						<li><a href="#">Tu texto 5</a></li>
-						<li><a href="#">Tu texto 6</a></li>
-						<li><a href="#">Tu texto 7</a></li>
-						<li><a href="#">Tu texto 8</a></li>
-					</ul>
-				</div>
-				</div>
-				<div class="widget">
-				<div class="head_menu">Catálogo de productos</div>
-				<div class="body">
-					<ul>
-						<li><a href="#" class="selected">Tu texto 1</a></li>
-						<li><a href="#">Tu texto 2</a></li>
-						<li><a href="#">Tu texto 3</a></li>
-						<li><a href="#">Tu texto 4</a></li>
-						<li><a href="#">Tu texto 5</a></li>
-						<li><a href="#">Tu texto 6</a></li>
-					</ul>
-				</div>
-				</div>
-
-				<div class="widget">
-				<div class="head_menu">Nuestras Marcas</div>
-				<div class="body">
-					<div align="center"><img src="imagenes/marca.gif"></div>
-				</div>
-				</div>
-
-			</div>
 					
 			<!---------------------------------
 				Comienzo contenedor principal
 			---------------------------------->
 		  <div id="main_container">				
-		  	<h2>Contacto</h2>
+		    <div class="limpiar"></div>
+			<h2>Cont&aacute;ctanos</h2>
 		    <form id="comentarios" name="form1" method="post" action="contacto.php">
-		      <table border="0" align="center" id="login_box">
+		      <table border="0">
 		        <tr>
 		          <td width="193">Nombre:</td>
 		          <td width="285"><label for="nombreCont"></label>

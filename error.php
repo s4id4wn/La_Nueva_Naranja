@@ -1,7 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <?php
-
-//prueba
 	session_start();
 ?>
 <html lang="es">
@@ -35,7 +33,7 @@
 						<li><a href="admin_panel.php"><i class="icon-globe"></i>Panel Admin</a></li>
 						<?php }
 						if(isset($_SESSION['logueado']) && $_SESSION['logueado'] == "activa") { ?>
-						<li><a href="php/logout.php"><i class="icon-signout"></i>[<?php echo $_SESSION['usuario']; ?>]</a></li>
+						<li><a href="php/logout.php"><i class="icon-signout"></i>Desconectar[<?php echo $_SESSION['usuario']; ?>]</a></li>
 						<?php } ?>
 					</ul>
 				</nav>
@@ -98,7 +96,7 @@
 				<div class="widget">
 				<div class="head_menu">Nuestras Marcas</div>
 				<div class="body">
-					<div align="center"><img src="imagenes/marca.gif"></div>
+					<img src="imagenes/marca.gif">
 				</div>
 				</div>
 
